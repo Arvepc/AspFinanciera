@@ -10,7 +10,6 @@ object dm: Tdm
       'CLIENT_MULTI_STATEMENTS=1'
       'AutoEncodeStrings=ON'
       'controls_cp=CP_UTF16')
-    Connected = True
     DesignConnection = True
     HostName = 'nextcom.com.mx'
     Port = 3306
@@ -2051,5 +2050,13 @@ object dm: Tdm
       FieldName = 'pp_fk'
       Required = True
     end
+  end
+  object dsarve: TZQuery
+    Connection = ZConnection1
+    SQL.Strings = (
+      'select * from personas')
+    Params = <>
+    Left = 472
+    Top = 80
   end
 end
