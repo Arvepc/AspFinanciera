@@ -2059,4 +2059,12 @@ object dm: Tdm
     Left = 472
     Top = 80
   end
+  object dsarve2: TZQuery
+    Connection = ZConnection1
+    SQL.Strings = (
+      'select * from personas')
+    Params = <>
+    Left = 472
+    Top = 136
+  end
 end
