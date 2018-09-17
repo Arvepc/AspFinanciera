@@ -2051,7 +2051,7 @@ object dm: Tdm
       Required = True
     end
   end
-  object dsarve: TZQuery
+  object dsarvex: TZQuery
     Connection = ZConnection1
     SQL.Strings = (
       'select * from personas')

@@ -452,7 +452,7 @@ type
     dsplan_pagospp_comision: TFloatField;
     dsplan_pagospp_gastos: TFloatField;
     dsplan_pagossbp_descripcion: TWideStringField;
-    dsarve: TZQuery;
+    dsarvex: TZQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
