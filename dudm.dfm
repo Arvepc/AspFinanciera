@@ -2067,4 +2067,9 @@ object dm: Tdm
     Left = 472
     Top = 136
   end
+  object DSAlfredo: TZQuery
+    Params = <>
+    Left = 384
+    Top = 32
+  end
 end
