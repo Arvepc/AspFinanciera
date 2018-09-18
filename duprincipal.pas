@@ -66,7 +66,7 @@ var
 implementation
 uses Hashes, duusuarios, dudm, duPersonas, dumonedas, duactividades, DgieWS,
   duempresa, duacciones, ducentrostrabajo,
-  dubancos, duconsulta, dudocumentos, dulistasolicitudes, dudispercion,
+  dubancos, dudocumentos, dulistasolicitudes, dudispercion,
   duProducto, dumesacontrolcredito, dumesacontrolfinal, duanalisis, duPlanPagos;
 
 {$R *.dfm}
@@ -442,8 +442,8 @@ begin
 
         end;
     38: begin
-          application.createForm(Tform1, form1) ;
-          form1.Show;
+         { application.createForm(Tform1, form1) ;
+          form1.Show; }
 
         end;
     39: begin

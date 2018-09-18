@@ -25,7 +25,6 @@ uses
   dubancos in 'dubancos.pas' {frmbancos},
   ducentrostrabajo in 'ducentrostrabajo.pas' {frmcentrostrabajo},
   duactcentrostrabajo in 'duactcentrostrabajo.pas' {Frmactcentrostrabajo},
-  duconsulta in 'C:\Users\SISTEMAS01\Downloads\duconsulta.pas' {Form1},
   durecuperar in 'durecuperar.pas' {Frmrecuperar},
   dudocumentos in 'dudocumentos.pas' {Frmdocumentos},
   dulistasolicitudes in 'dulistasolicitudes.pas' {frmlistasolicitudes},
