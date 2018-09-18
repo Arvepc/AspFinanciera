@@ -653,7 +653,7 @@ begin
 
              //esto es especificamente para guardar el conyuge si es que existe.......
      dm.filtra(dm.ds1, 'select max(prs_id) as idper from personas');
-            showmessage('0.5');
+
 
      dm.cambia(dm.ds2, 'insert into personas (prs_id, prs_nombre, prs_rfc, prs_calle, prs_noext, prs_noint, cp_fk, tpr_fk,  rgc_fk, tpr_tipopersona) values ('+
      inttostr(dm.ds1.FieldByName('idper').AsInteger + 1) + ', ' +
@@ -665,7 +665,7 @@ begin
      quotedstr(trim(edidcprep.text)) + ', ' +
   //checar aqui por que el conyuge no toene cel
      ' 8,1,'+ quotedstr('FISICAS')+')');
-          showmessage('0.6');
+
      //ahora en solicitud persona
 
      dm.cambia(dm.ds2, 'insert into solicitud_persona (sol_fk, prs_fk, slp_nombre, slp_calle, cp_fk) values ('+
@@ -674,14 +674,12 @@ begin
      quotedstr(trim(ednomrep.text)) + ', ' +
      quotedstr(trim(edcallerep.text)) + ', ' +
      quotedstr(trim(edidcprep.text))+')');
-                         showmessage('insert into fisicas (prs_fk, curp) values ('+
-     inttostr(dm.ds1.FieldByName('idper').AsInteger + 1) + ', ' +
-     quotedstr(trim(edcurprep.text)) + ')');
+
     //ahora en fisicas.
      dm.cambia(dm.ds2, 'insert into fisicas (prs_fk, fsc_curp) values ('+
      inttostr(dm.ds1.FieldByName('idper').AsInteger + 1) + ', ' +
      quotedstr(trim(edcurprep.text)) + ')');
-              showmessage('0.8');
+
 
 end;
 
@@ -734,7 +732,7 @@ begin
             else
             nid := dm.ds1.fieldbyname('id').asInteger + 1;
 
-         showmessage('0.1');
+
     dm.filtra(dm.ds1, 'select max(prs_clave) as idclave from personas');
             if (dm.ds1.fieldbyname('idclave').asstring = '') or (dm.ds1.FieldByName('idclave').Value = null) then
             nclave := '0001'
@@ -754,7 +752,7 @@ begin
                    nclave := inttostr(dm.ds1.fieldbyname('idclave').AsInteger + 1);
             end;
 
-               showmessage('0.2');
+
         dm.cambia(dm.ds1, 'insert into personas (prs_id, prs_clave, prs_nombre, prs_rfc, prs_calle, prs_noint, prs_noext, prs_tel1, prs_tel2, prs_tel3, prs_email, prs_estatus, rgc_fk, tpr_fk, tpr_tipopersona, cp_fk) values (' +
         inttostr(nid) + ', ' +
         quotedstr(nclave) + ', '+
@@ -768,7 +766,7 @@ begin
         quotedstr(trim(edcel2.Text)) + ', ' +
         quotedstr(trim(edcorreo.Text)) + ', ' +
         quotedstr('ACTIVO') + ', 1,1, '+ quotedstr('MORALES')+', '+ edidcp.text +')');
-                 showmessage('0.3');
+
  //ahora inserto en Morales
      dm.cambia(dm.ds2, 'insert into morales(mrl_razonsocial, prs_fk, mrl_fecconstitucion, mrl_numescritura, mrl_fecinscripcion, mrl_lugarreg, mrl_corporativo, mrl_dirgral) values ('+
        quotedstr(trim(ednombre.Text)) + ', ' +
@@ -781,7 +779,7 @@ begin
        quotedstr(trim(eddirgral.Text)) + ')');
 // ahora checo si tengo que agregar el replegal
 
-             showmessage('0.4');
+
 
 if ednomrep.Text <> '' then
    agrega_representante;

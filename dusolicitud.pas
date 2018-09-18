@@ -483,7 +483,6 @@ TCrackDBGrid = class (TDBGrid);
     procedure btneliminaavalClick(Sender: TObject);
     procedure dbgrdavalDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
-    procedure FormActivate(Sender: TObject);
     procedure cbxregimenavalKeyPress(Sender: TObject; var Key: Char);
     procedure Button1Click(Sender: TObject);
     procedure cpavalCollapse(Sender: TObject);
@@ -1884,11 +1883,6 @@ if ((cbxestados.text = '') or (dblckmunicipios.text = '')) then
 end;
 
 
-
-procedure Tfrmsolicitud.FormActivate(Sender: TObject);
-begin
-showmessage('activate');
-end;
 
 procedure Tfrmsolicitud.FormClose(Sender: TObject; var Action: TCloseAction);
 begin

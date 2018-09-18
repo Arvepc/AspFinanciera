@@ -258,7 +258,6 @@
         Top = 0
         Width = 1436
         Height = 551
-        VertScrollBar.Position = 237
         VertScrollBar.Tracking = True
         Align = alClient
         Color = clWhite
@@ -269,11 +268,14 @@
         HeaderFont.Style = []
         TabOrder = 0
         object cpaval: TCategoryPanel
-          Top = 33
-          Height = 516
+          Top = 270
+          Height = 30
           Caption = 'Datos Generales del Aval y Garante Hipotecario'
           Color = clWhite
+          Collapsed = True
           TabOrder = 0
+          ExplicitWidth = 1417
+          ExpandedHeight = 516
           object Label105: TLabel
             Left = 864
             Top = 54
@@ -2483,16 +2485,14 @@
           end
           object pnllistaavales: TPanel
             Left = 0
-            Top = 350
-            Width = 1432
+            Top = 250
+            Width = 1415
             Height = 140
             Align = alBottom
             Caption = 'pnllistaavales'
             Color = clWhite
             ParentBackground = False
             TabOrder = 18
-            ExplicitTop = -140
-            ExplicitWidth = 1415
             object dbgrdaval: TDBGrid
               Left = 14
               Top = 6
@@ -2538,16 +2538,14 @@
           end
           object pnlconyugeaval: TPanel
             Left = 0
-            Top = 250
-            Width = 1432
+            Top = 390
+            Width = 1415
             Height = 100
             Align = alBottom
             Color = clWhite
             ParentBackground = False
             TabOrder = 19
             Visible = False
-            ExplicitTop = -240
-            ExplicitWidth = 1415
             object Label92: TLabel
               Left = 16
               Top = 8
@@ -2665,12 +2663,13 @@
           end
         end
         object garantias: TCategoryPanel
-          Top = 3
+          Top = 240
           Height = 30
           Caption = 'Garantias Hpotecarias Ofrecidas'
           Color = clWhite
           Collapsed = True
           TabOrder = 1
+          ExplicitWidth = 1417
           ExpandedHeight = 395
           object Label90: TLabel
             Left = 16
@@ -4563,12 +4562,13 @@
           end
         end
         object Referencias: TCategoryPanel
-          Top = -27
+          Top = 210
           Height = 30
           Caption = 'Referencias'
           Color = clWhite
           Collapsed = True
           TabOrder = 2
+          ExplicitWidth = 1417
           ExpandedHeight = 332
           object Label102: TLabel
             Left = 24
@@ -6435,12 +6435,13 @@
           end
         end
         object actividad: TCategoryPanel
-          Top = -57
+          Top = 180
           Height = 30
           Caption = 'Actividad Economica'
           Color = clWhite
           Collapsed = True
           TabOrder = 3
+          ExplicitWidth = 1417
           ExpandedHeight = 328
           object Button3: TButton
             Left = 1079
@@ -6470,13 +6471,15 @@
           object PageControl4: TPageControl
             Left = 0
             Top = 0
-            Width = 1415
+            Width = 1432
             Height = 0
             ActivePage = TabSheet1
             Align = alClient
             TabOrder = 3
+            ExplicitWidth = 1415
             object TabSheet1: TTabSheet
               Caption = 'Actividad Principal'
+              ExplicitWidth = 1407
               object Label66: TLabel
                 Left = 16
                 Top = 19
@@ -8330,6 +8333,7 @@
             object TabSheet2: TTabSheet
               Caption = 'Fuentes de Ingreso'
               ImageIndex = 1
+              ExplicitWidth = 1407
               object Label84: TLabel
                 Left = 20
                 Top = 19
@@ -10206,12 +10210,13 @@
           end
         end
         object pasivos: TCategoryPanel
-          Top = -87
+          Top = 150
           Height = 30
           Caption = 'PASIVOS(cifras en miles de pesos)'
           Color = clWhite
           Collapsed = True
           TabOrder = 4
+          ExplicitWidth = 1417
           ExpandedHeight = 433
           object Label59: TLabel
             Left = 16
@@ -10229,13 +10234,15 @@
           object PageControl3: TPageControl
             Left = 0
             Top = 0
-            Width = 1415
+            Width = 1432
             Height = 0
             ActivePage = tabbancarios
             Align = alClient
             TabOrder = 0
+            ExplicitWidth = 1415
             object tabbancarios: TTabSheet
               Caption = '1. Bancarios'
+              ExplicitWidth = 1407
               object Label60: TLabel
                 Left = 16
                 Top = 19
@@ -12199,6 +12206,7 @@
             object tabnobancarios: TTabSheet
               Caption = '2. No Bancarios'
               ImageIndex = 1
+              ExplicitWidth = 1407
               object Label69: TLabel
                 Left = 16
                 Top = 19
@@ -14159,12 +14167,13 @@
           end
         end
         object destinocred: TCategoryPanel
-          Top = -117
+          Top = 120
           Height = 30
           Caption = 'Destino del Cr'#233'dito'
           Color = clWhite
           Collapsed = True
           TabOrder = 5
+          ExplicitWidth = 1417
           ExpandedHeight = 185
           object Label48: TLabel
             Left = 16
@@ -14322,12 +14331,13 @@
           end
         end
         object DomicilioCon: TCategoryPanel
-          Top = -147
+          Top = 90
           Height = 30
           Caption = 'Datos del Representante Legal'
           Color = clWhite
           Collapsed = True
           TabOrder = 6
+          ExplicitWidth = 1417
           ExpandedHeight = 335
           object Label36: TLabel
             Left = 617
@@ -14593,23 +14603,26 @@
           end
         end
         object Profesión: TCategoryPanel
-          Top = -177
+          Top = 60
           Height = 30
           Caption = 'Datos de la Empresa'
           Color = clWhite
           Collapsed = True
           TabOrder = 7
+          ExplicitWidth = 1417
           ExpandedHeight = 313
           object PageControl1: TPageControl
             Left = 0
             Top = 0
-            Width = 1415
+            Width = 1432
             Height = 0
             ActivePage = tabcontactos
             Align = alClient
             TabOrder = 0
+            ExplicitWidth = 1415
             object tabdatos: TTabSheet
               Caption = 'Datos'
+              ExplicitWidth = 1407
               object Label46: TLabel
                 Left = 380
                 Top = 9
@@ -14706,6 +14719,7 @@
             object tabcontactos: TTabSheet
               Caption = 'Contactos'
               ImageIndex = 1
+              ExplicitWidth = 1407
               object Label8: TLabel
                 Left = 16
                 Top = 19
@@ -16577,6 +16591,7 @@
             object tabconsejo: TTabSheet
               Caption = 'Consejo'
               ImageIndex = 2
+              ExplicitWidth = 1407
               object Label26: TLabel
                 Left = 693
                 Top = 19
@@ -18410,6 +18425,7 @@
             object tabestructura: TTabSheet
               Caption = 'Estructura'
               ImageIndex = 3
+              ExplicitWidth = 1407
               object Label29: TLabel
                 Left = 24
                 Top = 27
@@ -20296,12 +20312,13 @@
           end
         end
         object cpdatosempresa: TCategoryPanel
-          Top = -207
+          Top = 30
           Height = 30
           Caption = 'Domicilio de la Empresa'
           Color = clWhite
           Collapsed = True
           TabOrder = 8
+          ExplicitWidth = 1417
           ExpandedHeight = 339
           object Label10: TLabel
             Left = 16
@@ -20584,12 +20601,13 @@
           end
         end
         object CategoryPanel1: TCategoryPanel
-          Top = -237
+          Top = 0
           Height = 30
           Caption = 'Datos Generales'
           Color = clWhite
           Collapsed = True
           TabOrder = 9
+          ExplicitWidth = 1417
           ExpandedHeight = 147
           object Label3: TLabel
             Left = 16
@@ -20978,6 +20996,7 @@
     Top = 663
   end
   object dtsplanpagos: TDataSource
+    DataSet = dm.dsplan_pagos
     Left = 883
     Top = 656
   end
@@ -21150,6 +21169,7 @@
     Top = 663
   end
   object dtssubproducto: TDataSource
+    DataSet = dm.dsSubProd
     Left = 128
     Top = 671
   end
@@ -21180,14 +21200,17 @@
     Top = 655
   end
   object dtspasivobanco: TDataSource
+    DataSet = dm.dspasivosbanco
     Left = 736
     Top = 623
   end
   object dtspasivonobanco: TDataSource
+    DataSet = dm.dspasivosnobanco
     Left = 688
     Top = 655
   end
   object dtssolingreso: TDataSource
+    DataSet = dm.dssolingreso
     Left = 995
     Top = 504
   end
@@ -21197,10 +21220,12 @@
     Top = 663
   end
   object dtssol_actividades: TDataSource
+    DataSet = dm.dssolactividades
     Left = 320
     Top = 663
   end
   object dtssolreferencias: TDataSource
+    DataSet = dm.dssolreferencias
     Left = 264
     Top = 663
   end
