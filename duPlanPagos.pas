@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
-  Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons;
+  Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons, Vcl.Imaging.pngimage, Vcl.DBCtrls,
+  ZAbstractRODataset, ZAbstractDataset, ZDataset, Vcl.ComCtrls;
 
 type
 TCrackDBGrid = class (TDBGrid);
@@ -14,12 +15,11 @@ TCrackDBGrid = class (TDBGrid);
     lblTitulo: TLabel;
     btnelimina: TSpeedButton;
     btnmodifica: TSpeedButton;
-    Panel3: TPanel;
+    pnlbusca: TPanel;
     Image1: TImage;
     Shape1: TShape;
     Image2: TImage;
     edbusca: TEdit;
-    Panel5: TPanel;
     pnlNuevo: TPanel;
     pnlImprimir: TPanel;
     Panel2: TPanel;
@@ -29,6 +29,35 @@ TCrackDBGrid = class (TDBGrid);
     Panel6: TPanel;
     Label1: TLabel;
     btnmuestra: TSpeedButton;
+    Panel7: TPanel;
+    dblckestatus: TDBLookupComboBox;
+    imgdown: TImage;
+    dsestatus: TZQuery;
+    dtsestatus: TDataSource;
+    imgup: TImage;
+    chktodoestatus: TCheckBox;
+    Estatus: TLabel;
+    dsestatusest_id: TIntegerField;
+    dsestatusest_descripcion: TWideStringField;
+    chktodoproducto: TCheckBox;
+    dblckproducto: TDBLookupComboBox;
+    Label2: TLabel;
+    Label3: TLabel;
+    cbxplazo: TComboBox;
+    chktodoplazo: TCheckBox;
+    pnlright: TPanel;
+    btnbusca: TPanel;
+    chktodofecha: TCheckBox;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    dt2: TDateTimePicker;
+    dt1: TDateTimePicker;
+    dsproducto: TZQuery;
+    dtsproducto: TDataSource;
+    dsproductoprd_id: TIntegerField;
+    dsproductoprd_descripcion: TWideStringField;
+    imgrefresh: TImage;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure pnlNuevoClick(Sender: TObject);
     procedure pnlNuevoMouseMove(Sender: TObject; Shift: TShiftState; X,
@@ -38,14 +67,29 @@ TCrackDBGrid = class (TDBGrid);
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure btnmodificaClick(Sender: TObject);
     procedure btnmuestraClick(Sender: TObject);
+    procedure Panel7Click(Sender: TObject);
+    procedure imgdownClick(Sender: TObject);
+    procedure imgupClick(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btnbuscaClick(Sender: TObject);
+    procedure chktodoestatusClick(Sender: TObject);
+    procedure chktodoproductoClick(Sender: TObject);
+    procedure chktodoplazoClick(Sender: TObject);
+    procedure chktodofechaClick(Sender: TObject);
+    procedure imgrefreshClick(Sender: TObject);
+    procedure edbuscaKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
+    procedure busca;
   public
     { Public declarations }
   end;
 
 var
   frmplanpagos: Tfrmplanpagos;
+  filtro : string;
+  rebote : boolean;
 
 implementation
 
@@ -53,12 +97,82 @@ implementation
 
 uses dudm, duactplanpagos, duplanpagosdetalle;
 
+
+procedure Tfrmplanpagos.busca;
+begin
+  dm.filtra(dm.dsplan_pagos, 'select plan_pagos.pp_id, plan_pagos.pp_descripcion, plan_pagos.pp_fecha, plan_pagos.pp_plazo, productos.prd_descripcion, plan_pagos.prd_fk, plan_pagos.pp_monto, pp_periodicidad, '+
+'pp_tord, pp_tmor, pp_tiva, pp_frmintord, pp_frmintmor, pp_freccapint, pp_frecpagcap, pp_frecpagint, pp_editable, pp_tipointeres, pp_comision, pp_gastos, '+
+'sbp_descripcion, estatus.est_descripcion '+
+'from plan_pagos, estatus, productos, subproducto '+
+'where plan_pagos.est_fk = estatus.est_id '+
+'and plan_pagos.prd_fk = productos.prd_id '+
+'and sbp_id = sbp_fk and pp_descripcion like' + quotedstr ('%' + edbusca.Text + '%'));
+end;
+
+
+procedure Tfrmplanpagos.btnbuscaClick(Sender: TObject);
+begin
+filtro := 'select plan_pagos.pp_id, plan_pagos.pp_descripcion, plan_pagos.pp_fecha, plan_pagos.pp_plazo, productos.prd_descripcion, plan_pagos.prd_fk, plan_pagos.pp_monto, pp_periodicidad, '+
+'pp_tord, pp_tmor, pp_tiva, pp_frmintord, pp_frmintmor, pp_freccapint, pp_frecpagcap, pp_frecpagint, pp_editable, pp_tipointeres, pp_comision, pp_gastos, '+
+'sbp_descripcion, estatus.est_descripcion '+
+'from plan_pagos, estatus, productos, subproducto '+
+'where plan_pagos.est_fk = estatus.est_id '+
+'and plan_pagos.prd_fk = productos.prd_id '+
+//and est_descripcion <> 'CANCELADO'
+'and sbp_id = sbp_fk '  ;
+
+rebote := false;
+
+if (chktodoestatus.Checked = false) and (dblckestatus.Text = '') then
+begin
+  rebote := true;
+  showmessage('debe indicar un estatus.');
+end;
+
+
+
+if (chktodoproducto.Checked = false) and (dblckproducto.Text = '') then
+begin
+  rebote := true;
+  showmessage('debe indicar un producto.');
+end;
+
+if (chktodoplazo.Checked = false) and (cbxplazo.Text = '') then
+begin
+  rebote := true;
+  showmessage('debe indicar un plazo.');
+end;
+
+     if rebote = false then
+        begin
+
+             if (dblckestatus.Text <> '')then
+                 filtro  := filtro + ' and estatus.est_descripcion = ' + quotedstr(dblckestatus.Text) + ' ';
+
+             if (dblckproducto.Text <> '')then
+                 filtro  := filtro + ' and productos.prd_id  = ' + inttostr(dblckproducto.KeyValue) + ' ';
+
+            if cbxplazo.Text <> '' then
+            filtro := filtro +  ' and pp_plazo = ' + cbxplazo.Text;
+
+            if (chktodofecha.Checked = false) then
+                filtro  := filtro  + ' and pp_fecha between '+ quotedstr(formatdatetime('yyyy-mm-dd', dt1.Date)) + ' and ' +  quotedstr(formatdatetime('yyyy-mm-dd', dt2.Date));
+
+
+
+
+
+         dm.filtra(dm.dsplan_pagos, filtro);       imgrefresh.Visible := true;
+        end;
+
+end;
+
 procedure Tfrmplanpagos.btnmodificaClick(Sender: TObject);
 begin
    application.CreateForm(Tfrmactplanpagos, frmactplanpagos);
  frmplanpagos.AlphaBlend := true;
   frmplanpagos.AlphaBlendValue := 55;
-                                     
+
 frmactplanpagos.envia := 'M';
 dm.activa_ds(dm.dsprod);
 
@@ -66,7 +180,7 @@ frmactplanpagos.edid.text := dm.dsplan_pagospp_id.asstring;
 frmactplanpagos.eddescripcion.text  :=  dm.dsplan_pagospp_descripcion.asstring ;
 frmactplanpagos.dt1.date := dm.dsplan_pagospp_fecha.value;
 frmactplanpagos.edMonto.Text := dm.dsplan_pagospp_monto.AsString;
-frmactplanpagos.cbxestatus.text := dm.dsplan_pagospp_estatus.asstring;
+frmactplanpagos.cbxestatus.text := dm.dsplan_pagosest_descripcion.asstring;
 
 frmactplanpagos.seplazo.text := dm.dsplan_pagospp_plazo.asstring;
 frmactplanpagos.dblckprod.keyvalue:= dm.dsplan_pagosprd_fk.value;
@@ -81,6 +195,55 @@ begin
       application.CreateForm(Tfrmplanpagosdetalle, frmplanpagosdetalle);
       frmplanpagosdetalle.show;
 
+
+end;
+
+procedure Tfrmplanpagos.chktodoestatusClick(Sender: TObject);
+begin
+if chktodoestatus.Checked = false then
+   dblckestatus.Enabled := true
+   else
+   begin
+     dblckestatus.KeyValue := -1;
+     dblckestatus.Enabled := false;
+   end;
+end;
+
+procedure Tfrmplanpagos.chktodofechaClick(Sender: TObject);
+begin
+if (chktodofecha.Checked = false) then
+begin
+dt1.Enabled := true;
+dt2.Enabled := true;
+end
+else
+begin
+dt1.Enabled := false;
+dt2.Enabled := false;
+
+end;
+end;
+
+procedure Tfrmplanpagos.chktodoplazoClick(Sender: TObject);
+begin
+if chktodoplazo.Checked = false then
+   cbxplazo.Enabled := true
+   else
+   begin
+     cbxplazo.text := '';
+     cbxplazo.Enabled := false;
+   end;
+end;
+
+procedure Tfrmplanpagos.chktodoproductoClick(Sender: TObject);
+begin
+if chktodoproducto.Checked = false then
+   dblckproducto.Enabled := true
+   else
+   begin
+     dblckproducto.KeyValue := -1;
+     dblckproducto.Enabled := false;
+   end;
 
 end;
 
@@ -128,14 +291,70 @@ btnmuestra.Height := (MRect.Bottom-MRect.Top);
 
 end;
 
+procedure Tfrmplanpagos.edbuscaKeyPress(Sender: TObject; var Key: Char);
+begin
+if key = #13 then
+   busca;
+end;
+
 procedure Tfrmplanpagos.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 action := cafree;
 end;
 
+procedure Tfrmplanpagos.FormShow(Sender: TObject);
+begin
+
+
+dm.Activa_DS(dsestatus);
+
+dm.Activa_DS(dsproducto);
+
+
+dt1.Date := date - 30;
+dt2.Date := date;
+end;
+
+procedure Tfrmplanpagos.Image2Click(Sender: TObject);
+begin
+busca;
+end;
+
+procedure Tfrmplanpagos.imgupClick(Sender: TObject);
+begin
+imgup.Visible := false;
+imgdown.Visible := true;
+pnlbusca.Height := 88;
+end;
+
+procedure Tfrmplanpagos.imgdownClick(Sender: TObject);
+begin
+//abro el panel de busquedas
+imgup.Visible := true;
+imgdown.Visible := false;
+pnlbusca.Height := 224;
+end;
+
+procedure Tfrmplanpagos.imgrefreshClick(Sender: TObject);
+begin
+
+dm.Activa_DS(dm.dsplan_pagos);
+filtro := ''
+end;
+
 procedure Tfrmplanpagos.Label1Click(Sender: TObject);
 begin
 close;
+end;
+
+procedure Tfrmplanpagos.Panel7Click(Sender: TObject);
+begin
+//de aqui debo mandar a llamar el form de tipo de solicitud y enviar como param el id del plan de pago s
+
+
+
+
+
 end;
 
 procedure Tfrmplanpagos.pnlNuevoClick(Sender: TObject);

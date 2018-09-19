@@ -1452,17 +1452,17 @@ object dm: Tdm
     SQL.Strings = (
       
         'select plan_pagos.pp_id, plan_pagos.pp_descripcion, plan_pagos.p' +
-        'p_fecha, plan_pagos.pp_estatus, plan_pagos.pp_plazo, productos.p' +
-        'rd_descripcion, plan_pagos.prd_fk, plan_pagos.pp_monto, pp_perio' +
-        'dicidad,'
+        'p_fecha, plan_pagos.pp_plazo, productos.prd_descripcion, plan_pa' +
+        'gos.prd_fk, plan_pagos.pp_monto, pp_periodicidad,'
       
         'pp_tord, pp_tmor, pp_tiva, pp_frmintord, pp_frmintmor, pp_frecca' +
         'pint, pp_frecpagcap, pp_frecpagint, pp_editable, pp_tipointeres,' +
         ' pp_comision, pp_gastos,'
-      'sbp_descripcion'
-      'from plan_pagos, productos, subproducto '
-      'where plan_pagos.prd_fk = productos.prd_id'
-      'and plan_pagos.pp_estatus = '#39'ACTIVO'#39
+      'sbp_descripcion, estatus.est_descripcion'
+      'from plan_pagos, estatus, productos, subproducto '
+      'where plan_pagos.est_fk = estatus.est_id'
+      'and plan_pagos.prd_fk = productos.prd_id'
+      'and est_descripcion <> '#39'CANCELADO'#39
       'and sbp_id = sbp_fk')
     Params = <>
     Left = 24
@@ -1479,11 +1479,6 @@ object dm: Tdm
     object dsplan_pagospp_fecha: TDateField
       FieldName = 'pp_fecha'
       Required = True
-    end
-    object dsplan_pagospp_estatus: TWideStringField
-      FieldName = 'pp_estatus'
-      Required = True
-      Size = 8
     end
     object dsplan_pagospp_plazo: TFloatField
       FieldName = 'pp_plazo'
@@ -1561,6 +1556,11 @@ object dm: Tdm
       FieldName = 'sbp_descripcion'
       Required = True
       Size = 100
+    end
+    object dsplan_pagosest_descripcion: TWideStringField
+      FieldName = 'est_descripcion'
+      Required = True
+      Size = 50
     end
   end
   object dssubproducto: TZQuery

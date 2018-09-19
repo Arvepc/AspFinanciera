@@ -430,10 +430,17 @@ type
     dsplanpagosdetalleppd_pago: TFloatField;
     dsplanpagosdetalleppd_saldo: TFloatField;
     dsplanpagosdetallepp_fk: TIntegerField;
+    dsarvex: TZQuery;
+    dsarve2: TZQuery;
+    DSAlfredo: TZQuery;
+    dsserie: TZQuery;
+    dsserieser_id: TIntegerField;
+    dsserieser_serie: TWideStringField;
+    dsserieser_descripcion: TWideStringField;
+    dsserieser_folio: TIntegerField;
     dsplan_pagospp_id: TIntegerField;
     dsplan_pagospp_descripcion: TWideStringField;
     dsplan_pagospp_fecha: TDateField;
-    dsplan_pagospp_estatus: TWideStringField;
     dsplan_pagospp_plazo: TFloatField;
     dsplan_pagosprd_descripcion: TWideStringField;
     dsplan_pagosprd_fk: TIntegerField;
@@ -452,14 +459,7 @@ type
     dsplan_pagospp_comision: TFloatField;
     dsplan_pagospp_gastos: TFloatField;
     dsplan_pagossbp_descripcion: TWideStringField;
-    dsarvex: TZQuery;
-    dsarve2: TZQuery;
-    DSAlfredo: TZQuery;
-    dsserie: TZQuery;
-    dsserieser_id: TIntegerField;
-    dsserieser_serie: TWideStringField;
-    dsserieser_descripcion: TWideStringField;
-    dsserieser_folio: TIntegerField;
+    dsplan_pagosest_descripcion: TWideStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

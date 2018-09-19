@@ -584,7 +584,7 @@ object frmPersonas: TfrmPersonas
     Left = 1072
   end
   object frxReport1: TfrxReport
-    Version = '5.6.17'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

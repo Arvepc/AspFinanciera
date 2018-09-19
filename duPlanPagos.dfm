@@ -3,7 +3,7 @@ object frmplanpagos: Tfrmplanpagos
   Top = 0
   Caption = 'Planes de pago'
   ClientHeight = 481
-  ClientWidth = 931
+  ClientWidth = 1317
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,18 +15,20 @@ object frmplanpagos: Tfrmplanpagos
   Visible = True
   WindowState = wsMaximized
   OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel4: TPanel
     Left = 0
     Top = 0
-    Width = 931
+    Width = 1317
     Height = 57
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 931
     object lblTitulo: TLabel
       Left = 24
       Top = 10
@@ -178,13 +180,14 @@ object frmplanpagos: Tfrmplanpagos
       OnClick = btnmuestraClick
     end
     object Panel6: TPanel
-      Left = 864
+      Left = 1250
       Top = 0
       Width = 67
       Height = 57
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitLeft = 864
       object Label1: TLabel
         Left = 26
         Top = 14
@@ -202,10 +205,10 @@ object frmplanpagos: Tfrmplanpagos
       end
     end
   end
-  object Panel3: TPanel
+  object pnlbusca: TPanel
     Left = 0
     Top = 57
-    Width = 931
+    Width = 1317
     Height = 88
     Align = alTop
     BevelOuter = bvNone
@@ -293,6 +296,7 @@ object frmplanpagos: Tfrmplanpagos
         C08000C08000C08000C08000C08000C08000C08000C08000C08000C08000C080
         00C08000C08000C08000C08000C08000C08000C08000C08000C08000C08000C0
         8000C08000C08000C08000C08000FEFDF600}
+      OnClick = Image2Click
     end
     object Shape1: TShape
       Left = 24
@@ -303,7 +307,7 @@ object frmplanpagos: Tfrmplanpagos
       Pen.Color = clMedGray
     end
     object Image2: TImage
-      Left = 284
+      Left = 283
       Top = 29
       Width = 30
       Height = 30
@@ -384,6 +388,243 @@ object frmplanpagos: Tfrmplanpagos
         2890602890602890602890602890602890602890602890602890602890602890
         6028906028906028906028906028FEFDF600}
       Visible = False
+      OnClick = Image2Click
+    end
+    object imgdown: TImage
+      Left = 332
+      Top = 29
+      Width = 30
+      Height = 30
+      Cursor = crHandPoint
+      Hint = 'despliega panel de busqueda avanzada'
+      ParentShowHint = False
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000150000
+        00150806000000A917A596000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC200000EC20115284A80000003
+        914944415478DA9D927D4CD4751CC75F77A5A1DCE901F27064A14082A212849C
+        0C29148744AB1C441B015348F3B6B0597389D5B45C0FD02ADBC049923C28ECB6
+        AC1BCCC5C8C82061E2A1A03C7987C04919673C9E70C82DEAAEDF9D8D76E341F2
+        FDEFE7F3797DBF9FCFFB2DB20ABA70BE9A90A7C2902C95F1A032DD31D27CE532
+        515BB622AAAC28B7C6EFCF41E664E59ABA98C7FD03FE37F0D71B5A8213D3314E
+        40E5175988F45D9DD6F52FA430E6E18FFBE86F3494E6E3BB3A68DEC09EEBED6C
+        4C5532B0E431A403DDB4569421B2ADDF5857CBB3990719725981EBC84D5ABE2D
+        E2D179FCF856978EE097D21916E6DC84B9AA6339844546DD83DA1A9A2F5D2466
+        D73E46DCFDE0762F7DDF17235FF9C4AC4083FE06DECFED042F1F5C077BA82E38
+        4A8822C25E9B82DAA4BB7A85C057DE00B90F923E1D57CF14E2B736781AB0BBED
+        1A4F266560F216B631F4A255E512101C3A557780DAD4ABEB60EDF6344C726160
+        D8C0F5C21C0243C3A7EADA260DAB330E80AB1C8941475BF9697C02D6383C3A0D
+        6A53577B2B8AE4DD0CBBAD843BFDB49FF88835611BE9B8DC40D06BEFC2520F5C
+        86F4685405F807AD9BB6C98C50FB29DA5AD89E968E56B68A87C686A8CADA495C
+        76317F4BDD081CE9A4BCAC9880198076A8C562B1661F39CCD3CF6C26327AB3E3
+        EDB41D84BF9C8171992F16F35DC44E8B9109A668BE116E1DE8B8727DCD797EA9
+        AD25EBD0FB8854A78AACC9392AB0DEE5BB77769190B2C3D1E59B3DF8C52630B1
+        CC8F4583DD749F53235FE1EBD0A32E2B21F1E3AF852F2E4675205958FFAF49AB
+        A7620BFD123922E17E9F2B537973CFAB0E43FD863EF2F37251EEDD8B8797B743
+        EDE8572779EB7829C83CF0321930687EFEF7A61326A4B12998C48F201A1DA464
+        4F0269CACCFB86BFE4781EE927D45897B823B19819FBB10C9C24FF1965191FC5
+        3F2E09BD586677FCB43291D439C0A7F273D991AF1692E049B8E536F5556779D8
+        593A83FB93669647C5F3BB93078C1829DC1D477AE6BE69C0A2BC2FC928A80217
+        1782CDBD345DA841BC60E1DC915ABF4141ABB39051633F79A9B1BCBE3F6BAA76
+        ECB36C324BCFD96FB86E5C4F4BE3A5F9E734346213CD0B97231E1BE0BDA46D7C
+        70F06D0E7FF2291F9EF9018BD49D903F6FD174B16EE69CCE0615324644740C0D
+        1677304F7028DC93239A3F042316A1100FD020E47236CD01B5DBC7A69838EA27
+        05F34422E11D2B910B8CD4FD24DC13F18342EF6943F4563A87C759E5EA4C634D
+        F5FDDAE707B5A9F26C05F1CFBF389F56FE01C7F08469E61FE676000000004945
+        4E44AE426082}
+      ShowHint = True
+      OnClick = imgdownClick
+    end
+    object imgup: TImage
+      Left = 332
+      Top = 29
+      Width = 30
+      Height = 30
+      Cursor = crHandPoint
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000150000
+        00150806000000A917A596000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC200000EC20115284A80000003
+        804944415478DAA5927F4CD47518C75F77CD76C881C7CF3CB2105039F9A5A09C
+        3830C8C86E36A7A36C63602085E1C42DAB05FD98A5ABC4E6CA256D671AA701B1
+        4530B245C44429647848D0A920A7C7AF320EEE040EEF50F2C7F7FA66C3648C38
+        EBFDEFF3BC5F9FE7F33C6F8953142EA8FADB6F58BB6EBD2BAD485C81C6262573
+        71788C45DEEE9CA93FFE7FA102094F6868BCA9103B2520B6C6CFB271AAAE46AC
+        49FF1B342E69357AC10FC6AFB353FD10BB9B0741E6469CD44A537DDD5FF6FB83
+        C6AC4CA0EDC17948ED56DEDEF814BBDE789D77F67CC87BE53F2078F8117DE332
+        AD4DA75C8746C5AEE09C7B10D82C14A6AF61DB6BF9776B9FEE2B20B7A41614FE
+        448EF570F68CFEDFA1C2CD1BC4AC4AC2200B8491118AB2356CCE7D798A4957B8
+        9FAC43E25EBD143C3C6EE1724335CC924D85DE1AB313AF5947B3742E8C0E7234
+        2785E773B64F7B8C126D219BB41530C79F20C186A9A61CA9BBE73DD071071E4F
+        A6E190CA905CB5A2DB9242C6D6DC19A3532C82330E56E2F4F4452EFC81BDB614
+        DCE422F4F62DA752FD380372E59D1D7EB4359D1D2FBD30C96C19E8477BE00039
+        B9DBF157064CAA7D7CF0735ED596E01427F6779819D49F4052F685CE99BAB74C
+        CCE0352ADE7C9194B48C4926736F37216B52B8EE1B82DB952EBA6A2B51CE0F9E
+        D453597A94673E382CFE7B366579A94804417016EC7E97C7121389177379AFBA
+        3A3B503F9785CD371861FC1A52D96C1457BA69FEAA881055D8A4DEC6FA93FCF4
+        E349F277EE9A3EA7C6F6736C48CBA4D36B110FD887A8C9CF44537084DB1E3EA8
+        6C17A92AD6111A11E57A4E4D22509D9ACD888F98D5510BED9FBD4FD8F2383A5A
+        4E13BEE5AD3B17F71EEA415F768805E1913343FB8C1D446CD88443190AC3662E
+        14ED4515A3BE5BEF6C6D6671561E782B919B8D9CAF2A2630346C7AA8D1D08A2A
+        55CCA6321079BF915FCAC5DD452C993249D779034B3766E108101F36F7D1F9E5
+        27842E5D3615DAA66F22397B07C3E25118E8A3FFBB232883164E9B5173CF2502
+        9ECE84B9817859BBA83BBC9FE8152BFF81B63436A0D996C790D77CBC477A317C
+        AD63DE82D019C3FFBBC948D4B39B19167D3EA2EFFBC23DC4262422E9355D7246
+        AE4FC3EE1782DFD5DF385DA2257871F88CC009755F68272E3D07ABE72378584C
+        9C3D568AA4FA589573ED2B0528DCC050A1E3D1852A978113FA559C78494A26B6
+        7109D5FBF2FEFE7EC389E3442F5B8E7C8EE2BE8113728CDA68FBB98555AB93F9
+        133EBD84645DBE27580000000049454E44AE426082}
+      Visible = False
+      OnClick = imgupClick
+    end
+    object Estatus: TLabel
+      Left = 35
+      Top = 98
+      Width = 46
+      Height = 14
+      Caption = 'Estatus'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clTeal
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 24
+      Top = 134
+      Width = 57
+      Height = 14
+      Caption = 'Producto'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clTeal
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 49
+      Top = 166
+      Width = 32
+      Height = 14
+      Caption = 'Plazo'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clTeal
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 474
+      Top = 98
+      Width = 34
+      Height = 14
+      Caption = 'Fecha'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clTeal
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 474
+      Top = 134
+      Width = 37
+      Height = 14
+      Caption = 'Desde'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clTeal
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 477
+      Top = 166
+      Width = 35
+      Height = 14
+      Caption = 'Hasta'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clTeal
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object imgrefresh: TImage
+      Left = 831
+      Top = 153
+      Width = 30
+      Height = 30
+      Cursor = crHandPoint
+      Hint = 'Refrescar Listado'
+      ParentShowHint = False
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000410000
+        0040080600000045AB1AE0000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC200000EC20115284A80000006
+        A64944415478DAE59B5B681C5518C7BF24DD5C3769B689B934A6B91B7BB135C6
+        A2568A22BEF8528A05296A29F8E25BA104492CF445A1264829D4A7FA2094F8D0
+        C7D2172DFA20A406A4A6D55E4C636A736B747331BBCDB5C96653CF7F92B3CCCE
+        9E99D999393B99AD7F080B9B642EBFF37DDFF9BEEF9C93F18489FEE7CA7003C2
+        F4E3150AAF44E8D1CA2AFD119AA3A5E81A2DAC46D96754F97D5E5696F2599AE3
+        A3ADD95B6857A0908AB37D549A9B9DDE1046E797E8C6F423FA792A4C930CC222
+        7B712E5F4686EEFF45361E077F53959F437B8BFDF45A79801A8B0AD2030246BC
+        7762867A26C3F460E13165B2EFF2B3321D5D33B2F68496D923FAD975DEAED846
+        EF549749B7102910F0F2DF8D4DD28FC11965C49DBEB81E0C58092C647F49111D
+        A9ADA01DFE3C6F40B83212A44BC313CA03A6E2E5F580C03A0E5795D2FBF59594
+        B511535C87009FFFAA7F848699D9BBF5F25A71AB3BB1B3865A4BB7BA0B01A37F
+        71284839CC347D991956FF5DBAE6190C58C5B1A667DD81F0F5BD51BACA7CDFBF
+        49A36F04A235E0A7F63D7596DDC31284737786E81A9BF6BC06800BEE515B904B
+        ED2FD45B9A41928670E6F7FB743334BF69FE9FAC1034915F5801911404B8C00F
+        CC05BC0E400BA2F3A5A6A45CC31442F7E043BA3C3EED5917D0135CA385C58853
+        FB1A9D41E863FE7F86C5817403A006F1014BAA0EB31F5B109005B65DBFA79896
+        17A6412720BE606E61547BE842C04C70FDDFD9B406C055C602E497FB9FB70621
+        DDDD402B58C3B1BA0A3A5423760B21844F981BA0FC7DDA7496598368DA4C80E0
+        861520CE289FAADE0157AADCCF2848264040527427BC20FD61D47D81E6A27CAA
+        CECFA542DF16E5777391559A5E8ED06FA13925FD4D654DF2CD81DD09B9431C04
+        5486277F1D906A057CD4DF2C0FD05BDB4B4C3B447886EF1F4ED14F1321E92000
+        F8B82036C441406274852546B232435ED47CD850A5DB00C1543CC25E7C8CFD40
+        786FF418A10B036334BEB82C0D0606644F714142021507E178CF2D293783CC22
+        3246FCDBBFC615D78B0866691442E82FDE0ACF4B07D1D9FA5CDCA0C420C87405
+        DCA86D77AD6EA3E3F27090BA878DFB11DC8D64BB0406A78395DBEA678B4140A3
+        A47B28E8D815E002A7343751CB4E2D22336BC5B5D0A33CC99E3101828C594174
+        03B5EC4CBFBC2294E5121CE8C5837B1321C8489044FEC6158D46A9E3C6A0A57B
+        A87B0368E5A3A527C35D61AD175EDD154B9C1408BC58720A40A615F011536779
+        B2CA7A40E85215550A0404C53616149DC403B3D9008D19AB73FFE72D4D095625
+        A3C1A30D8E0A84FBB30BF4293355BB17E6D9E0B9979B75F301B81BFC1A4A0684
+        0800172ADC5E6659769F573B600A04986A27BBB0D39941AF40E110B8F4821C9F
+        163F6B6934CD2C9DF43C7521D82D9A50AB5B696A9A05E0D3FB1A925E7C058881
+        D9455B10D4C594634BB0D2D4341B3D00DD9E97A32CD9BF5757A90B0301120517
+        FECECEB42EB404193101208CBA37C9FA318F2F5D062D311E5FECE60D4208981D
+        3AFAFE74948CF0850F9145585DB50288F3AFEC14BA18A6F313BFF43B7ED684D9
+        41469EC02FAE6D73DBA94C8D7A82329A3EC23C81677332525335085E28597960
+        B3DA43467A2FCC18655D9CCB6EBE6F165B10BBDAD960C9489DD51DA61804D90D
+        15BBD24B92ECD41E22891A2B310832295B15DF6C61942338CD12D5F7D2A6F731
+        08207DB4E7B6744B405315090D6EAEDDB5C6F720A1FFF82E4B5C44B3019EEB7C
+        FFA814001C8276452AAEBD267BD589FBF8C1B262AA2AC85322FBF4F2BA3963EF
+        6243611E1D28DFA69B6DC23AD16794B9254834F3C44148C59A83BADBAC37DA5A
+        A5AAE3ACB7F610074156F0D183814CB09E2554AF3F534CD52CF861F76A766626
+        ADACADC576BBA2B18A3D90A9587BD04E8D420890AC5EA391D4BB5BD5F2A570D1
+        C5A8E9930001D6F051EFDD9401D82C01FC599D7E877041966FD17B5A56A5CD5A
+        7FBAFB139C566A5E9251416608C16979ED15E9AD3F260501B253007949666E90
+        140428554BF56E49B4146F19027A0D5DB71FA4557CE0099ADE429065081C44BA
+        EC64B3D2B1B60401422A7BFAE6A0E7419835651C4180B86B6CE619073DF1C1B1
+        D2B2B70501E2A5AD9776BBDBDDDD6E1B02173FF6036DA67B00C02107073E1C41
+        80F8969BBED0BCAB56A1AE483F6EAE767C5C50CA6938F4212E0DFDA3C48A5456
+        82106FC51DD951669805BA0E410DE3EAF894B2D406C9089EFC28208A6F8CFCD1
+        BA4A7A31E0777C022E6510B8308B5C0BCE28A7639164A977AEC24A44D32CFF4E
+        BBDB95EF627BA3B244DA394857206881609F22BA465844FD7B697D8F82A87BC5
+        176471661A7B196BD84BBB715EDA9503E35A45370E8A8722EB9F01DFBA69CB34
+        71CF43F09AFE0302BE268CB543470F0000000049454E44AE426082}
+      ShowHint = True
+      Stretch = True
+      Visible = False
+      OnClick = imgrefreshClick
     end
     object edbusca: TEdit
       Left = 24
@@ -400,19 +641,19 @@ object frmplanpagos: Tfrmplanpagos
       ParentFont = False
       TabOrder = 0
       TextHint = 'Escriba su b'#250'squeda....'
+      OnKeyPress = edbuscaKeyPress
     end
-    object Panel5: TPanel
-      Left = 507
+    object pnlright: TPanel
+      Left = 544
       Top = 0
-      Width = 424
+      Width = 773
       Height = 88
       Align = alRight
       BevelOuter = bvNone
-      Caption = 'Panel5'
       TabOrder = 1
       object pnlNuevo: TPanel
-        Left = 175
-        Top = 29
+        Left = 415
+        Top = 21
         Width = 177
         Height = 35
         Cursor = crHandPoint
@@ -431,8 +672,8 @@ object frmplanpagos: Tfrmplanpagos
         OnMouseMove = pnlNuevoMouseMove
       end
       object pnlImprimir: TPanel
-        Left = -11
-        Top = 29
+        Left = 229
+        Top = 21
         Width = 177
         Height = 35
         Cursor = crHandPoint
@@ -448,21 +689,161 @@ object frmplanpagos: Tfrmplanpagos
         ParentFont = False
         TabOrder = 1
       end
+      object Panel7: TPanel
+        Left = 42
+        Top = 21
+        Width = 177
+        Height = 35
+        Cursor = crHandPoint
+        BevelOuter = bvNone
+        Caption = 'Solicitud'
+        Color = 13191036
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 2
+        OnClick = Panel7Click
+      end
+    end
+    object dblckestatus: TDBLookupComboBox
+      Left = 91
+      Top = 95
+      Width = 254
+      Height = 21
+      Enabled = False
+      KeyField = 'est_id'
+      ListField = 'est_descripcion'
+      ListSource = dtsestatus
+      TabOrder = 2
+    end
+    object chktodoestatus: TCheckBox
+      Left = 364
+      Top = 98
+      Width = 61
+      Height = 17
+      Caption = 'Todos'
+      Checked = True
+      State = cbChecked
+      TabOrder = 3
+      OnClick = chktodoestatusClick
+    end
+    object chktodoproducto: TCheckBox
+      Left = 364
+      Top = 134
+      Width = 61
+      Height = 17
+      Caption = 'Todos'
+      Checked = True
+      State = cbChecked
+      TabOrder = 4
+      OnClick = chktodoproductoClick
+    end
+    object dblckproducto: TDBLookupComboBox
+      Left = 91
+      Top = 131
+      Width = 254
+      Height = 21
+      Enabled = False
+      KeyField = 'prd_id'
+      ListField = 'prd_descripcion'
+      ListSource = dtsproducto
+      TabOrder = 5
+    end
+    object cbxplazo: TComboBox
+      Left = 91
+      Top = 164
+      Width = 254
+      Height = 21
+      Enabled = False
+      TabOrder = 6
+      Items.Strings = (
+        '6'
+        '12'
+        '18'
+        '24'
+        '36')
+    end
+    object chktodoplazo: TCheckBox
+      Left = 364
+      Top = 166
+      Width = 61
+      Height = 17
+      Caption = 'Todos'
+      Checked = True
+      State = cbChecked
+      TabOrder = 7
+      OnClick = chktodoplazoClick
+    end
+    object btnbusca: TPanel
+      Left = 736
+      Top = 153
+      Width = 89
+      Height = 27
+      Cursor = crHandPoint
+      BevelOuter = bvNone
+      Caption = 'Buscar'
+      Color = 12615680
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 8
+      OnClick = btnbuscaClick
+      OnMouseMove = pnlNuevoMouseMove
+    end
+    object chktodofecha: TCheckBox
+      Left = 613
+      Top = 98
+      Width = 97
+      Height = 17
+      Caption = 'Todas las Fechas'
+      Checked = True
+      State = cbChecked
+      TabOrder = 9
+      OnClick = chktodofechaClick
+    end
+    object dt2: TDateTimePicker
+      Left = 528
+      Top = 164
+      Width = 186
+      Height = 21
+      Date = 43362.627541678240000000
+      Time = 43362.627541678240000000
+      Enabled = False
+      TabOrder = 10
+    end
+    object dt1: TDateTimePicker
+      Left = 528
+      Top = 131
+      Width = 186
+      Height = 21
+      Date = 43362.627541678240000000
+      Time = 43362.627541678240000000
+      Enabled = False
+      TabOrder = 11
     end
   end
   object Panel2: TPanel
     Left = 0
     Top = 145
-    Width = 931
+    Width = 1317
     Height = 295
     Align = alClient
     BevelOuter = bvNone
     Caption = 'Panel2'
     TabOrder = 2
+    ExplicitWidth = 931
     object DBGrid1: TDBGrid
       Left = 0
       Top = 0
-      Width = 931
+      Width = 1317
       Height = 295
       Margins.Bottom = 5
       Align = alClient
@@ -498,12 +879,14 @@ object frmplanpagos: Tfrmplanpagos
           Expanded = False
           FieldName = 'pp_descripcion'
           Title.Caption = 'Descripcion'
+          Width = 64
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'prd_descripcion'
           Title.Caption = 'Producto'
+          Width = 64
           Visible = True
         end
         item
@@ -546,17 +929,64 @@ object frmplanpagos: Tfrmplanpagos
   object Panel1: TPanel
     Left = 0
     Top = 440
-    Width = 931
+    Width = 1317
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 3
+    ExplicitWidth = 931
   end
   object dtsplanpagos_listado: TDataSource
     DataSet = dm.dsplan_pagos
-    Left = 200
-    Top = 249
+    Left = 336
+    Top = 401
+  end
+  object dsestatus: TZQuery
+    Connection = dm.ZConnection1
+    SQL.Strings = (
+      'select * from estatus')
+    Params = <>
+    Left = 544
+    Top = 329
+    object dsestatusest_id: TIntegerField
+      FieldName = 'est_id'
+      Required = True
+    end
+    object dsestatusest_descripcion: TWideStringField
+      FieldName = 'est_descripcion'
+      Required = True
+      Size = 50
+    end
+  end
+  object dtsestatus: TDataSource
+    DataSet = dsestatus
+    Left = 488
+    Top = 329
+  end
+  object dsproducto: TZQuery
+    Connection = dm.ZConnection1
+    SQL.Strings = (
+      
+        'select prd_id, prd_descripcion from productos where prd_estatus ' +
+        '= '#39'ACTIVO'#39)
+    Params = <>
+    Left = 560
+    Top = 385
+    object dsproductoprd_id: TIntegerField
+      FieldName = 'prd_id'
+      Required = True
+    end
+    object dsproductoprd_descripcion: TWideStringField
+      FieldName = 'prd_descripcion'
+      Required = True
+      Size = 30
+    end
+  end
+  object dtsproducto: TDataSource
+    DataSet = dsproducto
+    Left = 496
+    Top = 393
   end
 end
