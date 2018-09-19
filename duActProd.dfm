@@ -2,7 +2,7 @@ object frmActProducto: TfrmActProducto
   Left = 0
   Top = 0
   Caption = 'Actualizar Producto Financiero'
-  ClientHeight = 558
+  ClientHeight = 673
   ClientWidth = 574
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
@@ -20,7 +20,7 @@ object frmActProducto: TfrmActProducto
     Left = 0
     Top = 0
     Width = 574
-    Height = 558
+    Height = 673
     ActivePage = TabSheet1
     Align = alClient
     MultiLine = True
@@ -28,8 +28,10 @@ object frmActProducto: TfrmActProducto
     ShowHint = False
     TabOrder = 0
     TabPosition = tpLeft
+    ExplicitHeight = 558
     object TabSheet1: TTabSheet
       Caption = 'Datos'
+      ExplicitHeight = 550
       object Label2: TLabel
         Left = 60
         Top = 11
@@ -44,7 +46,6 @@ object frmActProducto: TfrmActProducto
         Width = 73
         Height = 13
         Caption = 'Folio Segmento'
-        FocusControl = dbeFolio
       end
       object Label4: TLabel
         Left = 42
@@ -248,8 +249,8 @@ object frmActProducto: TfrmActProducto
         ParentFont = False
       end
       object DBEdit1: TDBEdit
-        Left = 409
-        Top = 60
+        Left = 505
+        Top = 55
         Width = 134
         Height = 21
         DataField = 'prd_id'
@@ -267,16 +268,6 @@ object frmActProducto: TfrmActProducto
         DataSource = DataSource1
         TabOrder = 1
       end
-      object dbeFolio: TDBEdit
-        Left = 102
-        Top = 74
-        Width = 367
-        Height = 21
-        CharCase = ecUpperCase
-        DataField = 'prd_prefijofolio'
-        DataSource = DataSource1
-        TabOrder = 3
-      end
       object dbeDescripcion: TDBEdit
         Left = 102
         Top = 114
@@ -285,7 +276,7 @@ object frmActProducto: TfrmActProducto
         CharCase = ecUpperCase
         DataField = 'prd_descripcion'
         DataSource = DataSource1
-        TabOrder = 4
+        TabOrder = 3
       end
       object dbminimo: TDBEdit
         Left = 102
@@ -294,7 +285,7 @@ object frmActProducto: TfrmActProducto
         Height = 21
         DataField = 'prd_plazoMin'
         DataSource = DataSource1
-        TabOrder = 5
+        TabOrder = 4
       end
       object dbmaximo: TDBEdit
         Left = 354
@@ -303,7 +294,7 @@ object frmActProducto: TfrmActProducto
         Height = 21
         DataField = 'prd_PlazoMax'
         DataSource = DataSource1
-        TabOrder = 6
+        TabOrder = 5
       end
       object dbeTasaO: TDBEdit
         Left = 102
@@ -312,7 +303,7 @@ object frmActProducto: TfrmActProducto
         Height = 21
         DataField = 'prd_tord'
         DataSource = DataSource1
-        TabOrder = 7
+        TabOrder = 6
       end
       object dbeTasaM: TDBEdit
         Left = 354
@@ -321,7 +312,7 @@ object frmActProducto: TfrmActProducto
         Height = 21
         DataField = 'prd_tmor'
         DataSource = DataSource1
-        TabOrder = 8
+        TabOrder = 7
       end
       object dbeTasaIVA: TDBEdit
         Left = 102
@@ -330,7 +321,7 @@ object frmActProducto: TfrmActProducto
         Height = 21
         DataField = 'prd_tiva'
         DataSource = DataSource1
-        TabOrder = 9
+        TabOrder = 8
       end
       object DBEdit11: TDBEdit
         Left = 102
@@ -339,7 +330,7 @@ object frmActProducto: TfrmActProducto
         Height = 21
         DataField = 'prd_frmIntOrd'
         DataSource = DataSource1
-        TabOrder = 10
+        TabOrder = 9
         Visible = False
       end
       object DBEdit12: TDBEdit
@@ -349,7 +340,7 @@ object frmActProducto: TfrmActProducto
         Height = 21
         DataField = 'prd_frmIntMor'
         DataSource = DataSource1
-        TabOrder = 11
+        TabOrder = 10
         Visible = False
       end
       object DBEdit13: TDBEdit
@@ -359,7 +350,7 @@ object frmActProducto: TfrmActProducto
         Height = 21
         DataField = 'prd_frecCapInt'
         DataSource = DataSource1
-        TabOrder = 12
+        TabOrder = 11
         Visible = False
       end
       object DBEdit14: TDBEdit
@@ -369,7 +360,7 @@ object frmActProducto: TfrmActProducto
         Height = 21
         DataField = 'prd_frecPagCap'
         DataSource = DataSource1
-        TabOrder = 13
+        TabOrder = 12
         Visible = False
       end
       object DBEdit15: TDBEdit
@@ -379,7 +370,7 @@ object frmActProducto: TfrmActProducto
         Height = 21
         DataField = 'prd_frecPagInt'
         DataSource = DataSource1
-        TabOrder = 14
+        TabOrder = 13
         Visible = False
       end
       object dblcksubprod: TDBLookupComboBox
@@ -397,7 +388,7 @@ object frmActProducto: TfrmActProducto
         Top = 396
         Width = 145
         Height = 21
-        TabOrder = 15
+        TabOrder = 14
         OnChange = cbxfreccapinteresChange
         Items.Strings = (
           'SEMANAL'
@@ -413,7 +404,7 @@ object frmActProducto: TfrmActProducto
         Top = 429
         Width = 145
         Height = 21
-        TabOrder = 16
+        TabOrder = 15
         OnChange = cbxfreccapitalChange
         Items.Strings = (
           'SEMANAL'
@@ -429,7 +420,7 @@ object frmActProducto: TfrmActProducto
         Top = 461
         Width = 145
         Height = 21
-        TabOrder = 17
+        TabOrder = 16
         OnChange = cbxfrecpagointeresChange
         Items.Strings = (
           'SEMANAL'
@@ -445,7 +436,7 @@ object frmActProducto: TfrmActProducto
         Top = 361
         Width = 145
         Height = 21
-        TabOrder = 18
+        TabOrder = 17
         OnChange = cbxPeriodicidadChange
         Items.Strings = (
           'SEMANAL'
@@ -463,7 +454,7 @@ object frmActProducto: TfrmActProducto
         Height = 21
         DataField = 'prd_periodicidad'
         DataSource = DataSource1
-        TabOrder = 19
+        TabOrder = 18
         Visible = False
       end
       object dbeComision: TDBEdit
@@ -473,7 +464,7 @@ object frmActProducto: TfrmActProducto
         Height = 21
         DataField = 'prd_comision'
         DataSource = DataSource1
-        TabOrder = 20
+        TabOrder = 19
       end
       object dbeGastos: TDBEdit
         Left = 354
@@ -482,7 +473,7 @@ object frmActProducto: TfrmActProducto
         Height = 21
         DataField = 'prd_gastos'
         DataSource = DataSource1
-        TabOrder = 21
+        TabOrder = 20
       end
       object dbTipoInteres: TDBComboBox
         Left = 354
@@ -501,7 +492,7 @@ object frmActProducto: TfrmActProducto
           'INTERES SIMPLE'
           'INTERES COMPUESTO')
         ParentFont = False
-        TabOrder = 22
+        TabOrder = 21
         OnChange = dbTipoInteresChange
       end
       object Panel1: TPanel
@@ -519,17 +510,26 @@ object frmActProducto: TfrmActProducto
         Font.Style = []
         ParentBackground = False
         ParentFont = False
-        TabOrder = 23
+        TabOrder = 22
         OnClick = Panel1Click
         OnMouseLeave = pnlguardaMouseLeave
         OnMouseMove = pnlguardaMouseMove
       end
-      object DBLookupComboBox1: TDBLookupComboBox
-        Left = 265
-        Top = 66
-        Width = 145
+      object edserie: TEdit
+        Left = 104
+        Top = 74
+        Width = 367
+        Height = 21
+        TabOrder = 23
+        Text = 'Edit1'
+      end
+      object edIdSerie: TEdit
+        Left = 505
+        Top = 82
+        Width = 121
         Height = 21
         TabOrder = 24
+        Text = 'Edit2'
       end
     end
     object TabSheet2: TTabSheet
@@ -558,7 +558,7 @@ object frmActProducto: TfrmActProducto
       end
       object Panel2: TPanel
         Left = 0
-        Top = 496
+        Top = 611
         Width = 546
         Height = 54
         Align = alBottom

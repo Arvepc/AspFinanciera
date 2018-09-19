@@ -10,6 +10,7 @@ object dm: Tdm
       'CLIENT_MULTI_STATEMENTS=1'
       'AutoEncodeStrings=ON'
       'controls_cp=CP_UTF16')
+    Connected = True
     DesignConnection = True
     HostName = 'nextcom.com.mx'
     Port = 3306
@@ -2071,5 +2072,31 @@ object dm: Tdm
     Params = <>
     Left = 384
     Top = 32
+  end
+  object dsserie: TZQuery
+    Connection = ZConnection1
+    SQL.Strings = (
+      'select * from serie')
+    Params = <>
+    Left = 520
+    Top = 272
+    object dsserieser_id: TIntegerField
+      FieldName = 'ser_id'
+      Required = True
+    end
+    object dsserieser_serie: TWideStringField
+      FieldName = 'ser_serie'
+      Required = True
+      Size = 10
+    end
+    object dsserieser_descripcion: TWideStringField
+      FieldName = 'ser_descripcion'
+      Required = True
+      Size = 200
+    end
+    object dsserieser_folio: TIntegerField
+      FieldName = 'ser_folio'
+      Required = True
+    end
   end
 end

@@ -39,7 +39,9 @@ uses
   timeline in 'timeline.pas' {frmtimeline},
   duActPlanpagos in 'duActPlanpagos.pas' {frmactplanpagos},
   duPlanPagos in 'duPlanPagos.pas' {frmplanpagos},
-  duplanpagosdetalle in 'duplanpagosdetalle.pas' {frmplanpagosdetalle};
+  duplanpagosdetalle in 'duplanpagosdetalle.pas' {frmplanpagosdetalle},
+  duactserie in 'C:\Desarrollo\Soft\ASP\duactserie.pas' {frmactserie},
+  duserie in 'C:\Desarrollo\Soft\ASP\duserie.pas' {Frmserie};
 
 {$R *.res}
 

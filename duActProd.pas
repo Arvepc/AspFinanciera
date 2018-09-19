@@ -40,7 +40,6 @@ type
     Label23: TLabel;
     DBEdit1: TDBEdit;
     dbeCodigo: TDBEdit;
-    dbeFolio: TDBEdit;
     dbeDescripcion: TDBEdit;
     dbminimo: TDBEdit;
     dbmaximo: TDBEdit;
@@ -81,9 +80,10 @@ type
     dsTipo_Doctpd_estatus: TSmallintField;
     dsTipo_Doctpd_docvalor: TSmallintField;
     dsTipo_Doctpd_esreporte: TSmallintField;
-    DBLookupComboBox1: TDBLookupComboBox;
     dsSerie: TZQuery;
     DataSource2: TDataSource;
+    edserie: TEdit;
+    edIdSerie: TEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure pnlguardaMouseLeave(Sender: TObject);
     procedure pnlguardaMouseMove(Sender: TObject; Shift: TShiftState; X,

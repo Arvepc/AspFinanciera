@@ -455,6 +455,11 @@ type
     dsarvex: TZQuery;
     dsarve2: TZQuery;
     DSAlfredo: TZQuery;
+    dsserie: TZQuery;
+    dsserieser_id: TIntegerField;
+    dsserieser_serie: TWideStringField;
+    dsserieser_descripcion: TWideStringField;
+    dsserieser_folio: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
