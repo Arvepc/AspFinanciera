@@ -2521,7 +2521,7 @@ edtotalgastos.Text := floattostr(dm.dsplan_pagospp_comision.Value + dm.dsplan_pa
  dm.filtra(dm.ds1, 'select max(sol_id) as nmax from solicitudes ');
  nid :=  dm.ds1.FieldByName('nmax').Value + 1;
 
- dm.cambia(dm.ds2, 'insert into solicitudes (sol_id, pp_fk, sol_clicp, usr_fk) values ('+ inttostr(nid) +', '+ dm.dsplan_pagospp_id.AsString +',1,1)');
+ dm.cambia(dm.ds2, 'insert into solicitudes (sol_id, pp_fk, sol_clicp, usr_fk, ctadestino_fk) values ('+ inttostr(nid) +', '+ dm.dsplan_pagospp_id.AsString +',1,1,0)');
 
  edid.Text :=  inttostr(nid);
 
