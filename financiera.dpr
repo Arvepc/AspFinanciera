@@ -40,8 +40,8 @@ uses
   duActPlanpagos in 'duActPlanpagos.pas' {frmactplanpagos},
   duPlanPagos in 'duPlanPagos.pas' {frmplanpagos},
   duplanpagosdetalle in 'duplanpagosdetalle.pas' {frmplanpagosdetalle},
-  duactserie in 'C:\Desarrollo\Soft\ASP\duactserie.pas' {frmactserie},
-  duserie in 'C:\Desarrollo\Soft\ASP\duserie.pas' {Frmserie};
+  duactserie in 'duactserie.pas' {frmactserie},
+  duserie in 'duserie.pas' {Frmserie};
 
 {$R *.res}
 
@@ -50,6 +50,8 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tfrminicio, frminicio);
   Application.CreateForm(Tdm, dm);
+  Application.CreateForm(Tfrmactserie, frmactserie);
+  Application.CreateForm(TFrmserie, Frmserie);
   frminicio.ShowModal;
 
 

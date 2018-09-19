@@ -242,11 +242,11 @@
             <Form>frmplanpagosdetalle</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="C:\Desarrollo\Soft\ASP\duactserie.pas">
+        <DCCReference Include="duactserie.pas">
             <Form>frmactserie</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="C:\Desarrollo\Soft\ASP\duserie.pas">
+        <DCCReference Include="duserie.pas">
             <Form>Frmserie</Form>
             <FormType>dfm</FormType>
         </DCCReference>
