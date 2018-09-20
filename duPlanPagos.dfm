@@ -643,9 +643,9 @@ object frmplanpagos: Tfrmplanpagos
       OnKeyPress = edbuscaKeyPress
     end
     object pnlright: TPanel
-      Left = 544
+      Left = 712
       Top = 0
-      Width = 773
+      Width = 605
       Height = 88
       Align = alRight
       BevelOuter = bvNone

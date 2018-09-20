@@ -117,7 +117,7 @@ begin
 'from plan_pagos, estatus, productos, subproducto '+
 'where plan_pagos.est_fk = estatus.est_id '+
 'and plan_pagos.prd_fk = productos.prd_id '+
-'and sbp_id = sbp_fk and est_fk = <> 2 and pp_descripcion like' + quotedstr ('%' + edbusca.Text + '%'));
+'and sbp_id = sbp_fk and est_fk = <> 2 and pp_descripcion like ' + quotedstr ('%' + edbusca.Text + '%'));
 end;
 
 
@@ -369,8 +369,15 @@ end;
 procedure Tfrmplanpagos.imgrefreshClick(Sender: TObject);
 begin
 
-dm.Activa_DS(dm.dsplan_pagos);
-filtro := ''
+dm.filtra(dm.dsplan_pagos, 'select plan_pagos.pp_id, plan_pagos.pp_descripcion, plan_pagos.pp_fecha, plan_pagos.pp_plazo, productos.prd_descripcion, plan_pagos.prd_fk, plan_pagos.pp_monto, pp_periodicidad, '+
+'pp_tord, pp_tmor, pp_tiva, pp_frmintord, pp_frmintmor, pp_freccapint, pp_frecpagcap, pp_frecpagint, pp_editable, pp_tipointeres, pp_comision, pp_gastos, '+
+'sbp_descripcion, estatus.est_descripcion '+
+'from plan_pagos, estatus, productos, subproducto '+
+'where plan_pagos.est_fk = estatus.est_id '+
+'and plan_pagos.prd_fk = productos.prd_id '+
+'and est_fk <> 2 '+
+'and sbp_id = sbp_fk ' );
+
 end;
 
 procedure Tfrmplanpagos.Label1Click(Sender: TObject);
