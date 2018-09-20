@@ -512,6 +512,7 @@ TCrackDBGrid = class (TDBGrid);
     procedure Button2Click(Sender: TObject);
     procedure cpdatosgeneralesClick(Sender: TObject);
     procedure cpdatosgeneralesCollapse(Sender: TObject);
+    procedure edcpavalKeyPress(Sender: TObject; var Key: Char);
 
   private
     { Private declarations }
@@ -1842,6 +1843,18 @@ if (Sender as TDBGrid).Datasource.DataSet.RecNo mod 2 = 0 then
     dbgrdinmuebles.Canvas.Font.Color := clwhite;
     dbgrdinmuebles.DefaultDrawColumnCell(Rect,DataCol,Column,State);
   end;
+end;
+
+procedure Tfrmsolicitud.edcpavalKeyPress(Sender: TObject; var Key: Char);
+begin
+if key = #13 then
+begin
+
+dm.filtra(dm.dscp, 'select * from cp where cp_codigopostal = ' + quotedstr(edcpaval.text));
+application.createform(Tfrmcp, frmcp) ;
+frmcp.envia := 'SFA'; //fisisca aval
+frmcp.show;
+end;
 end;
 
 procedure Tfrmsolicitud.edcpKeyPress(Sender: TObject; var Key: Char);
