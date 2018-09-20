@@ -30,7 +30,7 @@ object frmprincipal: Tfrmprincipal
     object Panel3: TPanel
       Left = 1
       Top = 1
-      Width = 232
+      Width = 312
       Height = 39
       Align = alLeft
       BevelOuter = bvNone
@@ -61,7 +61,7 @@ object frmprincipal: Tfrmprincipal
       end
     end
     object Panel5: TPanel
-      Left = 233
+      Left = 313
       Top = 1
       Width = 39
       Height = 39
@@ -152,7 +152,7 @@ object frmprincipal: Tfrmprincipal
   object tvMenu: TTreeView
     Left = 0
     Top = 41
-    Width = 272
+    Width = 329
     Height = 571
     Align = alLeft
     BorderStyle = bsNone

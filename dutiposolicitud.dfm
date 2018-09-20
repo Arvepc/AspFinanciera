@@ -834,4 +834,13 @@ object frmtiposolicitud: Tfrmtiposolicitud
       end
     end
   end
+  object edidpp: TEdit
+    Left = 528
+    Top = 96
+    Width = 121
+    Height = 21
+    TabOrder = 1
+    Text = '0'
+    Visible = False
+  end
 end

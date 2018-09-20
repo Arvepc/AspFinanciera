@@ -1,8 +1,8 @@
 ﻿object frmsolicitud: Tfrmsolicitud
   Left = 0
   Top = 0
-  ClientHeight = 738
-  ClientWidth = 1370
+  ClientHeight = 706
+  ClientWidth = 1444
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,7 +22,7 @@
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1370
+    Width = 1444
     Height = 65
     Align = alTop
     Color = clWhite
@@ -44,7 +44,7 @@
       Caption = 'Credito Simple con Garantia Hipotecaria'
     end
     object pnlcierra: TPanel
-      Left = 920
+      Left = 994
       Top = 1
       Width = 449
       Height = 63
@@ -98,8 +98,8 @@
   end
   object Panel2: TPanel
     Left = 0
-    Top = 676
-    Width = 1370
+    Top = 644
+    Width = 1444
     Height = 62
     Align = alBottom
     Color = clWhite
@@ -125,7 +125,7 @@
       OnClick = Panel3Click
     end
     object Panel4: TPanel
-      Left = 880
+      Left = 954
       Top = 1
       Width = 489
       Height = 60
@@ -163,7 +163,7 @@
       OnClick = Button1Click
     end
   end
-  object Panel5: TPanel
+  object pnlplan: TPanel
     Left = 378
     Top = 214
     Width = 316
@@ -253,19 +253,20 @@
   object pgmain: TPageControl
     Left = 0
     Top = 65
-    Width = 1370
-    Height = 611
+    Width = 1444
+    Height = 579
     ActivePage = TabSheet3
     Align = alClient
     TabOrder = 3
     Visible = False
+    ExplicitHeight = 1444
     object TabSheet3: TTabSheet
       Caption = 'Datos'
       object cpg1: TCategoryPanelGroup
         Left = 0
         Top = 0
-        Width = 1362
-        Height = 583
+        Width = 1436
+        Height = 551
         VertScrollBar.Tracking = True
         Align = alClient
         Color = clWhite
@@ -283,8 +284,6 @@
           Collapsed = True
           TabOrder = 0
           OnCollapse = cpavalCollapse
-          ExplicitTop = 602
-          ExplicitWidth = 1343
           ExpandedHeight = 516
           object Label105: TLabel
             Left = 864
@@ -2372,6 +2371,7 @@
             Width = 230
             Height = 21
             CharCase = ecUpperCase
+            MaxLength = 12
             TabOrder = 4
           end
           object edcpaval: TEdit
@@ -2499,14 +2499,13 @@
           object pnllistaavales: TPanel
             Left = 0
             Top = -140
-            Width = 1358
+            Width = 1432
             Height = 140
             Align = alBottom
             Caption = 'pnllistaavales'
             Color = clWhite
             ParentBackground = False
             TabOrder = 18
-            ExplicitWidth = 1341
             object dbgrdaval: TDBGrid
               Left = 14
               Top = 6
@@ -2554,14 +2553,13 @@
           object pnlconyugeaval: TPanel
             Left = 0
             Top = -240
-            Width = 1358
+            Width = 1432
             Height = 100
             Align = alBottom
             Color = clWhite
             ParentBackground = False
             TabOrder = 19
             Visible = False
-            ExplicitWidth = 1341
             object Label92: TLabel
               Left = 16
               Top = 8
@@ -2674,6 +2672,7 @@
               Width = 238
               Height = 21
               CharCase = ecUpperCase
+              MaxLength = 12
               TabOrder = 6
             end
           end
@@ -2685,7 +2684,6 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 1
-          ExplicitWidth = 1343
           ExpandedHeight = 332
           object Label102: TLabel
             Left = 24
@@ -4487,6 +4485,7 @@
             Top = 38
             Width = 412
             Height = 21
+            CharCase = ecUpperCase
             TabOrder = 0
           end
           object edtelref: TEdit
@@ -4555,20 +4554,17 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 2
-          ExplicitWidth = 1343
           ExpandedHeight = 480
           object PageControl2: TPageControl
             Left = 0
             Top = 0
-            Width = 1358
+            Width = 1432
             Height = 0
             ActivePage = tabinmuebles
             Align = alClient
             TabOrder = 0
-            ExplicitWidth = 1341
             object tabinmuebles: TTabSheet
               Caption = 'Activos (cifras en pesos) 1.Inmuebles'
-              ExplicitWidth = 1333
               object Label95: TLabel
                 Left = 16
                 Top = 19
@@ -6511,7 +6507,6 @@
             object TABMUEBLES: TTabSheet
               Caption = '2. Maquinaria y equipo de transporte'
               ImageIndex = 1
-              ExplicitWidth = 1333
               object Label98: TLabel
                 Left = 16
                 Top = 18
@@ -8341,7 +8336,7 @@
                 Width = 247
                 Height = 21
                 Alignment = taRightJustify
-                TabOrder = 1
+                TabOrder = 2
                 OnKeyDown = edvalormuebleKeyDown
                 OnKeyUp = edvalormuebleKeyDown
               end
@@ -8361,7 +8356,7 @@
                 Font.Style = []
                 Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
                 ParentFont = False
-                TabOrder = 2
+                TabOrder = 3
                 TitleFont.Charset = DEFAULT_CHARSET
                 TitleFont.Color = clWhite
                 TitleFont.Height = -12
@@ -8408,7 +8403,7 @@
                 Width = 238
                 Height = 21
                 CharCase = ecUpperCase
-                TabOrder = 3
+                TabOrder = 1
               end
               object edmodelo: TEdit
                 Left = 658
@@ -8440,7 +8435,6 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 3
-          ExplicitWidth = 1343
           ExpandedHeight = 431
           object Label90: TLabel
             Left = 16
@@ -10364,7 +10358,6 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 4
-          ExplicitWidth = 1343
           ExpandedHeight = 360
           object Button3: TButton
             Left = 1079
@@ -10394,15 +10387,13 @@
           object PageControl4: TPageControl
             Left = 0
             Top = 0
-            Width = 1358
+            Width = 1432
             Height = 0
             ActivePage = TabSheet1
             Align = alClient
             TabOrder = 3
-            ExplicitWidth = 1341
             object TabSheet1: TTabSheet
               Caption = 'Actividad Principal'
-              ExplicitWidth = 1333
               object Label66: TLabel
                 Left = 16
                 Top = 19
@@ -12249,13 +12240,13 @@
                 Top = 40
                 Width = 513
                 Height = 21
+                CharCase = ecUpperCase
                 TabOrder = 2
               end
             end
             object TabSheet2: TTabSheet
               Caption = 'Fuentes de Ingreso'
               ImageIndex = 1
-              ExplicitWidth = 1333
               object Label84: TLabel
                 Left = 20
                 Top = 19
@@ -14163,7 +14154,6 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 5
-          ExplicitWidth = 1343
           ExpandedHeight = 185
           object Label48: TLabel
             Left = 16
@@ -14228,6 +14218,20 @@
             Height = 13
             Caption = 'Total de Gastos'
           end
+          object Label29: TLabel
+            Left = 504
+            Top = 13
+            Width = 76
+            Height = 13
+            Caption = 'Forma de Pago:'
+          end
+          object Label30: TLabel
+            Left = 754
+            Top = 13
+            Width = 78
+            Height = 13
+            Caption = 'Cuenta Destino:'
+          end
           object eddescripcion: TEdit
             Left = 16
             Top = 32
@@ -14291,6 +14295,26 @@
             Height = 21
             TabOrder = 8
           end
+          object dblckformapago: TDBLookupComboBox
+            Left = 504
+            Top = 32
+            Width = 230
+            Height = 21
+            KeyField = 'FPAG_CLAVE'
+            ListField = 'FPAG_DESCRIPCION'
+            ListSource = dtsformapago
+            TabOrder = 9
+          end
+          object dblckcuenta: TDBLookupComboBox
+            Left = 752
+            Top = 32
+            Width = 230
+            Height = 21
+            KeyField = 'ctb_id'
+            ListField = 'ctb_cuenta'
+            ListSource = dtscuenta
+            TabOrder = 10
+          end
         end
         object pasivos: TCategoryPanel
           Top = 120
@@ -14299,7 +14323,6 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 6
-          ExplicitWidth = 1343
           ExpandedHeight = 460
           object Label59: TLabel
             Left = 16
@@ -14317,15 +14340,13 @@
           object PageControl3: TPageControl
             Left = 0
             Top = 0
-            Width = 1358
+            Width = 1432
             Height = 0
-            ActivePage = tabbancarios
+            ActivePage = tabnobancarios
             Align = alClient
             TabOrder = 0
-            ExplicitWidth = 1341
             object tabbancarios: TTabSheet
               Caption = '1. Bancarios'
-              ExplicitWidth = 1333
               object Label60: TLabel
                 Left = 16
                 Top = 19
@@ -16314,7 +16335,6 @@
             object tabnobancarios: TTabSheet
               Caption = '2. No Bancarios'
               ImageIndex = 1
-              ExplicitWidth = 1333
               object Label69: TLabel
                 Left = 16
                 Top = 19
@@ -18165,7 +18185,7 @@
                 KeyField = 'sbp_id'
                 ListField = 'sbp_descripcion'
                 ListSource = dtssubproducto2
-                TabOrder = 0
+                TabOrder = 1
               end
               object edmontonobancario: TEdit
                 Left = 668
@@ -18174,7 +18194,7 @@
                 Height = 21
                 Alignment = taRightJustify
                 CharCase = ecUpperCase
-                TabOrder = 1
+                TabOrder = 6
                 OnKeyDown = edmontonobancarioKeyDown
                 OnKeyUp = edmontonobancarioKeyDown
               end
@@ -18194,7 +18214,7 @@
                 Font.Style = []
                 Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
                 ParentFont = False
-                TabOrder = 2
+                TabOrder = 7
                 TitleFont.Charset = DEFAULT_CHARSET
                 TitleFont.Color = clWhite
                 TitleFont.Height = -11
@@ -18254,7 +18274,7 @@
                 Height = 21
                 Date = 43326.719990868060000000
                 Time = 43326.719990868060000000
-                TabOrder = 3
+                TabOrder = 2
               end
               object dblckmonedasnobancario: TDBLookupComboBox
                 Left = 1050
@@ -18264,7 +18284,7 @@
                 KeyField = 'mnd_id'
                 ListField = 'mnd_descripcion'
                 ListSource = dtsmonedas2
-                TabOrder = 4
+                TabOrder = 3
               end
               object mmgarantianobancaria: TMemo
                 Left = 16
@@ -18273,7 +18293,7 @@
                 Height = 70
                 CharCase = ecUpperCase
                 MaxLength = 200
-                TabOrder = 5
+                TabOrder = 4
                 OnKeyPress = mmgarantianobancariaKeyPress
               end
               object ednobancaria: TEdit
@@ -18282,7 +18302,7 @@
                 Width = 305
                 Height = 21
                 CharCase = ecUpperCase
-                TabOrder = 6
+                TabOrder = 0
               end
               object edtotalnobancario: TEdit
                 Left = 1094
@@ -18291,7 +18311,7 @@
                 Height = 21
                 Alignment = taRightJustify
                 ReadOnly = True
-                TabOrder = 7
+                TabOrder = 5
                 Text = '0.00'
                 OnKeyDown = edmontobancarioKeyDown
                 OnKeyUp = edmontobancarioKeyDown
@@ -18306,7 +18326,6 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 7
-          ExplicitWidth = 1343
           object Label44: TLabel
             Left = 16
             Top = 74
@@ -18387,7 +18406,6 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 8
-          ExplicitWidth = 1343
           ExpandedHeight = 245
           object Label36: TLabel
             Left = 623
@@ -18611,7 +18629,6 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 9
-          ExplicitWidth = 1343
           ExpandedHeight = 475
           object Label10: TLabel
             Left = 16
@@ -18932,18 +18949,18 @@
             Width = 121
             Height = 21
             TabOrder = 15
+            Visible = False
           end
           object pnlconyuge: TPanel
             Left = 0
             Top = -100
-            Width = 1358
+            Width = 1432
             Height = 100
             Align = alBottom
             Color = clWhite
             ParentBackground = False
             TabOrder = 16
             Visible = False
-            ExplicitWidth = 1341
             object Label28: TLabel
               Left = 16
               Top = 8
@@ -19022,6 +19039,7 @@
               Width = 238
               Height = 21
               CharCase = ecUpperCase
+              MaxLength = 12
               TabOrder = 4
             end
             object edidconyuge: TEdit
@@ -19063,8 +19081,7 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 10
-          ExplicitWidth = 1343
-          ExpandedHeight = 209
+          ExpandedHeight = 205
           object Label3: TLabel
             Left = 16
             Top = 16
@@ -19241,6 +19258,7 @@
             Width = 161
             Height = 21
             CharCase = ecUpperCase
+            MaxLength = 13
             TabOrder = 1
           end
           object dtfechanac: TDateTimePicker
@@ -19365,7 +19383,7 @@
         Left = 0
         Top = 0
         Width = 593
-        Height = 583
+        Height = 551
         Align = alLeft
         Caption = 'pnlexpediente'
         TabOrder = 0
@@ -19378,7 +19396,7 @@
         end
         object btnupload: TSpeedButton
           Left = 553
-          Top = -26
+          Top = 20
           Width = 64
           Height = 29
           Glyph.Data = {
@@ -19442,7 +19460,7 @@
         end
         object btnmuestraexp: TSpeedButton
           Left = 553
-          Top = -26
+          Top = 20
           Width = 64
           Height = 29
           Glyph.Data = {
@@ -19478,7 +19496,7 @@
           Left = 1
           Top = 9
           Width = 591
-          Height = 532
+          Height = 500
           Align = alClient
           DataSource = dtsexpediente
           DrawingStyle = gdsGradient
@@ -19527,7 +19545,7 @@
         end
         object Panel8: TPanel
           Left = 1
-          Top = 541
+          Top = 509
           Width = 591
           Height = 41
           Align = alBottom
@@ -19545,20 +19563,21 @@
       object Panel7: TPanel
         Left = 593
         Top = 0
-        Width = 769
-        Height = 583
+        Width = 843
+        Height = 551
         Align = alClient
         TabOrder = 1
         object wb1: TWebBrowser
           Left = 1
           Top = 1
-          Width = 767
-          Height = 581
+          Width = 841
+          Height = 549
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 841
+          ExplicitLeft = 265
+          ExplicitTop = 212
           ControlData = {
-            4C000000464F00000C3C00000000000000000000000000000000000000000000
+            4C000000EB560000BE3800000000000000000000000000000000000000000000
             000000004C000000000000000000000001000000E0D057007335CF11AE690800
             2B2E126208000000000000004C0000000114020000000000C000000000000046
             8000000000000000000000000000000000000000000000000000000000000000
@@ -19620,13 +19639,13 @@
       FieldName = 'slact_ubicacion'
       Size = 500
     end
-    object dsactivos_inmueblesslact_tipoinm: TWideStringField
+    object dsactivos_inmueblesslact_tipoinm: TIntegerField
       FieldName = 'slact_tipoinm'
-      Size = 15
     end
     object dsactivos_inmueblesslact_valor: TFloatField
       FieldName = 'slact_valor'
       Required = True
+      currency = True
     end
     object dsactivos_inmueblesslact_escritura: TWideStringField
       FieldName = 'slact_escritura'
@@ -19643,8 +19662,8 @@
     SQL.Strings = (
       'select * from marca')
     Params = <>
-    Left = 472
-    Top = 640
+    Left = 488
+    Top = 632
     object dsmarcaid_marca: TIntegerField
       FieldName = 'id_marca'
       Required = True
@@ -19768,13 +19787,13 @@
   end
   object dtspasivobanco: TDataSource
     DataSet = dm.dspasivosbanco
-    Left = 736
-    Top = 607
+    Left = 728
+    Top = 631
   end
   object dtspasivonobanco: TDataSource
     DataSet = dm.dspasivosnobanco
-    Left = 680
-    Top = 639
+    Left = 688
+    Top = 655
   end
   object dtssolingreso: TDataSource
     DataSet = dm.dssolingreso
@@ -19807,9 +19826,8 @@
       FieldName = 'slgr_id'
       Required = True
     end
-    object dsgarantiasslrg_tipo: TWideStringField
+    object dsgarantiasslrg_tipo: TIntegerField
       FieldName = 'slrg_tipo'
-      Size = 11
     end
     object dsgarantiasslrg_descripcion: TWideStringField
       FieldName = 'slrg_descripcion'
@@ -19832,7 +19850,6 @@
   end
   object dsexpediente: TZQuery
     Connection = dm.ZConnection1
-    Active = True
     SQL.Strings = (
       
         'select sld_id, sol_fk, sld_descripcion, sld_documento, sld_estat' +
@@ -19841,8 +19858,8 @@
       'when 0 then '#39'POR ENTREGAR'#39' else '#39'ENTREGADO'#39' end as estatus'
       'from sol_doc')
     Params = <>
-    Left = 776
-    Top = 608
+    Left = 656
+    Top = 544
     object dsexpedientesld_id: TIntegerField
       FieldName = 'sld_id'
       Required = True
@@ -19870,8 +19887,8 @@
   end
   object dtsexpediente: TDataSource
     DataSet = dsexpediente
-    Left = 744
-    Top = 656
+    Left = 624
+    Top = 480
   end
   object od1: TOpenDialog
     Left = 708
@@ -19951,5 +19968,74 @@
     DataSet = dsavales
     Left = 1067
     Top = 536
+  end
+  object dsformapago: TZQuery
+    Connection = dm.ZConnection1
+    SQL.Strings = (
+      'select * from frmpago')
+    Params = <>
+    Left = 420
+    Top = 239
+    object dsformapagoFPAG_CLAVE: TIntegerField
+      FieldName = 'FPAG_CLAVE'
+      Required = True
+    end
+    object dsformapagoFPAG_CVESAT: TWideStringField
+      FieldName = 'FPAG_CVESAT'
+      Required = True
+      Size = 3
+    end
+    object dsformapagoFPAG_DESCRIPCION: TWideStringField
+      FieldName = 'FPAG_DESCRIPCION'
+      Required = True
+      Size = 40
+    end
+  end
+  object dtsformapago: TDataSource
+    DataSet = dsformapago
+    Left = 428
+    Top = 319
+  end
+  object dscuenta: TZQuery
+    Connection = dm.ZConnection1
+    SQL.Strings = (
+      'select * from ctabanco')
+    Params = <>
+    Left = 676
+    Top = 247
+    object dscuentactb_id: TIntegerField
+      FieldName = 'ctb_id'
+      Required = True
+    end
+    object dscuentactb_tipopago: TIntegerField
+      FieldName = 'ctb_tipopago'
+      Required = True
+    end
+    object dscuentabanco_fk: TIntegerField
+      FieldName = 'banco_fk'
+      Required = True
+    end
+    object dscuentactb_descripcion: TWideStringField
+      FieldName = 'ctb_descripcion'
+      Required = True
+    end
+    object dscuentactb_cuenta: TWideStringField
+      FieldName = 'ctb_cuenta'
+      Required = True
+    end
+    object dscuentactb_clabe: TWideStringField
+      FieldName = 'ctb_clabe'
+      Required = True
+      Size = 30
+    end
+    object dscuentactb_tarjeta: TWideStringField
+      FieldName = 'ctb_tarjeta'
+      Required = True
+    end
+  end
+  object dtscuenta: TDataSource
+    DataSet = dscuenta
+    Left = 652
+    Top = 247
   end
 end

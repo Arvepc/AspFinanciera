@@ -34,18 +34,33 @@ TCrackDBGrid = class (TDBGrid);
     Label67: TLabel;
     dtsactivosinmuebles: TDataSource;
     dsactivos_inmuebles: TZQuery;
+    dsactivos_inmueblesslact_id: TIntegerField;
+    dsactivos_inmueblesslact_ubicacion: TWideStringField;
+    dsactivos_inmueblesslact_tipoinm: TIntegerField;
+    dsactivos_inmueblesslact_valor: TFloatField;
+    dsactivos_inmueblesslact_escritura: TWideStringField;
     dtsmarca: TDataSource;
     dsmarca: TZQuery;
+    dsmarcaid_marca: TIntegerField;
+    dsmarcamarca: TWideStringField;
     dsmodelo: TZQuery;
     dtsmodelo: TDataSource;
     dsactivos_muebles: TZQuery;
     dtsactivosmuebles: TDataSource;
+    dsactivos_mueblesslact_id: TIntegerField;
+    dsactivos_mueblesslact_marca: TWideStringField;
+    dsactivos_mueblesslact_tipomueb: TWideStringField;
+    dsactivos_mueblesslact_valor: TFloatField;
+    dsactivos_mueblesslact_modelo: TWideStringField;
     dtsbancos: TDataSource;
     dsMonedas: TZQuery;
     dtsmonedas2: TDataSource;
     dtssubproducto: TDataSource;
     dssubproducto: TZQuery;
     dtssubproducto2: TDataSource;
+    dssubproductosbp_id: TIntegerField;
+    dssubproductosbp_descripcion: TWideStringField;
+    dssubproductotpr_fk: TIntegerField;
     edid: TEdit;
     dtspasivobanco: TDataSource;
     dtspasivonobanco: TDataSource;
@@ -55,6 +70,11 @@ TCrackDBGrid = class (TDBGrid);
     dtssolreferencias: TDataSource;
     dsgarantias: TZQuery;
     dtsgarantias: TDataSource;
+    dsgarantiasslgr_id: TIntegerField;
+    dsgarantiasslrg_tipo: TIntegerField;
+    dsgarantiasslrg_descripcion: TWideStringField;
+    dsgarantiasslrg_valor: TFloatField;
+    dsgarantiassol_fk: TIntegerField;
     Panel5: TPanel;
     Label76: TLabel;
     Label78: TLabel;
@@ -223,6 +243,12 @@ TCrackDBGrid = class (TDBGrid);
     dtsexpediente: TDataSource;
     Label80: TLabel;
     btnupload: TSpeedButton;
+    dsexpedientesld_id: TIntegerField;
+    dsexpedientesol_fk: TIntegerField;
+    dsexpedientesld_descripcion: TWideStringField;
+    dsexpedientesld_documento: TBlobField;
+    dsexpedientesld_estatus: TSmallintField;
+    dsexpedienteestatus: TWideStringField;
     od1: TOpenDialog;
     Panel7: TPanel;
     wb1: TWebBrowser;
@@ -285,7 +311,21 @@ TCrackDBGrid = class (TDBGrid);
     dscontactosempresa: TZQuery;
     dtscontactosempresa: TDataSource;
     Button1: TButton;
+    dscontactosempresasol_fk: TIntegerField;
+    dscontactosempresaprs_fk: TIntegerField;
+    dscontactosempresaslp_nombre: TWideStringField;
+    dscontactosempresaslp_calle: TWideStringField;
+    dscontactosempresaslp_tel1: TWideStringField;
+    dscontactosempresaslp_email: TWideStringField;
+    dscontactosempresacp_fk: TIntegerField;
     dsconsejoempresa: TZQuery;
+    IntegerField1: TIntegerField;
+    IntegerField2: TIntegerField;
+    WideStringField1: TWideStringField;
+    WideStringField2: TWideStringField;
+    WideStringField3: TWideStringField;
+    WideStringField4: TWideStringField;
+    IntegerField3: TIntegerField;
     dtsconsejoempresa: TDataSource;
     imgconsejo: TImage;
     imgestructura: TImage;
@@ -369,53 +409,6 @@ TCrackDBGrid = class (TDBGrid);
     Button2: TButton;
     Label83: TLabel;
     edcontacto: TEdit;
-    dscontactosempresasol_fk: TIntegerField;
-    dscontactosempresaprs_fk: TIntegerField;
-    dscontactosempresaslp_nombre: TWideStringField;
-    dscontactosempresaslp_calle: TWideStringField;
-    dscontactosempresaslp_tel1: TWideStringField;
-    dscontactosempresaslp_email: TWideStringField;
-    dscontactosempresacp_fk: TIntegerField;
-    dsMonedasmnd_id: TIntegerField;
-    dsMonedasmnd_descripcion: TWideStringField;
-    dsMonedasmnd_valor: TFloatField;
-    dsMonedasmnd_fecact: TDateTimeField;
-    dsconsejoempresasol_fk: TIntegerField;
-    dsconsejoempresaprs_fk: TIntegerField;
-    dsconsejoempresaslp_nombre: TWideStringField;
-    dsconsejoempresaslp_calle: TWideStringField;
-    dsconsejoempresaslp_tel1: TWideStringField;
-    dsconsejoempresaslp_email: TWideStringField;
-    dsconsejoempresacp_fk: TIntegerField;
-    dssubproductosbp_id: TIntegerField;
-    dssubproductosbp_descripcion: TWideStringField;
-    dssubproductotpr_fk: TIntegerField;
-    dsgarantiasslgr_id: TIntegerField;
-    dsgarantiasslrg_tipo: TWideStringField;
-    dsgarantiasslrg_descripcion: TWideStringField;
-    dsgarantiasslrg_valor: TFloatField;
-    dsgarantiassol_fk: TIntegerField;
-    dsmodeloid_modelo: TIntegerField;
-    dsmodelofk_marca: TIntegerField;
-    dsmodelomodelo: TWideStringField;
-    dsactivos_inmueblesslact_id: TIntegerField;
-    dsactivos_inmueblesslact_ubicacion: TWideStringField;
-    dsactivos_inmueblesslact_tipoinm: TWideStringField;
-    dsactivos_inmueblesslact_valor: TFloatField;
-    dsactivos_inmueblesslact_escritura: TWideStringField;
-    dsmarcaid_marca: TIntegerField;
-    dsmarcamarca: TWideStringField;
-    dsactivos_mueblesslact_id: TIntegerField;
-    dsactivos_mueblesslact_marca: TWideStringField;
-    dsactivos_mueblesslact_tipomueb: TWideStringField;
-    dsactivos_mueblesslact_valor: TFloatField;
-    dsactivos_mueblesslact_modelo: TWideStringField;
-    dsexpedientesld_id: TIntegerField;
-    dsexpedientesol_fk: TIntegerField;
-    dsexpedientesld_descripcion: TWideStringField;
-    dsexpedientesld_documento: TBlobField;
-    dsexpedientesld_estatus: TSmallintField;
-    dsexpedienteestatus: TWideStringField;
     procedure Label123Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Image2Click(Sender: TObject);
@@ -514,6 +507,7 @@ TCrackDBGrid = class (TDBGrid);
   public
     { Public declarations }
 envia: char;
+procedure inicial;
 
   end;
 
@@ -529,6 +523,64 @@ implementation
 
 uses duPersonas, dudm, ducp, duprincipal;
 
+procedure Tfrmsolicitudmoral.inicial;
+var
+nprod : string;
+nid: integer;
+begin
+button2.Click;
+panel6.Visible := false;
+panel1.Visible := true;
+panel2.Visible := true;
+cpg1.Visible := true;
+pgmain.Visible := true;
+
+
+eddescripcion.Text := dm.dsplan_pagospp_descripcion.AsString;
+edimporte.Text := dm.dsplan_pagospp_monto.AsString;
+edplazo.Text := dm.dsplan_pagospp_plazo.AsString;
+edcomision.Text := dm.dsplan_pagospp_comision.Asstring;
+edgastos.Text := dm.dsplan_pagospp_gastos.asstring;
+edtasaord.Text := dm.dsplan_pagospp_tord.AsString;
+ediva.Text := dm.dsplan_pagospp_tiva.AsString;
+edperiodopago.Text := dm.dsplan_pagospp_periodicidad.AsString;
+edtotalgastos.Text := floattostr(dm.dsplan_pagospp_comision.Value + dm.dsplan_pagospp_gastos.Value) ;
+
+
+
+//1ero que nada crear el id de la nueva solicitud
+
+//primero averiguo cual es el max id
+
+ dm.filtra(dm.ds1, 'select max(sol_id) as nmax from solicitudes ');
+ nid :=  dm.ds1.FieldByName('nmax').Value + 1;
+
+ dm.cambia(dm.ds2, 'insert into solicitudes (sol_id, pp_fk, sol_clicp, usr_fk) values ('+ inttostr(nid) +', '+ dm.dsplan_pagospp_id.AsString +',1,1)');
+
+ edid.Text :=  inttostr(nid);
+
+//luego me traigo la lista de documentos
+dm.filtra(dm.ds1,'SELECT * FROM prod_tipodoc, tipo_doc where prod_tipodoc.tpd_fk = tipo_doc.tpd_id and prod_tipodoc.prd_fk = ' + dm.dsplan_pagosprd_fk.AsString); // 4
+
+//
+                 // por el momento se lo comentamos
+dm.ds1.First;
+while not(dm.ds1.Eof) do
+         begin
+
+         dm.cambia(dm.ds2, 'insert into sol_doc (sol_fk, sld_descripcion) values ('+ edid.Text + ', '+ quotedstr(dm.ds1.FieldByName('tpd_descripcion').AsString)+')');
+
+         dm.ds1.Next;
+         end;
+
+
+//ahora refresco el dataset
+
+
+dm.filtra(dsexpediente, 'select sld_id, sol_fk, sld_descripcion, sld_documento, sld_estatus, case sld_estatus '+
+'when 0 then '+ quotedstr('POR ENTREGAR') +' else '+ quotedstr('ENTREGADO') + ' end as estatus '+
+'from sol_doc  where sol_fk = ' + edid.Text);
+end;
 
 procedure Tfrmsolicitudmoral.ActiveCtrlChange(Sender: TObject);
 begin
@@ -653,7 +705,7 @@ begin
 
              //esto es especificamente para guardar el conyuge si es que existe.......
      dm.filtra(dm.ds1, 'select max(prs_id) as idper from personas');
-
+            showmessage('0.5');
 
      dm.cambia(dm.ds2, 'insert into personas (prs_id, prs_nombre, prs_rfc, prs_calle, prs_noext, prs_noint, cp_fk, tpr_fk,  rgc_fk, tpr_tipopersona) values ('+
      inttostr(dm.ds1.FieldByName('idper').AsInteger + 1) + ', ' +
@@ -665,7 +717,7 @@ begin
      quotedstr(trim(edidcprep.text)) + ', ' +
   //checar aqui por que el conyuge no toene cel
      ' 8,1,'+ quotedstr('FISICAS')+')');
-
+          showmessage('0.6');
      //ahora en solicitud persona
 
      dm.cambia(dm.ds2, 'insert into solicitud_persona (sol_fk, prs_fk, slp_nombre, slp_calle, cp_fk) values ('+
@@ -674,12 +726,14 @@ begin
      quotedstr(trim(ednomrep.text)) + ', ' +
      quotedstr(trim(edcallerep.text)) + ', ' +
      quotedstr(trim(edidcprep.text))+')');
-
+                         showmessage('insert into fisicas (prs_fk, curp) values ('+
+     inttostr(dm.ds1.FieldByName('idper').AsInteger + 1) + ', ' +
+     quotedstr(trim(edcurprep.text)) + ')');
     //ahora en fisicas.
      dm.cambia(dm.ds2, 'insert into fisicas (prs_fk, fsc_curp) values ('+
      inttostr(dm.ds1.FieldByName('idper').AsInteger + 1) + ', ' +
      quotedstr(trim(edcurprep.text)) + ')');
-
+              showmessage('0.8');
 
 end;
 
@@ -732,7 +786,7 @@ begin
             else
             nid := dm.ds1.fieldbyname('id').asInteger + 1;
 
-
+         showmessage('0.1');
     dm.filtra(dm.ds1, 'select max(prs_clave) as idclave from personas');
             if (dm.ds1.fieldbyname('idclave').asstring = '') or (dm.ds1.FieldByName('idclave').Value = null) then
             nclave := '0001'
@@ -752,7 +806,7 @@ begin
                    nclave := inttostr(dm.ds1.fieldbyname('idclave').AsInteger + 1);
             end;
 
-
+               showmessage('0.2');
         dm.cambia(dm.ds1, 'insert into personas (prs_id, prs_clave, prs_nombre, prs_rfc, prs_calle, prs_noint, prs_noext, prs_tel1, prs_tel2, prs_tel3, prs_email, prs_estatus, rgc_fk, tpr_fk, tpr_tipopersona, cp_fk) values (' +
         inttostr(nid) + ', ' +
         quotedstr(nclave) + ', '+
@@ -766,7 +820,7 @@ begin
         quotedstr(trim(edcel2.Text)) + ', ' +
         quotedstr(trim(edcorreo.Text)) + ', ' +
         quotedstr('ACTIVO') + ', 1,1, '+ quotedstr('MORALES')+', '+ edidcp.text +')');
-
+                 showmessage('0.3');
  //ahora inserto en Morales
      dm.cambia(dm.ds2, 'insert into morales(mrl_razonsocial, prs_fk, mrl_fecconstitucion, mrl_numescritura, mrl_fecinscripcion, mrl_lugarreg, mrl_corporativo, mrl_dirgral) values ('+
        quotedstr(trim(ednombre.Text)) + ', ' +
@@ -779,7 +833,7 @@ begin
        quotedstr(trim(eddirgral.Text)) + ')');
 // ahora checo si tengo que agregar el replegal
 
-
+             showmessage('0.4');
 
 if ednomrep.Text <> '' then
    agrega_representante;
@@ -1199,6 +1253,13 @@ if dm.ds2.fieldbyname('prd_id').value <> null then
  Showmessage('No se localizaron los datos del producto');
  rebote := false;
  end; }
+
+
+
+                           //con esto lo amarro para que no salga otra vez en el combo inicial
+ dm.cambia(dm.ds1, 'update plan_pagos set est_fk = 3 where pp_id = ' + dm.dsplan_pagospp_id.AsString);
+
+
 
 filtro := filtro  + 'update solicitudes '+
 'set sol_folio= '+ nfoliosol +', '+
@@ -2131,11 +2192,30 @@ agrega_avalx;
 if ednombreconyugeaval.Text <> '' then
 agrega_aval_conyuge;
 
+//limpio lo campos
 
 
+ednombreaval.Text := '';
+cbxidaval.Text := '';
+edfolioidaval.text := '';
+edrfcaval.Text := '';
+edcalleaval.Text := '';
 
-
-
+edextaval.Text:='';
+edintaval.Text := '';
+edcpaval.Text := '';
+edidcpaval.Text := '';
+edcoloniaaval.Text := '';
+edmunicipioaval.Text := '';
+edestadoaval.Text :='';
+edtelcasaaval.Text :='';
+edcelularaval.Text := '';
+cbxcivilaval.Text := '';
+cbxregimenaval.Text :='';
+ednombreconyugeaval.Text := '';
+cbxtipoidconyugeaval.Text := '';
+edfolioidconyugeaval.Text := '';
+edrfcconyugeaval.Text := '';
 end;
 
 procedure Tfrmsolicitudmoral.imgconsejoClick(Sender: TObject);
@@ -2531,63 +2611,8 @@ close;
 end;
 
 procedure Tfrmsolicitudmoral.Panel6Click(Sender: TObject);
-var
-nprod : string;
-nid: integer;
 begin
-button2.Click;
-panel6.Visible := false;
-panel1.Visible := true;
-panel2.Visible := true;
-cpg1.Visible := true;
-pgmain.Visible := true;
-
-
-eddescripcion.Text := dm.dsplan_pagospp_descripcion.AsString;
-edimporte.Text := dm.dsplan_pagospp_monto.AsString;
-edplazo.Text := dm.dsplan_pagospp_plazo.AsString;
-edcomision.Text := dm.dsplan_pagospp_comision.Asstring;
-edgastos.Text := dm.dsplan_pagospp_gastos.asstring;
-edtasaord.Text := dm.dsplan_pagospp_tord.AsString;
-ediva.Text := dm.dsplan_pagospp_tiva.AsString;
-edperiodopago.Text := dm.dsplan_pagospp_periodicidad.AsString;
-edtotalgastos.Text := floattostr(dm.dsplan_pagospp_comision.Value + dm.dsplan_pagospp_gastos.Value) ;
-
-
-
-//1ero que nada crear el id de la nueva solicitud
-
-//primero averiguo cual es el max id
-
- dm.filtra(dm.ds1, 'select max(sol_id) as nmax from solicitudes ');
- nid :=  dm.ds1.FieldByName('nmax').Value + 1;
-
- dm.cambia(dm.ds2, 'insert into solicitudes (sol_id, pp_fk, sol_clicp, usr_fk, ctadestino_fk) values ('+ inttostr(nid) +', '+ dm.dsplan_pagospp_id.AsString +',1,1,0)');
-
- edid.Text :=  inttostr(nid);
-
-//luego me traigo la lista de documentos
-dm.filtra(dm.ds1,'SELECT * FROM prod_tipodoc, tipo_doc where prod_tipodoc.tpd_fk = tipo_doc.tpd_id and prod_tipodoc.prd_fk = ' + dm.dsplan_pagosprd_fk.AsString); // 4
-
-//
-                 // por el momento se lo comentamos
-dm.ds1.First;
-while not(dm.ds1.Eof) do
-         begin
-
-         dm.cambia(dm.ds2, 'insert into sol_doc (sol_fk, sld_descripcion) values ('+ edid.Text + ', '+ quotedstr(dm.ds1.FieldByName('tpd_descripcion').AsString)+')');
-
-         dm.ds1.Next;
-         end;
-
-
-//ahora refresco el dataset
-
-
-dm.filtra(dsexpediente, 'select sld_id, sol_fk, sld_descripcion, sld_documento, sld_estatus, case sld_estatus '+
-'when 0 then '+ quotedstr('POR ENTREGAR') +' else '+ quotedstr('ENTREGADO') + ' end as estatus '+
-'from sol_doc  where sol_fk = ' + edid.Text);
-
+inicial;
 
 end;
 

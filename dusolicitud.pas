@@ -31,6 +31,11 @@ TCrackDBGrid = class (TDBGrid);
     Label67: TLabel;
     dtsactivosinmuebles: TDataSource;
     dsactivos_inmuebles: TZQuery;
+    dsactivos_inmueblesslact_id: TIntegerField;
+    dsactivos_inmueblesslact_ubicacion: TWideStringField;
+    dsactivos_inmueblesslact_tipoinm: TIntegerField;
+    dsactivos_inmueblesslact_valor: TFloatField;
+    dsactivos_inmueblesslact_escritura: TWideStringField;
     dtsmarca: TDataSource;
     dsmarca: TZQuery;
     dsmarcaid_marca: TIntegerField;
@@ -62,7 +67,12 @@ TCrackDBGrid = class (TDBGrid);
     dtssolreferencias: TDataSource;
     dsgarantias: TZQuery;
     dtsgarantias: TDataSource;
-    Panel5: TPanel;
+    dsgarantiasslgr_id: TIntegerField;
+    dsgarantiasslrg_tipo: TIntegerField;
+    dsgarantiasslrg_descripcion: TWideStringField;
+    dsgarantiasslrg_valor: TFloatField;
+    dsgarantiassol_fk: TIntegerField;
+    pnlplan: TPanel;
     Label76: TLabel;
     Label78: TLabel;
     dblckppmain: TDBLookupComboBox;
@@ -402,16 +412,24 @@ TCrackDBGrid = class (TDBGrid);
     edrfcconyugeaval: TEdit;
     edidconyuge: TEdit;
     Button2: TButton;
-    dsgarantiasslgr_id: TIntegerField;
-    dsgarantiasslrg_tipo: TWideStringField;
-    dsgarantiasslrg_descripcion: TWideStringField;
-    dsgarantiasslrg_valor: TFloatField;
-    dsgarantiassol_fk: TIntegerField;
-    dsactivos_inmueblesslact_id: TIntegerField;
-    dsactivos_inmueblesslact_ubicacion: TWideStringField;
-    dsactivos_inmueblesslact_tipoinm: TWideStringField;
-    dsactivos_inmueblesslact_valor: TFloatField;
-    dsactivos_inmueblesslact_escritura: TWideStringField;
+    Label29: TLabel;
+    Label30: TLabel;
+    dblckformapago: TDBLookupComboBox;
+    dblckcuenta: TDBLookupComboBox;
+    dsformapago: TZQuery;
+    dsformapagoFPAG_CLAVE: TIntegerField;
+    dsformapagoFPAG_CVESAT: TWideStringField;
+    dsformapagoFPAG_DESCRIPCION: TWideStringField;
+    dtsformapago: TDataSource;
+    dscuenta: TZQuery;
+    dtscuenta: TDataSource;
+    dscuentactb_id: TIntegerField;
+    dscuentactb_tipopago: TIntegerField;
+    dscuentabanco_fk: TIntegerField;
+    dscuentactb_descripcion: TWideStringField;
+    dscuentactb_cuenta: TWideStringField;
+    dscuentactb_clabe: TWideStringField;
+    dscuentactb_tarjeta: TWideStringField;
     procedure Label123Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Image2Click(Sender: TObject);
@@ -483,6 +501,7 @@ TCrackDBGrid = class (TDBGrid);
     procedure btneliminaavalClick(Sender: TObject);
     procedure dbgrdavalDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure FormActivate(Sender: TObject);
     procedure cbxregimenavalKeyPress(Sender: TObject; var Key: Char);
     procedure Button1Click(Sender: TObject);
     procedure cpavalCollapse(Sender: TObject);
@@ -517,7 +536,9 @@ TCrackDBGrid = class (TDBGrid);
     procedure agrega_avalx;
   public
     { Public declarations }
+
 envia: char;
+procedure inicial;
 
   end;
 
@@ -532,6 +553,77 @@ implementation
 {$R *.dfm}
 
 uses duPersonas, dudm, ducp, duprincipal;
+
+
+
+procedure Tfrmsolicitud.inicial;
+var
+nprod : string;
+nid: integer;
+begin
+button2.Click;
+panel6.Visible := false;
+panel1.Visible := true;
+panel2.Visible := true;
+cpg1.Visible := true;
+pgmain.Visible := true;
+
+
+
+//rellenamos los campos que vienen del plan de pagos
+
+eddescripcion.Text := dm.dsplan_pagospp_descripcion.AsString;
+edimporte.Text := dm.dsplan_pagospp_monto.AsString;
+edplazo.Text := dm.dsplan_pagospp_plazo.AsString;
+edcomision.Text := dm.dsplan_pagospp_comision.Asstring;
+edgastos.Text := dm.dsplan_pagospp_gastos.asstring;
+edtasaord.Text := dm.dsplan_pagospp_tord.AsString;
+ediva.Text := dm.dsplan_pagospp_tiva.AsString;
+edperiodopago.Text := dm.dsplan_pagospp_periodicidad.AsString;
+edtotalgastos.Text := floattostr(dm.dsplan_pagospp_comision.Value + dm.dsplan_pagospp_gastos.Value) ;
+
+
+
+//1ero que nada crear el id de la nueva solicitud
+
+//primero averiguo cual es el max id
+
+ dm.filtra(dm.ds1, 'select max(sol_id) as nmax from solicitudes ');
+ nid :=  dm.ds1.FieldByName('nmax').Value + 1;
+
+ dm.cambia(dm.ds2, 'insert into solicitudes (sol_id, pp_fk, sol_clicp, usr_fk, sol_estatus) values ('+ inttostr(nid) +', '+ dm.dsplan_pagospp_id.AsString +',1,1,'+quotedstr(trim('EN PROCESO'))+')');
+
+ edid.Text :=  inttostr(nid);
+
+//luego me traigo la lista de documentos
+dm.filtra(dm.ds1,'SELECT * FROM prod_tipodoc, tipo_doc where prod_tipodoc.tpd_fk = tipo_doc.tpd_id and prod_tipodoc.prd_fk = ' + dm.dsplan_pagosprd_fk.AsString); // 4
+
+//
+                 // por el momento se lo comentamos
+dm.ds1.First;
+while not(dm.ds1.Eof) do
+         begin
+
+         dm.cambia(dm.ds2, 'insert into sol_doc (sol_fk, sld_descripcion) values ('+ edid.Text + ', '+ quotedstr(dm.ds1.FieldByName('tpd_descripcion').AsString)+')');
+
+         dm.ds1.Next;
+         end;
+
+
+//ahora refresco el dataset
+
+
+dm.filtra(dsexpediente, 'select sld_id, sol_fk, sld_descripcion, sld_documento, sld_estatus, case sld_estatus '+
+'when 0 then '+ quotedstr('POR ENTREGAR') +' else '+ quotedstr('ENTREGADO') + ' end as estatus '+
+'from sol_doc  where sol_fk = ' + edid.Text);
+
+//activamos los datasets para forma de pago y cta
+dm.Activa_DS(dscuenta);
+dm.Activa_DS(dsformapago);
+dm.dsMonedas.First;
+
+end;
+
 
 procedure Tfrmsolicitud.ActiveCtrlChange(Sender: TObject);
 begin
@@ -1053,10 +1145,18 @@ begin
 if dsexpediente.FieldByName('estatus').AsString = 'ENTREGADO' then
   begin
 
+
+
+   if not(FileExists(ExtractFilePath( Application.ExeName ) + 'TEMP_' + dsexpedientesld_id.AsString+ '.pdf')) then
+           dsexpedientesld_documento.SaveToFile(ExtractFilePath( Application.ExeName ) + 'TEMP_' + dsexpedientesld_id.AsString+ '.pdf');
+
+
+
+
       wb1.Align := alclient;
 
 
-      dsexpedientesld_documento.SaveToFile(ExtractFilePath( Application.ExeName ) + 'TEMP_' + '.pdf');
+      dsexpedientesld_documento.SaveToFile(ExtractFilePath( Application.ExeName ) + 'TEMP_' +  dsexpedientesld_id.AsString+ '.pdf');
       wb1.Visible := true;
 
       URL := 'file://'+ ExtractFilePath( Application.ExeName ) + 'TEMP_' + '.pdf';
@@ -1368,6 +1468,8 @@ if dm.ds2.fieldbyname('prd_id').value <> null then
 
 
 
+
+
 filtro := filtro  + 'update solicitudes '+
 'set sol_folio= '+ nfoliosol +', '+
 'sol_fecha= '+quotedstr(formatdatetime('yyyy-mm-dd', date))+', '+
@@ -1401,9 +1503,17 @@ filtro := filtro  + 'update solicitudes '+
 'sol_clinac = '+quotedstr(formatdatetime('yyyy-mm-dd', dtfechanac.date))+', '+
 'sol_clireg = '+quotedstr(dblckregimen.text)+', '+
 'sol_comision = '+edcomision.text+', '+
-'sol_gastos = '+edgastos.text +
+'sol_gastos = '+edgastos.text + ', ' +
+'frmpago_fk = ' + dblckformapago.KeyValue +  ', ' +
+'ctadestino_fk = ' + dblckcuenta.KeyValue  +
+
+
+
 //'sol_actividad = '++  checar por que no esta esta en otra tabla sol_act
 ' where sol_id = '+ edid.text;
+
+                          //con esto lo amarro para que no salga otra vez en el combo inicial
+ dm.cambia(dm.ds1, 'update plan_pagos set est_fk = 3 where pp_id = ' + dm.dsplan_pagospp_id.AsString);
 
 
 end;
@@ -1785,6 +1895,23 @@ end;
 procedure Tfrmsolicitud.valida;
 begin
 //bueno aqui van las validaciones
+if dblckformapago.Text = '' then
+   begin
+   showmessage('Debe seleccionar la forma de pago...');
+     rebote := true;
+
+   end;
+
+
+
+if dblckcuenta.Text = '' then
+   begin
+   showmessage('Debe seleccionar la cuenta destino...');
+     rebote := true;
+
+   end;
+
+
 if trim(ednombre.text) = '' then
    begin
      showmessage('Debe indicar el nombre del solicitante...');
@@ -1884,6 +2011,11 @@ end;
 
 
 
+procedure Tfrmsolicitud.FormActivate(Sender: TObject);
+begin
+showmessage('activate');
+end;
+
 procedure Tfrmsolicitud.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 action := cafree;
@@ -1910,23 +2042,10 @@ nagregaconyuge := false;
 if envia = 'N' then
 begin
 
-
 TStringGrid(dbgrdpasivobancario).DefaultRowHeight := 25;//https://www.clubdelphi.com/foros/showthread.php?t=49710
 TStringGrid(dbgrdexpediente).DefaultRowHeight := 35;//https://www.clubdelphi.com/foros/showthread.php?t=49710
 
-
-
 end;
-
-if envia = 'M' then
-begin
-
-
-
-end;
-
-
-
 end;
 
 procedure Tfrmsolicitud.Image1Click(Sender: TObject);
@@ -2346,6 +2465,28 @@ agrega_avalx;
 if ednombreconyugeaval.Text <> '' then
 agrega_aval_conyuge;
 
+ //limpio los campos
+ednombreaval.Text := '';
+cbxidaval.Text := '';
+edfolioidaval.text := '';
+edrfcaval.Text := '';
+edcalleaval.Text := '';
+
+edextaval.Text:='';
+edintaval.Text := '';
+edcpaval.Text := '';
+edidcpaval.Text := '';
+edcoloniaaval.Text := '';
+edmunicipioaval.Text := '';
+edestadoaval.Text :='';
+edtelcasaaval.Text :='';
+edcelularaval.Text := '';
+cbxcivilaval.Text := '';
+cbxregimenaval.Text :='';
+ednombreconyugeaval.Text := '';
+cbxtipoidconyugeaval.Text := '';
+edfolioidconyugeaval.Text := '';
+edrfcconyugeaval.Text := '';
 
 end;
 
@@ -2487,67 +2628,8 @@ close;
 end;
 
 procedure Tfrmsolicitud.Panel6Click(Sender: TObject);
-var
-nprod : string;
-nid: integer;
 begin
-button2.Click;
-panel6.Visible := false;
-panel1.Visible := true;
-panel2.Visible := true;
-cpg1.Visible := true;
-pgmain.Visible := true;
-
-
-
-//rellenamos los campos que vienen del plan de pagos
-
-eddescripcion.Text := dm.dsplan_pagospp_descripcion.AsString;
-edimporte.Text := dm.dsplan_pagospp_monto.AsString;
-edplazo.Text := dm.dsplan_pagospp_plazo.AsString;
-edcomision.Text := dm.dsplan_pagospp_comision.Asstring;
-edgastos.Text := dm.dsplan_pagospp_gastos.asstring;
-edtasaord.Text := dm.dsplan_pagospp_tord.AsString;
-ediva.Text := dm.dsplan_pagospp_tiva.AsString;
-edperiodopago.Text := dm.dsplan_pagospp_periodicidad.AsString;
-edtotalgastos.Text := floattostr(dm.dsplan_pagospp_comision.Value + dm.dsplan_pagospp_gastos.Value) ;
-
-
-
-//1ero que nada crear el id de la nueva solicitud
-
-//primero averiguo cual es el max id
-
- dm.filtra(dm.ds1, 'select max(sol_id) as nmax from solicitudes ');
- nid :=  dm.ds1.FieldByName('nmax').Value + 1;
-
- dm.cambia(dm.ds2, 'insert into solicitudes (sol_id, pp_fk, sol_clicp, usr_fk, ctadestino_fk) values ('+ inttostr(nid) +', '+ dm.dsplan_pagospp_id.AsString +',1,1,0)');
-
- edid.Text :=  inttostr(nid);
-
-//luego me traigo la lista de documentos
-dm.filtra(dm.ds1,'SELECT * FROM prod_tipodoc, tipo_doc where prod_tipodoc.tpd_fk = tipo_doc.tpd_id and prod_tipodoc.prd_fk = ' + dm.dsplan_pagosprd_fk.AsString); // 4
-
-//
-                 // por el momento se lo comentamos
-dm.ds1.First;
-while not(dm.ds1.Eof) do
-         begin
-
-         dm.cambia(dm.ds2, 'insert into sol_doc (sol_fk, sld_descripcion) values ('+ edid.Text + ', '+ quotedstr(dm.ds1.FieldByName('tpd_descripcion').AsString)+')');
-
-         dm.ds1.Next;
-         end;
-
-
-//ahora refresco el dataset
-
-
-dm.filtra(dsexpediente, 'select sld_id, sol_fk, sld_descripcion, sld_documento, sld_estatus, case sld_estatus '+
-'when 0 then '+ quotedstr('POR ENTREGAR') +' else '+ quotedstr('ENTREGADO') + ' end as estatus '+
-'from sol_doc  where sol_fk = ' + edid.Text);
-
-
+inicial;
 end;
 
 procedure Tfrmsolicitud.Panel6MouseLeave(Sender: TObject);

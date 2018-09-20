@@ -44,11 +44,75 @@ implementation
 
 {$R *.dfm}
 
-uses dudm, duactusuario, duactcentrostrabajo, duprincipal, duempresa;
+uses dudm, duactusuario, duactcentrostrabajo, duprincipal, duempresa,
+  dusolicitud, dusolicitudmoral;
 
 
 procedure Tfrmcp.selecciona;
 begin
+ if envia = 'SF' then
+     begin
+    frmsolicitud.edcolonia.text := dm.dscpcp_asentamiento.asstring ;
+    frmsolicitud.edmunicipio.text := dm.dscpcp_municipio.asstring;
+    frmsolicitud.edestado.text := dm.dscpcp_estado.asstring;
+    frmsolicitud.edcp.text := dm.dscpcp_codigopostal.asstring;
+    frmsolicitud.edidcp.text := dm.dscpcp_id.asstring;
+    close;
+     end;
+
+
+   if envia = 'SM' then       //solicitud moral
+     begin
+    frmsolicitudmoral.edcolonia.text := dm.dscpcp_asentamiento.asstring ;
+    frmsolicitudmoral.edmunicipio.text := dm.dscpcp_municipio.asstring;
+    frmsolicitudmoral.edestado.text := dm.dscpcp_estado.asstring;
+    frmsolicitudmoral.edcp.text := dm.dscpcp_codigopostal.asstring;
+    frmsolicitudmoral.edidcp.text := dm.dscpcp_id.asstring;
+    close;
+     end;
+
+    if envia = 'SMR' then //solicitud Moral Representante
+   begin
+    frmsolicitudmoral.edcoloniarep.text := dm.dscpcp_asentamiento.asstring ;
+    frmsolicitudmoral.edmunicipiorep.text := dm.dscpcp_municipio.asstring;
+    frmsolicitudmoral.edestadorep.text := dm.dscpcp_estado.asstring;
+    frmsolicitudmoral.edcprep.text := dm.dscpcp_codigopostal.asstring;
+    frmsolicitudmoral.edidcprep.text := dm.dscpcp_id.asstring;
+    close;
+
+   end;
+
+   if envia = 'SFC' then //solicitud fisica conyuge
+   begin
+    frmsolicitud.edcoloniacon.text := dm.dscpcp_asentamiento.asstring ;
+    frmsolicitud.edmunicipiocon.text := dm.dscpcp_municipio.asstring;
+    frmsolicitud.edestadocon.text := dm.dscpcp_estado.asstring;
+    frmsolicitud.edcpcon.text := dm.dscpcp_codigopostal.asstring;
+    frmsolicitud.edidcpcon.text := dm.dscpcp_id.asstring;
+    close;
+   end;
+
+    if envia = 'SFA' then //solicitud fisica Aval
+   begin
+    frmsolicitud.edcoloniaaval.text := dm.dscpcp_asentamiento.asstring ;
+    frmsolicitud.edmunicipioaval.text := dm.dscpcp_municipio.asstring;
+    frmsolicitud.edestadoaval.text := dm.dscpcp_estado.asstring;
+    frmsolicitud.edcpaval.text := dm.dscpcp_codigopostal.asstring;
+    frmsolicitud.edidcpaval.text := dm.dscpcp_id.asstring;
+    close;
+   end;
+
+   if envia = 'SMA' then //solicitud fisica Aval
+   begin
+    frmsolicitudmoral.edcoloniaaval.text := dm.dscpcp_asentamiento.asstring ;
+    frmsolicitudmoral.edmunicipioaval.text := dm.dscpcp_municipio.asstring;
+    frmsolicitudmoral.edestadoaval.text := dm.dscpcp_estado.asstring;
+    frmsolicitudmoral.edcpaval.text := dm.dscpcp_codigopostal.asstring;
+    frmsolicitudmoral.edidcpaval.text := dm.dscpcp_id.asstring;
+    close;
+   end ;
+
+
     if envia='U' then
     begin
 
@@ -57,6 +121,7 @@ begin
       frmactusuario.edcp.text := dm.dscpcp_codigopostal.asstring;
       frmactusuario.edidcp.text := dm.dscpcp_id.asstring;
     end;
+
     if envia='E' then
     begin
 

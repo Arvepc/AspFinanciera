@@ -1462,7 +1462,7 @@ object dm: Tdm
       'from plan_pagos, estatus, productos, subproducto '
       'where plan_pagos.est_fk = estatus.est_id'
       'and plan_pagos.prd_fk = productos.prd_id'
-      'and est_descripcion <> '#39'CANCELADO'#39
+      'and est_fk <> 2'
       'and sbp_id = sbp_fk')
     Params = <>
     Left = 24
@@ -2096,6 +2096,220 @@ object dm: Tdm
     end
     object dsserieser_folio: TIntegerField
       FieldName = 'ser_folio'
+      Required = True
+    end
+  end
+  object dscreditos: TZQuery
+    Connection = ZConnection1
+    SQL.Strings = (
+      'select * from solicitudes where sol_folio > 0')
+    Params = <>
+    Left = 312
+    Top = 488
+    object IntegerField1: TIntegerField
+      FieldName = 'sol_id'
+      Required = True
+    end
+    object IntegerField2: TIntegerField
+      FieldName = 'sol_folio'
+      Required = True
+    end
+    object DateField1: TDateField
+      FieldName = 'sol_fecha'
+      Required = True
+    end
+    object DateField2: TDateField
+      FieldName = 'sol_fecaproba'
+      Required = True
+    end
+    object FloatField1: TFloatField
+      FieldName = 'sol_monto'
+      Required = True
+    end
+    object FloatField2: TFloatField
+      FieldName = 'sol_montoaut'
+      Required = True
+    end
+    object FloatField3: TFloatField
+      FieldName = 'sol_plazo'
+      Required = True
+    end
+    object IntegerField3: TIntegerField
+      FieldName = 'pp_fk'
+      Required = True
+    end
+    object WideStringField1: TWideStringField
+      FieldName = 'sol_destino'
+      Required = True
+      Size = 250
+    end
+    object FloatField4: TFloatField
+      FieldName = 'sol_tasaord'
+      Required = True
+    end
+    object FloatField5: TFloatField
+      FieldName = 'sol_tasamor'
+      Required = True
+    end
+    object FloatField6: TFloatField
+      FieldName = 'sol_periodicidad'
+      Required = True
+    end
+    object FloatField7: TFloatField
+      FieldName = 'sol_iva'
+      Required = True
+    end
+    object FloatField8: TFloatField
+      FieldName = 'sol_freccapint'
+      Required = True
+    end
+    object FloatField9: TFloatField
+      FieldName = 'sol_frecpagcap'
+      Required = True
+    end
+    object FloatField10: TFloatField
+      FieldName = 'sol_frecpagint'
+      Required = True
+    end
+    object WideStringField2: TWideStringField
+      FieldName = 'sol_prodseg'
+      Required = True
+      Size = 10
+    end
+    object WideStringField3: TWideStringField
+      FieldName = 'sol_producto'
+      Required = True
+      Size = 100
+    end
+    object WideStringField4: TWideStringField
+      FieldName = 'sol_clinombre'
+      Required = True
+      Size = 200
+    end
+    object WideStringField5: TWideStringField
+      FieldName = 'sol_clirfc'
+      Required = True
+      Size = 13
+    end
+    object WideStringField6: TWideStringField
+      FieldName = 'sol_clicalle'
+      Required = True
+      Size = 200
+    end
+    object WideStringField7: TWideStringField
+      FieldName = 'sol_clinoint'
+      Required = True
+    end
+    object WideStringField8: TWideStringField
+      FieldName = 'sol_clinoext'
+      Required = True
+    end
+    object WideStringField9: TWideStringField
+      FieldName = 'sol_clicol'
+      Required = True
+      Size = 100
+    end
+    object IntegerField4: TIntegerField
+      FieldName = 'sol_clicp'
+      Required = True
+    end
+    object WideStringField10: TWideStringField
+      FieldName = 'sol_cliant'
+      Required = True
+      Size = 50
+    end
+    object WideStringField11: TWideStringField
+      FieldName = 'sol_clitel1'
+      Required = True
+      Size = 10
+    end
+    object WideStringField12: TWideStringField
+      FieldName = 'sol_clitel2'
+      Required = True
+      Size = 10
+    end
+    object WideStringField13: TWideStringField
+      FieldName = 'sol_clitel3'
+      Required = True
+      Size = 10
+    end
+    object WideStringField14: TWideStringField
+      FieldName = 'sol_clitel4'
+      Required = True
+      Size = 10
+    end
+    object WideStringField15: TWideStringField
+      FieldName = 'sol_cliemail'
+      Required = True
+      Size = 100
+    end
+    object WideStringField16: TWideStringField
+      FieldName = 'sol_clinac'
+      Required = True
+      Size = 50
+    end
+    object WideStringField17: TWideStringField
+      FieldName = 'sol_clireg'
+      Required = True
+      Size = 100
+    end
+    object FloatField11: TFloatField
+      FieldName = 'sol_comision'
+      Required = True
+    end
+    object FloatField12: TFloatField
+      FieldName = 'sol_gastos'
+      Required = True
+    end
+    object IntegerField5: TIntegerField
+      FieldName = 'usr_fk'
+      Required = True
+    end
+    object DateField3: TDateField
+      FieldName = 'sol_fecrev'
+    end
+    object WideStringField18: TWideStringField
+      FieldName = 'sol_observarev'
+      Size = 5000
+    end
+    object WideStringField19: TWideStringField
+      FieldName = 'sol_estatus'
+      Required = True
+      Size = 21
+    end
+    object DateTimeField1: TDateTimeField
+      FieldName = 'sol_FecRec'
+      Required = True
+    end
+    object WideStringField20: TWideStringField
+      FieldName = 'sol_observaRec'
+      Required = True
+      Size = 1000
+    end
+    object DateTimeField2: TDateTimeField
+      FieldName = 'sol_FecAnalisis'
+      Required = True
+    end
+    object WideStringField21: TWideStringField
+      FieldName = 'sol_observaAnalisis'
+      Required = True
+      Size = 1000
+    end
+    object IntegerField6: TIntegerField
+      FieldName = 'sol_folcred'
+      Required = True
+    end
+    object WideStringField22: TWideStringField
+      FieldName = 'sol_seriecred'
+      Required = True
+      Size = 50
+    end
+    object IntegerField7: TIntegerField
+      FieldName = 'frmpago_fk'
+      Required = True
+    end
+    object IntegerField8: TIntegerField
+      FieldName = 'ctadestino_fk'
       Required = True
     end
   end

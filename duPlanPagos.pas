@@ -79,9 +79,12 @@ TCrackDBGrid = class (TDBGrid);
     procedure chktodofechaClick(Sender: TObject);
     procedure imgrefreshClick(Sender: TObject);
     procedure edbuscaKeyPress(Sender: TObject; var Key: Char);
+    procedure btneliminaClick(Sender: TObject);
+    procedure DBGrid1CellClick(Column: TColumn);
   private
     { Private declarations }
     procedure busca;
+    procedure elimina;
   public
     { Public declarations }
   end;
@@ -95,8 +98,16 @@ implementation
 
 {$R *.dfm}
 
-uses dudm, duactplanpagos, duplanpagosdetalle;
+uses dudm, duactplanpagos, duplanpagosdetalle, dutiposolicitud, dumensaje;
 
+
+
+procedure Tfrmplanpagos.elimina;
+begin
+  dm.cambia(dm.ds1, 'update plan_pagos set est_fk = 2 where pp_id =' + dm.dsplan_pagospp_id.AsString);
+  edbusca.Text := '';
+  busca;
+end;
 
 procedure Tfrmplanpagos.busca;
 begin
@@ -106,7 +117,7 @@ begin
 'from plan_pagos, estatus, productos, subproducto '+
 'where plan_pagos.est_fk = estatus.est_id '+
 'and plan_pagos.prd_fk = productos.prd_id '+
-'and sbp_id = sbp_fk and pp_descripcion like' + quotedstr ('%' + edbusca.Text + '%'));
+'and sbp_id = sbp_fk and est_fk = <> 2 and pp_descripcion like' + quotedstr ('%' + edbusca.Text + '%'));
 end;
 
 
@@ -164,6 +175,17 @@ end;
 
          dm.filtra(dm.dsplan_pagos, filtro);       imgrefresh.Visible := true;
         end;
+
+end;
+
+procedure Tfrmplanpagos.btneliminaClick(Sender: TObject);
+begin
+application.CreateForm(Tfrmmensaje, frmmensaje);
+
+frmmensaje.lblmensaje.Caption := '¿Confirme que desea eliminar el Plan de Pagos ' + #13 + dm.dsplan_pagospp_descripcion.AsString +'?' ;
+
+if frmmensaje.showmodal = mrOk then
+elimina;
 
 end;
 
@@ -244,6 +266,15 @@ if chktodoproducto.Checked = false then
      dblckproducto.KeyValue := -1;
      dblckproducto.Enabled := false;
    end;
+
+end;
+
+procedure Tfrmplanpagos.DBGrid1CellClick(Column: TColumn);
+begin
+if dm.dsplan_pagosest_descripcion.AsString = 'ASIGNADO' then
+btnelimina.Visible := false
+else
+btnelimina.visible := true;
 
 end;
 
@@ -351,6 +382,10 @@ procedure Tfrmplanpagos.Panel7Click(Sender: TObject);
 begin
 //de aqui debo mandar a llamar el form de tipo de solicitud y enviar como param el id del plan de pago s
 
+application.CreateForm(Tfrmtiposolicitud, frmtiposolicitud);
+            frmtiposolicitud.edidpp.text := dm.dsplan_pagospp_id.asstring;
+
+            frmtiposolicitud.showmodal;
 
 
 

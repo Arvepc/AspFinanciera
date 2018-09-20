@@ -19,6 +19,7 @@ type
     btnmuestra: TSpeedButton;
     Panel6: TPanel;
     Label1: TLabel;
+    edidpp: TEdit;
     procedure imgfisicaClick(Sender: TObject);
     procedure Label1Click(Sender: TObject);
     procedure imgfisicaMouseMove(Sender: TObject; Shift: TShiftState; X,
@@ -34,6 +35,7 @@ type
     procedure muestra;
   public
     { Public declarations }
+
   end;
 
 var
@@ -61,7 +63,36 @@ dm.activa_ds(frmsolicitud.dsmonedas); // ds local
 dm.activa_ds(dm.dssubproducto); // tipo de credito
 dm.activa_ds(frmsolicitud.dssubproducto);
 dm.activa_ds(dm.dsactividades); //este se va a cargar con un filtro al momento de usarse
-dm.Activa_DS(dm.dsplan_pagos);
+  //1 es activo
+
+if edidpp.Text = '0' then
+dm.filtra(dm.dsplan_pagos, 'select plan_pagos.pp_id, plan_pagos.pp_descripcion, plan_pagos.pp_fecha, plan_pagos.pp_plazo, productos.prd_descripcion, plan_pagos.prd_fk, plan_pagos.pp_monto, pp_periodicidad, '+
+'pp_tord, pp_tmor, pp_tiva, pp_frmintord, pp_frmintmor, pp_freccapint, pp_frecpagcap, pp_frecpagint, pp_editable, pp_tipointeres, pp_comision, pp_gastos, '+
+'sbp_descripcion, estatus.est_descripcion '+
+'from plan_pagos, estatus, productos, subproducto '+
+'where plan_pagos.est_fk = estatus.est_id '+
+'and plan_pagos.prd_fk = productos.prd_id '+
+'and sbp_id = sbp_fk and est_fk = 1 ')
+else
+begin
+dm.filtra(dm.dsplan_pagos, 'select plan_pagos.pp_id, plan_pagos.pp_descripcion, plan_pagos.pp_fecha, plan_pagos.pp_plazo, productos.prd_descripcion, plan_pagos.prd_fk, plan_pagos.pp_monto, pp_periodicidad, '+
+'pp_tord, pp_tmor, pp_tiva, pp_frmintord, pp_frmintmor, pp_freccapint, pp_frecpagcap, pp_frecpagint, pp_editable, pp_tipointeres, pp_comision, pp_gastos, '+
+'sbp_descripcion, estatus.est_descripcion '+
+'from plan_pagos, estatus, productos, subproducto '+
+'where plan_pagos.est_fk = estatus.est_id '+
+'and plan_pagos.prd_fk = productos.prd_id '+
+'and sbp_id = sbp_fk and est_fk = 1 and pp_id =' + edidpp.Text);
+
+
+
+frmsolicitud.pnlplan.visible:= false;
+frmsolicitud.inicial;
+
+end;
+
+
+
+
 frmsolicitud.show;
 close;
 

@@ -28,7 +28,6 @@ object frmplanpagos: Tfrmplanpagos
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 931
     object lblTitulo: TLabel
       Left = 24
       Top = 10
@@ -69,6 +68,7 @@ object frmplanpagos: Tfrmplanpagos
         8000C8D0D4C8D0D40000FF000080C8D0D4C8D0D4C8D0D4C8D0D4C8D0D40000FF
         00008000008000008000C8D0D4C8D0D4C8D0D4C8D0D4C8D0D4C8D0D4C8D0D4C8
         D0D4C8D0D4C8D0D40000FF0000800000FF00}
+      OnClick = btneliminaClick
     end
     object btnmodifica: TSpeedButton
       Left = 697
@@ -187,7 +187,6 @@ object frmplanpagos: Tfrmplanpagos
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitLeft = 864
       object Label1: TLabel
         Left = 26
         Top = 14
@@ -839,7 +838,6 @@ object frmplanpagos: Tfrmplanpagos
     BevelOuter = bvNone
     Caption = 'Panel2'
     TabOrder = 2
-    ExplicitWidth = 931
     object DBGrid1: TDBGrid
       Left = 0
       Top = 0
@@ -867,6 +865,7 @@ object frmplanpagos: Tfrmplanpagos
       TitleFont.Height = -16
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = [fsBold]
+      OnCellClick = DBGrid1CellClick
       OnDrawColumnCell = DBGrid1DrawColumnCell
       Columns = <
         item
@@ -879,14 +878,12 @@ object frmplanpagos: Tfrmplanpagos
           Expanded = False
           FieldName = 'pp_descripcion'
           Title.Caption = 'Descripcion'
-          Width = 64
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'prd_descripcion'
           Title.Caption = 'Producto'
-          Width = 64
           Visible = True
         end
         item
@@ -898,7 +895,7 @@ object frmplanpagos: Tfrmplanpagos
         end
         item
           Expanded = False
-          FieldName = 'pp_estatus'
+          FieldName = 'est_descripcion'
           Title.Caption = 'Estatus'
           Width = 70
           Visible = True
@@ -936,7 +933,6 @@ object frmplanpagos: Tfrmplanpagos
     Color = clWhite
     ParentBackground = False
     TabOrder = 3
-    ExplicitWidth = 931
   end
   object dtsplanpagos_listado: TDataSource
     DataSet = dm.dsplan_pagos
