@@ -540,7 +540,7 @@ object frmproducto: Tfrmproducto
   end
   object DataSource1: TDataSource
     DataSet = dm.dsProd
-    Left = 240
-    Top = 217
+    Left = 16
+    Top = 169
   end
 end

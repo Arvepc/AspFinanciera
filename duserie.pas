@@ -187,5 +187,7 @@ procedure TFrmserie.selecciona;
 begin
   frmactproducto.EdSerie.Text:=dm.dsserieser_serie.Value;
   frmactproducto.EdIdSerie.Text:= dm.dsserieser_id.AsString;
+  close;
+  //146
 end;
 end.

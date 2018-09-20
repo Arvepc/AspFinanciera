@@ -162,11 +162,11 @@ procedure Tfrmproducto.btneliminaClick(Sender: TObject);
 begin
            if messagedlg('Confirme que desea dar de baja el producto: ' + dm.dsprodprd_descripcion.asstring,mtConfirmation,[MbYes,mbNo],0) = mryes then
           begin
-            dm.cambia(dm.ds1, 'update productos set  prd_estatus = 0 where prd_id = ' + dm.dsprodprd_id.asstring);
+            dm.cambia(dm.ds1, 'update productos set  prd_estatus ="INACTIVO" where prd_id = ' + dm.dsprodprd_id.asstring);
             dm.activa_ds(dm.dsprod);
 
           end;
-
+          ///5614564
 end;
 
 end.

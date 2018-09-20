@@ -26,7 +26,6 @@ object Frmserie: TFrmserie
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 846
   end
   object Panel2: TPanel
     Left = 0
@@ -37,7 +36,6 @@ object Frmserie: TFrmserie
     BevelOuter = bvNone
     Caption = 'Panel2'
     TabOrder = 1
-    ExplicitWidth = 846
     object DBGrid1: TDBGrid
       Left = 0
       Top = 0
@@ -130,7 +128,6 @@ object Frmserie: TFrmserie
     Color = clWhite
     ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 846
     object Image1: TImage
       Left = 283
       Top = 29
@@ -349,7 +346,6 @@ object Frmserie: TFrmserie
       BevelOuter = bvNone
       Caption = 'Panel5'
       TabOrder = 1
-      ExplicitLeft = 422
       object pnlNuevo: TPanel
         Left = 176
         Top = 29
@@ -399,7 +395,6 @@ object Frmserie: TFrmserie
     Color = clWhite
     ParentBackground = False
     TabOrder = 3
-    ExplicitWidth = 846
     object lblTitulo: TLabel
       Left = 24
       Top = 10

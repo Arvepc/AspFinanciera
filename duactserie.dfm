@@ -88,9 +88,6 @@ object frmactserie: Tfrmactserie
     ParentBackground = False
     ParentFont = False
     TabOrder = 4
-    ExplicitLeft = -208
-    ExplicitTop = 305
-    ExplicitWidth = 775
     object pnlguarda: TPanel
       Left = 236
       Top = 8

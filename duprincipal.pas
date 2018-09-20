@@ -67,7 +67,8 @@ implementation
 uses Hashes, duusuarios, dudm, duPersonas, dumonedas, duactividades, DgieWS,
   duempresa, duacciones, ducentrostrabajo,
   dubancos, dudocumentos, dulistasolicitudes, dudispercion,
-  duProducto, dumesacontrolcredito, dumesacontrolfinal, duanalisis, duPlanPagos;
+  duProducto, dumesacontrolcredito, dumesacontrolfinal, duanalisis, duPlanPagos,
+  duserie;
 
 {$R *.dfm}
 procedure Tfrmprincipal.CapturarPantalla( x, y, iAncho, iAlto: Integer; Imagen: TBitmap );
@@ -439,18 +440,20 @@ begin
           dm.activa_ds(dm.dsMonedas);
           CargarMonedas;
           frmmonedas.Show;
-
         end;
     38: begin
-         { application.createForm(Tform1, form1) ;
-          form1.Show; }
-
+          application.createForm(Tfrmserie, frmserie) ;
+          dm.activa_ds(dm.dsserie);
+          frmserie.envia:='M';
+          frmserie.WindowState:= wsMaximized;
+          frmserie.FormStyle:= fsMDIChild;
+          frmserie.Show;
         end;
     39: begin
           application.createForm(Tfrmdocumentos, frmdocumentos) ;
           dm.activa_ds(dm.dsdocumentos);
           frmdocumentos.Show;
-
+          //5641654
         end;
     end;
 end;

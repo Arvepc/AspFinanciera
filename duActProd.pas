@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls,
   Data.DB, Vcl.Buttons, Vcl.ExtCtrls, Vcl.ComCtrls, ZAbstractRODataset,
-  ZAbstractDataset, ZDataset, Vcl.Grids, Vcl.DBGrids;
+  ZAbstractDataset, ZDataset, Vcl.Grids, Vcl.DBGrids, Vcl.Imaging.pngimage;
 
 type
   TfrmActProducto = class(TForm)
@@ -29,7 +29,6 @@ type
     Label15: TLabel;
     Label16: TLabel;
     Label17: TLabel;
-    Label19: TLabel;
     Label1: TLabel;
     Label10: TLabel;
     Label11: TLabel;
@@ -51,7 +50,6 @@ type
     DBEdit13: TDBEdit;
     DBEdit14: TDBEdit;
     DBEdit15: TDBEdit;
-    dblcksubprod: TDBLookupComboBox;
     cbxfreccapinteres: TComboBox;
     cbxfreccapital: TComboBox;
     cbxfrecpagointeres: TComboBox;
@@ -84,6 +82,14 @@ type
     DataSource2: TDataSource;
     edserie: TEdit;
     edIdSerie: TEdit;
+    dblckprod: TDBLookupComboBox;
+    dblcksubprod: TDBLookupComboBox;
+    Label26: TLabel;
+    Label27: TLabel;
+    dtsproducto: TDataSource;
+    Image2: TImage;
+    Label19: TLabel;
+    ComboBox1: TComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure pnlguardaMouseLeave(Sender: TObject);
     procedure pnlguardaMouseMove(Sender: TObject; Shift: TShiftState; X,
@@ -100,6 +106,15 @@ type
     procedure Panel5Click(Sender: TObject);
     procedure TabSheet2Show(Sender: TObject);
     procedure pnlguardaClick(Sender: TObject);
+    procedure dblcksubprodClick(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure Panel5MouseLeave(Sender: TObject);
+    procedure Panel5MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure Panel4MouseLeave(Sender: TObject);
+    procedure Panel4MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
   private
     { Private declarations }
     procedure combos;
@@ -109,6 +124,7 @@ type
     { Public declarations }
 
     envia: char;
+    envia2: string;
   end;
 
 var
@@ -118,7 +134,7 @@ implementation
 
 {$R *.dfm}
 
-uses duProducto, dudm;
+uses duProducto, dudm, duserie;
 
 procedure TfrmActProducto.cambia_CapInteres;
 begin
@@ -179,10 +195,9 @@ begin
 5: DBEdit15.text := '6';
 6: DBEdit15.text := '12';
 end;
-end;
 
-procedure TfrmActProducto.cbxPeriodicidadChange(Sender: TObject);
-begin
+cbxPeriodicidad.ItemIndex:=cbxfrecpagointeres.ItemIndex;
+
 case cbxperiodicidad.itemindex of
 0: DBEdit5.text := '0.25';
 1: DBEdit5.text := '0.5';
@@ -206,6 +221,47 @@ case dbTipoInteres.ItemIndex of
 
 end;
 combos;
+end;
+
+procedure TfrmActProducto.cbxPeriodicidadChange(Sender: TObject);
+begin
+{case cbxperiodicidad.itemindex of
+0: DBEdit5.text := '0.25';
+1: DBEdit5.text := '0.5';
+2: DBEdit5.text := '1';
+3: DBEdit5.text := '2';
+4: DBEdit5.text := '3';
+5: DBEdit5.text := '6';
+6: DBEdit5.text := '12';
+end;
+case dbTipoInteres.ItemIndex of
+  0: begin
+        DBEdit13.Text    := DBEdit5.Text;
+        DBEdit14.Text    := DBEdit5.Text;
+        DBEdit15.Text    := DBEdit5.Text;
+     end;
+  1: begin
+        DBEdit13.Text    := DBEdit5.Text;
+        DBEdit14.Text    := DBEdit5.Text;
+        DBEdit15.Text    := DBEdit5.Text;
+     end;
+
+end;
+combos;}
+end;
+
+procedure TfrmActProducto.ComboBox1Change(Sender: TObject);
+begin
+if ComboBox1.ItemIndex=0 then
+begin
+  dm.filtra(dsTipo_Doc, 'SELECT * FROM tipo_doc WHERE tpd_docvalor=1 and tpd_estatus=1');
+  dblcktipodoc.Enabled:= true;
+end;
+if ComboBox1.ItemIndex=1 then
+begin
+  dm.filtra(dsTipo_Doc, 'SELECT * FROM tipo_doc WHERE tpd_esreporte=1 and tpd_estatus=1');
+  dblcktipodoc.Enabled:= true;
+end;
 end;
 
 procedure TfrmActProducto.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -251,6 +307,12 @@ begin
     if dm.dsprodprd_frecpagint.value = 6    then cbxfrecpagointeres.itemindex := 5;
     if dm.dsprodprd_frecpagint.value = 12   then cbxfrecpagointeres.itemindex := 6;
 end;
+procedure TfrmActProducto.dblcksubprodClick(Sender: TObject);
+begin
+{dm.filtra(dm.dsProd, 'SELECT * FROM productos WHERE sbp_fk='+IntToStr(dblcksubprod.KeyValue));
+dblckprod.Enabled:= true;}
+end;
+
 procedure TfrmActProducto.dbTipoInteresChange(Sender: TObject);
 begin
 
@@ -278,8 +340,14 @@ end;
 
 procedure TfrmActProducto.FormShow(Sender: TObject);
 begin
+if envia = 'N' then
+  pcProducto.Pages[1].TabVisible:= false;
+
 if envia = 'M' then
    begin
+   dm.filtra(dm.dsserie, 'select * from serie where ser_id = ' + dm.dsProdser_fk.AsString) ;
+   edserie.Text := dm.dsserieser_serie.AsString;
+   edidserie.Text := dm.dsserieser_id.AsString;
    dm.dsprod.edit;
    dm.filtra(dm.dssubprod, 'select * from subproducto order by sbp_descripcion') ;
    dm.filtra(dsProd_TipoDoc,'select ptd_id as ID,   tpd_descripcion as Documento '+
@@ -312,6 +380,14 @@ if envia = 'M' then
     dblcksubprod.keyvalue := dm.dsprodsbp_fk.value;
 
    end;
+end;
+
+procedure TfrmActProducto.Image2Click(Sender: TObject);
+begin
+dm.filtra(dm.dsserie, 'select * from serie where ser_serie = ' + quotedstr(edserie.text));
+application.createform(Tfrmserie, frmserie) ;
+frmserie.envia:= 'P';
+frmserie.show;
 end;
 
 procedure TfrmActProducto.Panel1Click(Sender: TObject);
@@ -375,21 +451,25 @@ try
      rebote := true;
      end;
 
-
+          //dacsadasdsadsd  1000
       if (rebote = false) then
       begin
-
-      dm.dsprodprd_estatus.value := 'ACTIVO';
-      dm.dsprodsbp_fk.value := dblcksubprod.keyvalue;
-      //dm.dsprodprd_tipoInteres.value := quotedstr(cbxtipointeres.Text);
-      dm.dsprod.post;
-     // close;
-
-      dm.Activa_DS(dsTipo_Doc);
+        if envia2<>'F' then
+        begin
+          dm.dsProdsbp_fk.Value:=dblcksubprod.KeyValue;
+          dm.dsProdser_fk.Value:=StrToInt(edidserie.Text);
+          dm.dsProdprd_prefijofolio.Value:= edserie.Text;
+          dm.dsprodprd_estatus.value := 'ACTIVO';
+          dm.dsprodsbp_fk.value := dblcksubprod.keyvalue;
+          //dm.dsprodprd_tipoInteres.value := quotedstr(cbxtipointeres.Text);
+          dm.dsprod.post;
+          //close;
+          dm.Activa_DS(dsTipo_Doc);
+        end;
 
       end;
 
-
+pcProducto.Pages[1].TabVisible:= true;
 pcProducto.ActivePageIndex := 1;
 
 except
@@ -400,26 +480,41 @@ end;
 
 procedure TfrmActProducto.Panel3Click(Sender: TObject);
 begin
-
 close;
 end;
 
 procedure TfrmActProducto.Panel4Click(Sender: TObject);
 begin
  pcProducto.ActivePageIndex := 0;
+ envia2:= 'F';
+end;
+
+procedure TfrmActProducto.Panel4MouseLeave(Sender: TObject);
+begin
+panel4.color := $00BC8D3C;
+end;
+
+procedure TfrmActProducto.Panel4MouseMove(Sender: TObject; Shift: TShiftState;
+  X, Y: Integer);
+begin
+panel4.color:= $00906028;
 end;
 
 procedure TfrmActProducto.Panel5Click(Sender: TObject);
 begin
-//dm.filtra(dsProd_TipoDoc,'select * from prod_tipodoc where tpd_fk = '+dsTipo_Doctpd_id.AsString);
+if dblcktipodoc.Text='' then
+begin
+  showMessage('Seleccione un documento');
+  exit;
+end;
+
 dm.filtra(dsProd_TipoDoc,'select ptd_id as ID,   tpd_descripcion as Documento '+
                             ' from prod_tipodoc,tipo_doc '+
                             ' where tpd_fk = tpd_id '+
                             ' and prd_fk = '+ DBEdit1.Text );
 
 if  dsTipo_Doctpd_docvalor.AsInteger = 1  then
-  dm.cambia(dsProd_TipoDoc,'insert into prod_tipodoc(ptd_tipoper,prd_fk,tpd_fk,ptd_solicitado) '+
-           'values('+quotedstr('FISICA')+', '+dbedit1.Text+', '+inttostr(dblcktipodoc.KeyValue)+',1)  ')
+  dm.cambia(dsProd_TipoDoc, 'INSERT INTO prod_tipodoc(prd_fk, tpd_fk, ptd_solicitado) VALUES ('+dbedit1.Text+', '+inttostr(dblcktipodoc.KeyValue)+', 1)')
   else
   showmessage('No es posible agregar el tipo de documento seleccionado...');
 
@@ -431,6 +526,17 @@ if  dsTipo_Doctpd_docvalor.AsInteger = 1  then
 
 
 
+end;
+
+procedure TfrmActProducto.Panel5MouseLeave(Sender: TObject);
+begin
+Panel5.color := $00BC8D3C;
+end;
+
+procedure TfrmActProducto.Panel5MouseMove(Sender: TObject; Shift: TShiftState;
+  X, Y: Integer);
+begin
+Panel5.color:= $00906028;
 end;
 
 procedure TfrmActProducto.pnlguardaClick(Sender: TObject);
@@ -454,6 +560,7 @@ end;
 procedure TfrmActProducto.TabSheet2Show(Sender: TObject);
 begin
 dm.Activa_DS(dsTipo_Doc);
+dm.filtra(dsTipo_Doc, 'SELECT * FROM tipo_doc WHERE tpd_docvalor=1 and tpd_estatus=1');
 end;
 
 end.
