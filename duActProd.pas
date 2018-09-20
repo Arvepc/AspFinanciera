@@ -82,7 +82,7 @@ type
     DataSource2: TDataSource;
     edserie: TEdit;
     edIdSerie: TEdit;
-    dblckprod: TDBLookupComboBox;
+    dblcktipo: TDBLookupComboBox;
     dblcksubprod: TDBLookupComboBox;
     Label26: TLabel;
     Label27: TLabel;
@@ -90,6 +90,8 @@ type
     Image2: TImage;
     Label19: TLabel;
     ComboBox1: TComboBox;
+    dsTipoProducto: TZQuery;
+    dtsTipoProducto: TDataSource;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure pnlguardaMouseLeave(Sender: TObject);
     procedure pnlguardaMouseMove(Sender: TObject; Shift: TShiftState; X,
@@ -106,7 +108,6 @@ type
     procedure Panel5Click(Sender: TObject);
     procedure TabSheet2Show(Sender: TObject);
     procedure pnlguardaClick(Sender: TObject);
-    procedure dblcksubprodClick(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure Panel5MouseLeave(Sender: TObject);
@@ -115,6 +116,7 @@ type
     procedure Panel4MouseLeave(Sender: TObject);
     procedure Panel4MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
+    procedure dblcktipoClick(Sender: TObject);
   private
     { Private declarations }
     procedure combos;
@@ -307,10 +309,10 @@ begin
     if dm.dsprodprd_frecpagint.value = 6    then cbxfrecpagointeres.itemindex := 5;
     if dm.dsprodprd_frecpagint.value = 12   then cbxfrecpagointeres.itemindex := 6;
 end;
-procedure TfrmActProducto.dblcksubprodClick(Sender: TObject);
+procedure TfrmActProducto.dblcktipoClick(Sender: TObject);
 begin
-{dm.filtra(dm.dsProd, 'SELECT * FROM productos WHERE sbp_fk='+IntToStr(dblcksubprod.KeyValue));
-dblckprod.Enabled:= true;}
+dm.filtra(dm.dsSubProd, 'SELECT * FROM subproducto WHERE tpr_fk='+IntToStr(dblcktipo.KeyValue));
+dblcksubprod.Enabled:= true;
 end;
 
 procedure TfrmActProducto.dbTipoInteresChange(Sender: TObject);
@@ -340,6 +342,7 @@ end;
 
 procedure TfrmActProducto.FormShow(Sender: TObject);
 begin
+dm.Activa_DS(dstipoproducto);
 if envia = 'N' then
   pcProducto.Pages[1].TabVisible:= false;
 
@@ -513,10 +516,10 @@ dm.filtra(dsProd_TipoDoc,'select ptd_id as ID,   tpd_descripcion as Documento '+
                             ' where tpd_fk = tpd_id '+
                             ' and prd_fk = '+ DBEdit1.Text );
 
-if  dsTipo_Doctpd_docvalor.AsInteger = 1  then
-  dm.cambia(dsProd_TipoDoc, 'INSERT INTO prod_tipodoc(prd_fk, tpd_fk, ptd_solicitado) VALUES ('+dbedit1.Text+', '+inttostr(dblcktipodoc.KeyValue)+', 1)')
-  else
-  showmessage('No es posible agregar el tipo de documento seleccionado...');
+//if  dsTipo_Doctpd_docvalor.AsInteger = 1  then
+  dm.cambia(dsProd_TipoDoc, 'INSERT INTO prod_tipodoc(prd_fk, tpd_fk, ptd_solicitado) VALUES ('+dbedit1.Text+', '+inttostr(dblcktipodoc.KeyValue)+', 1)');
+  //else
+  //showmessage('No es posible agregar el tipo de documento seleccionado...');
 
 
   dm.filtra(dsProd_TipoDoc,'select ptd_id as ID,   tpd_descripcion as Documento '+

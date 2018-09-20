@@ -50,8 +50,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tfrminicio, frminicio);
   Application.CreateForm(Tdm, dm);
-  Application.CreateForm(Tfrmactserie, frmactserie);
-  Application.CreateForm(TFrmserie, Frmserie);
   frminicio.ShowModal;
 
 

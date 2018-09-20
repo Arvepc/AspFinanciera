@@ -3,7 +3,7 @@ object frmActProducto: TfrmActProducto
   Top = 0
   Caption = 'Actualizar Producto Financiero'
   ClientHeight = 621
-  ClientWidth = 577
+  ClientWidth = 659
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,7 +19,7 @@ object frmActProducto: TfrmActProducto
   object pcProducto: TPageControl
     Left = 0
     Top = 0
-    Width = 577
+    Width = 659
     Height = 621
     ActivePage = TabSheet2
     Align = alClient
@@ -28,12 +28,10 @@ object frmActProducto: TfrmActProducto
     ShowHint = False
     TabOrder = 0
     TabPosition = tpLeft
+    ExplicitWidth = 622
     object TabSheet1: TTabSheet
       Caption = 'Datos'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 546
-      ExplicitHeight = 550
+      ExplicitWidth = 594
       object Label2: TLabel
         Left = 61
         Top = 11
@@ -246,18 +244,17 @@ object frmActProducto: TfrmActProducto
       end
       object Label26: TLabel
         Left = 58
-        Top = 50
+        Top = 90
         Width = 40
         Height = 13
         Caption = 'Subtipo:'
       end
       object Label27: TLabel
-        Left = 51
-        Top = 90
-        Width = 47
+        Left = 74
+        Top = 50
+        Width = 24
         Height = 13
-        Caption = 'Producto:'
-        Visible = False
+        Caption = 'Tipo:'
       end
       object Image2: TImage
         Left = 477
@@ -522,8 +519,8 @@ object frmActProducto: TfrmActProducto
         OnChange = dbTipoInteresChange
       end
       object Panel1: TPanel
-        Left = 414
-        Top = 549
+        Left = 386
+        Top = 541
         Width = 121
         Height = 30
         Cursor = crHandPoint
@@ -557,34 +554,34 @@ object frmActProducto: TfrmActProducto
         Text = 'Edit2'
         Visible = False
       end
-      object dblckprod: TDBLookupComboBox
+      object dblcktipo: TDBLookupComboBox
+        Left = 104
+        Top = 42
+        Width = 367
+        Height = 21
+        KeyField = 'tpr_id'
+        ListField = 'tpr_descripcion'
+        ListSource = dtsTipoProducto
+        TabOrder = 24
+        OnClick = dblcktipoClick
+      end
+      object dblcksubprod: TDBLookupComboBox
         Left = 104
         Top = 82
         Width = 367
         Height = 21
         Enabled = False
-        KeyField = 'prd_id'
-        ListField = 'prd_descripcion'
-        ListSource = dtsproducto
-        TabOrder = 24
-        Visible = False
-      end
-      object dblcksubprod: TDBLookupComboBox
-        Left = 104
-        Top = 42
-        Width = 367
-        Height = 21
         KeyField = 'sbp_id'
         ListField = 'sbp_descripcion'
         ListSource = dtssubprod
         TabOrder = 25
-        OnClick = dblcksubprodClick
       end
     end
     object TabSheet2: TTabSheet
       Caption = 'Docs. Solicitados'
       ImageIndex = 1
       OnShow = TabSheet2Show
+      ExplicitWidth = 594
       object Label24: TLabel
         Left = 28
         Top = 53
@@ -615,7 +612,7 @@ object frmActProducto: TfrmActProducto
       object Panel2: TPanel
         Left = 0
         Top = 559
-        Width = 549
+        Width = 631
         Height = 54
         Align = alBottom
         Color = 15855852
@@ -627,6 +624,7 @@ object frmActProducto: TfrmActProducto
         ParentBackground = False
         ParentFont = False
         TabOrder = 0
+        ExplicitWidth = 594
         object Panel3: TPanel
           Left = 120
           Top = 8
@@ -771,8 +769,8 @@ object frmActProducto: TfrmActProducto
   end
   object dtssubprod: TDataSource
     DataSet = dm.dsSubProd
-    Left = 544
-    Top = 391
+    Left = 552
+    Top = 455
   end
   object dtsTipoDoc: TDataSource
     DataSet = dsTipo_Doc
@@ -825,8 +823,8 @@ object frmActProducto: TfrmActProducto
       'select * from serie'
       'order by ser_serie')
     Params = <>
-    Left = 544
-    Top = 84
+    Left = 552
+    Top = 116
   end
   object DataSource2: TDataSource
     Left = 552
@@ -834,7 +832,20 @@ object frmActProducto: TfrmActProducto
   end
   object dtsproducto: TDataSource
     DataSet = dm.dsProd
-    Left = 40
+    Left = 24
     Top = 4
+  end
+  object dsTipoProducto: TZQuery
+    Connection = dm.ZConnection1
+    SQL.Strings = (
+      'select * from tipoproducto')
+    Params = <>
+    Left = 560
+    Top = 356
+  end
+  object dtsTipoProducto: TDataSource
+    DataSet = dsTipoProducto
+    Left = 568
+    Top = 404
   end
 end
