@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons, frxClass, frxDBSet,
-  ZAbstractRODataset, ZAbstractDataset, ZDataset;
+  ZAbstractRODataset, ZAbstractDataset, ZDataset, Vcl.Imaging.pngimage;
 
 type
 TCrackDBGrid = class (TDBGrid);
@@ -18,7 +18,7 @@ TCrackDBGrid = class (TDBGrid);
     btnmuestra: TSpeedButton;
     Panel6: TPanel;
     Label1: TLabel;
-    Panel3: TPanel;
+    pnlbusca: TPanel;
     Image1: TImage;
     Shape1: TShape;
     Image2: TImage;
@@ -258,6 +258,8 @@ TCrackDBGrid = class (TDBGrid);
     dscpreplegalcp_tipoasentamiento: TWideStringField;
     dscpreplegaltpa_fk: TIntegerField;
     Panel7: TPanel;
+    imgdown: TImage;
+    imgup: TImage;
     procedure Label1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure pnlNuevoClick(Sender: TObject);
@@ -277,6 +279,8 @@ TCrackDBGrid = class (TDBGrid);
     procedure Panel7MouseLeave(Sender: TObject);
     procedure Panel7MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
+    procedure imgdownClick(Sender: TObject);
+    procedure imgupClick(Sender: TObject);
   private
     { Private declarations }
     procedure edita_fisica;
@@ -297,6 +301,21 @@ implementation
 
 uses dusolicitud, dudm, dutiposolicitud, duprincipal, dusolicitudmoral,
   timeline;
+procedure Tfrmlistasolicitudes.imgdownClick(Sender: TObject);
+begin
+//abro el panel de busquedas
+imgup.Visible := true;
+imgdown.Visible := false;
+pnlbusca.Height := 224;
+end;
+
+procedure Tfrmlistasolicitudes.imgupClick(Sender: TObject);
+begin
+imgup.Visible := false;
+imgdown.Visible := true;
+pnlbusca.Height := 88;
+end;
+
 procedure Tfrmlistasolicitudes.imprime_fisica;
 var
 nsol_pasivo: string;

@@ -259,7 +259,6 @@
     Align = alClient
     TabOrder = 3
     Visible = False
-    ExplicitHeight = 1444
     object TabSheet3: TTabSheet
       Caption = 'Datos'
       object cpg1: TCategoryPanelGroup
@@ -18629,6 +18628,7 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 9
+          ExplicitWidth = 1417
           ExpandedHeight = 475
           object Label10: TLabel
             Left = 16
@@ -18890,6 +18890,7 @@
             Top = 35
             Width = 335
             Height = 21
+            CharCase = ecUpperCase
             TabOrder = 0
           end
           object edext: TEdit
@@ -19056,6 +19057,7 @@
             Top = 322
             Width = 335
             Height = 21
+            CharCase = ecUpperCase
             TabOrder = 17
             OnChange = cbxedocivilChange
             Items.Strings = (
@@ -19067,6 +19069,7 @@
             Top = 322
             Width = 231
             Height = 21
+            CharCase = ecUpperCase
             TabOrder = 18
             OnChange = dblckregimenChange
             Items.Strings = (
@@ -19081,6 +19084,8 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 10
+          OnCollapse = cpdatosgeneralesCollapse
+          OnClick = cpdatosgeneralesClick
           ExpandedHeight = 205
           object Label3: TLabel
             Left = 16
@@ -19999,37 +20004,16 @@
   object dscuenta: TZQuery
     Connection = dm.ZConnection1
     SQL.Strings = (
-      'select * from ctabanco')
+      'select ctb_id, ctb_cuenta from ctabanco')
     Params = <>
-    Left = 676
-    Top = 247
+    Left = 732
+    Top = 255
     object dscuentactb_id: TIntegerField
       FieldName = 'ctb_id'
       Required = True
     end
-    object dscuentactb_tipopago: TIntegerField
-      FieldName = 'ctb_tipopago'
-      Required = True
-    end
-    object dscuentabanco_fk: TIntegerField
-      FieldName = 'banco_fk'
-      Required = True
-    end
-    object dscuentactb_descripcion: TWideStringField
-      FieldName = 'ctb_descripcion'
-      Required = True
-    end
     object dscuentactb_cuenta: TWideStringField
       FieldName = 'ctb_cuenta'
-      Required = True
-    end
-    object dscuentactb_clabe: TWideStringField
-      FieldName = 'ctb_clabe'
-      Required = True
-      Size = 30
-    end
-    object dscuentactb_tarjeta: TWideStringField
-      FieldName = 'ctb_tarjeta'
       Required = True
     end
   end

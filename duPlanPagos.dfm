@@ -867,6 +867,8 @@ object frmplanpagos: Tfrmplanpagos
       TitleFont.Style = [fsBold]
       OnCellClick = DBGrid1CellClick
       OnDrawColumnCell = DBGrid1DrawColumnCell
+      OnKeyDown = DBGrid1KeyDown
+      OnMouseWheel = DBGrid1MouseWheel
       Columns = <
         item
           Expanded = False

@@ -63,7 +63,7 @@ dm.activa_ds(frmsolicitud.dsmonedas); // ds local
 dm.activa_ds(dm.dssubproducto); // tipo de credito
 dm.activa_ds(frmsolicitud.dssubproducto);
 dm.activa_ds(dm.dsactividades); //este se va a cargar con un filtro al momento de usarse
-  //1 es activo
+  //1 es activo .
 
 if edidpp.Text = '0' then
 dm.filtra(dm.dsplan_pagos, 'select plan_pagos.pp_id, plan_pagos.pp_descripcion, plan_pagos.pp_fecha, plan_pagos.pp_plazo, productos.prd_descripcion, plan_pagos.prd_fk, plan_pagos.pp_monto, pp_periodicidad, '+

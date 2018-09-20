@@ -424,12 +424,7 @@ TCrackDBGrid = class (TDBGrid);
     dscuenta: TZQuery;
     dtscuenta: TDataSource;
     dscuentactb_id: TIntegerField;
-    dscuentactb_tipopago: TIntegerField;
-    dscuentabanco_fk: TIntegerField;
-    dscuentactb_descripcion: TWideStringField;
     dscuentactb_cuenta: TWideStringField;
-    dscuentactb_clabe: TWideStringField;
-    dscuentactb_tarjeta: TWideStringField;
     procedure Label123Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Image2Click(Sender: TObject);
@@ -501,7 +496,6 @@ TCrackDBGrid = class (TDBGrid);
     procedure btneliminaavalClick(Sender: TObject);
     procedure dbgrdavalDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
-    procedure FormActivate(Sender: TObject);
     procedure cbxregimenavalKeyPress(Sender: TObject; var Key: Char);
     procedure Button1Click(Sender: TObject);
     procedure cpavalCollapse(Sender: TObject);
@@ -516,6 +510,8 @@ TCrackDBGrid = class (TDBGrid);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure cpdatosgeneralesClick(Sender: TObject);
+    procedure cpdatosgeneralesCollapse(Sender: TObject);
 
   private
     { Private declarations }
@@ -618,7 +614,9 @@ dm.filtra(dsexpediente, 'select sld_id, sol_fk, sld_descripcion, sld_documento, 
 'from sol_doc  where sol_fk = ' + edid.Text);
 
 //activamos los datasets para forma de pago y cta
-dm.Activa_DS(dscuenta);
+
+dm.filtra(dscuenta, 'select ctb_id, ctb_cuenta from ctabanco');
+
 dm.Activa_DS(dsformapago);
 dm.dsMonedas.First;
 
@@ -1246,9 +1244,13 @@ end;
 procedure Tfrmsolicitud.cbxedocivilChange(Sender: TObject);
 begin
 if cbxedocivil.ItemIndex = 1 then
-   dblckregimen.Enabled := true
+   begin
+   dblckregimen.Enabled := true  ;
+   dblckregimen.Visible := true;
+   end
    else
    begin
+   dblckregimen.Visible := false;
    dblckregimen.Enabled := false;
    dblckregimen.ItemIndex := -1;
    end;
@@ -1411,6 +1413,16 @@ end;
 
 end;
 
+procedure Tfrmsolicitud.cpdatosgeneralesClick(Sender: TObject);
+begin
+ button2.Click;
+end;
+
+procedure Tfrmsolicitud.cpdatosgeneralesCollapse(Sender: TObject);
+begin
+button2.Click;
+end;
+
 function Tfrmsolicitud.quitacomas(txt: string): string;
 var
 x: integer;
@@ -1451,8 +1463,7 @@ end
 else
 nfoliosol := dm.dssolicitudessol_folio.AsString;
 
-
-{dm.filtra(dm.ds2, 'select * from productos where prd_id = ' + dm.dsplan_pagosprd_fk.asString);
+ dm.filtra(dm.ds2, 'select * from productos where prd_id = ' + dm.dsplan_pagosprd_fk.asString);
 
 if dm.ds2.fieldbyname('prd_id').value <> null then
  begin
@@ -1462,13 +1473,10 @@ if dm.ds2.fieldbyname('prd_id').value <> null then
  else
  begin
  Showmessage('No se localizaron los datos del producto');
+ nprodseg := '';
+ nproducto := '';
  rebote := false;
  end;
- }
-
-
-
-
 
 filtro := filtro  + 'update solicitudes '+
 'set sol_folio= '+ nfoliosol +', '+
@@ -1504,15 +1512,16 @@ filtro := filtro  + 'update solicitudes '+
 'sol_clireg = '+quotedstr(dblckregimen.text)+', '+
 'sol_comision = '+edcomision.text+', '+
 'sol_gastos = '+edgastos.text + ', ' +
-'frmpago_fk = ' + dblckformapago.KeyValue +  ', ' +
-'ctadestino_fk = ' + dblckcuenta.KeyValue  +
+'frmpago_fk = ' + inttostr(dblckformapago.KeyValue) +  ', ' +
+'ctadestino_fk = ' + inttostr(dblckcuenta.KeyValue)  +
 
 
 
 //'sol_actividad = '++  checar por que no esta esta en otra tabla sol_act
 ' where sol_id = '+ edid.text;
 
-                          //con esto lo amarro para que no salga otra vez en el combo inicial
+
+               //con esto lo amarro para que no salga otra vez en el combo inicial
  dm.cambia(dm.ds1, 'update plan_pagos set est_fk = 3 where pp_id = ' + dm.dsplan_pagospp_id.AsString);
 
 
@@ -1954,7 +1963,7 @@ if ((cbxestados.text = '') or (dblckmunicipios.text = '')) then
 
  //si tiene que meter los datos del conyuge
 
- if nagregaconyuge = true  then
+ if (trim(cbxedocivil.Text) = 'CASADO') and (trim(dblckregimen.Text) = 'SOCIEDAD CONYUGAL')  then
     begin
 
     if trim(edconyuge.Text) = '' then
@@ -2011,11 +2020,6 @@ end;
 
 
 
-procedure Tfrmsolicitud.FormActivate(Sender: TObject);
-begin
-showmessage('activate');
-end;
-
 procedure Tfrmsolicitud.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 action := cafree;
@@ -2036,7 +2040,7 @@ procedure Tfrmsolicitud.FormShow(Sender: TObject);
 begin
 nagregaconyuge := false;
 
-
+ button2.Click;
 
 
 if envia = 'N' then

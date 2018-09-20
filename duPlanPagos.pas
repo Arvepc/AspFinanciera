@@ -81,6 +81,10 @@ TCrackDBGrid = class (TDBGrid);
     procedure edbuscaKeyPress(Sender: TObject; var Key: Char);
     procedure btneliminaClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
+    procedure DBGrid1MouseWheel(Sender: TObject; Shift: TShiftState;
+      WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+    procedure DBGrid1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
     procedure busca;
@@ -111,13 +115,17 @@ end;
 
 procedure Tfrmplanpagos.busca;
 begin
+
+if edbusca.Text = '' then
+  dm.Activa_DS(dm.dsplan_pagos)
+  else
   dm.filtra(dm.dsplan_pagos, 'select plan_pagos.pp_id, plan_pagos.pp_descripcion, plan_pagos.pp_fecha, plan_pagos.pp_plazo, productos.prd_descripcion, plan_pagos.prd_fk, plan_pagos.pp_monto, pp_periodicidad, '+
 'pp_tord, pp_tmor, pp_tiva, pp_frmintord, pp_frmintmor, pp_freccapint, pp_frecpagcap, pp_frecpagint, pp_editable, pp_tipointeres, pp_comision, pp_gastos, '+
 'sbp_descripcion, estatus.est_descripcion '+
 'from plan_pagos, estatus, productos, subproducto '+
 'where plan_pagos.est_fk = estatus.est_id '+
 'and plan_pagos.prd_fk = productos.prd_id '+
-'and sbp_id = sbp_fk and est_fk = <> 2 and pp_descripcion like ' + quotedstr ('%' + edbusca.Text + '%'));
+'and sbp_id = sbp_fk and est_fk  <> 2 and pp_descripcion like ' + quotedstr ('%' + edbusca.Text + '%'));
 end;
 
 
@@ -322,6 +330,24 @@ btnmuestra.Height := (MRect.Bottom-MRect.Top);
 
 end;
 
+procedure Tfrmplanpagos.DBGrid1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+if dm.dsplan_pagosest_descripcion.AsString = 'ASIGNADO' then
+btnelimina.Visible := false
+else
+btnelimina.visible := true;
+end;
+
+procedure Tfrmplanpagos.DBGrid1MouseWheel(Sender: TObject; Shift: TShiftState;
+  WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+begin
+if dm.dsplan_pagosest_descripcion.AsString = 'ASIGNADO' then
+btnelimina.Visible := false
+else
+btnelimina.visible := true;
+end;
+
 procedure Tfrmplanpagos.edbuscaKeyPress(Sender: TObject; var Key: Char);
 begin
 if key = #13 then
@@ -389,10 +415,23 @@ procedure Tfrmplanpagos.Panel7Click(Sender: TObject);
 begin
 //de aqui debo mandar a llamar el form de tipo de solicitud y enviar como param el id del plan de pago s
 
-application.CreateForm(Tfrmtiposolicitud, frmtiposolicitud);
+if dm.dsplan_pagosest_descripcion.AsString = 'ASIGNADO' then
+ begin
+     application.CreateForm(Tfrmmensaje, frmmensaje);
+     frmmensaje.lblmensaje.Caption := 'Este plan de pagos se encuentra en estatus Asignado,'+ #13+' No puede utilizarse para una nueva solicitud.';
+     frmmensaje.pnlcerrar.visible:= false;
+     frmmensaje.pnlguarda.Caption := 'Aceptar';
+     frmmensaje.ShowModal;
+ end
+ else
+ begin
+ application.CreateForm(Tfrmtiposolicitud, frmtiposolicitud);
             frmtiposolicitud.edidpp.text := dm.dsplan_pagospp_id.asstring;
 
             frmtiposolicitud.showmodal;
+ end;
+
+
 
 
 

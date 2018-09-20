@@ -12,12 +12,12 @@ type
     Image1: TImage;
     lblmensaje: TLabel;
     Panel2: TPanel;
-    Panel3: TPanel;
+    pnlcerrar: TPanel;
     Panel4: TPanel;
     pnlguarda: TPanel;
     Button1: TButton;
     procedure pnlguardaClick(Sender: TObject);
-    procedure Panel3Click(Sender: TObject);
+    procedure pnlcerrarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,7 +31,7 @@ implementation
 
 {$R *.dfm}
 
-procedure Tfrmmensaje.Panel3Click(Sender: TObject);
+procedure Tfrmmensaje.pnlcerrarClick(Sender: TObject);
 begin
 ModalResult := mrCancel;
 end;

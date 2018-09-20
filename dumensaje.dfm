@@ -153,7 +153,7 @@ object frmmensaje: Tfrmmensaje
   object lblmensaje: TLabel
     Left = 184
     Top = 80
-    Width = 377
+    Width = 68
     Height = 16
     Alignment = taCenter
     Caption = 'lblmensaje'
@@ -173,9 +173,7 @@ object frmmensaje: Tfrmmensaje
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -857
-    ExplicitWidth = 1444
-    object Panel3: TPanel
+    object pnlcerrar: TPanel
       Left = 16
       Top = 8
       Width = 121
@@ -191,7 +189,7 @@ object frmmensaje: Tfrmmensaje
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
-      OnClick = Panel3Click
+      OnClick = pnlcerrarClick
     end
     object Panel4: TPanel
       Left = 400

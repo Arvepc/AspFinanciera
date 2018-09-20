@@ -486,6 +486,8 @@ TCrackDBGrid = class (TDBGrid);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure CategoryPanel1Collapse(Sender: TObject);
+    procedure CategoryPanel1Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -1150,6 +1152,17 @@ Screen.OnActiveControlChange := ActiveCtrlChange;
   FPrevCtrlFocused:= Screen.ActiveControl;
 end;
 
+procedure Tfrmsolicitudmoral.CategoryPanel1Click(Sender: TObject);
+begin
+button2.Click;
+end;
+
+procedure Tfrmsolicitudmoral.CategoryPanel1Collapse(Sender: TObject);
+begin
+button2.Click;
+
+end;
+
 function Tfrmsolicitudmoral.checaletra(valor: string): string;
 var
 mal, x, y: integer;
@@ -1241,7 +1254,7 @@ end
 
 else
 nfoliosol := dm.dssolicitudessol_folio.AsString;
-{dm.filtra(dm.ds2, 'select * from productos where prd_id = ' + dm.dsplan_pagosprd_fk.asString);
+dm.filtra(dm.ds2, 'select * from productos where prd_id = ' + dm.dsplan_pagosprd_fk.asString);
 
 if dm.ds2.fieldbyname('prd_id').value <> null then
  begin
@@ -1250,9 +1263,11 @@ if dm.ds2.fieldbyname('prd_id').value <> null then
  end
  else
  begin
+ nprodseg := '';
+ nproducto := '';
  Showmessage('No se localizaron los datos del producto');
  rebote := false;
- end; }
+ end;
 
 
 
