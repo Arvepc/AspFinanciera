@@ -134,7 +134,7 @@
       TabOrder = 1
       object pnlguarda: TPanel
         Left = 296
-        Top = 4
+        Top = 5
         Width = 121
         Height = 41
         Cursor = crHandPoint
@@ -154,7 +154,7 @@
       end
     end
   end
-  object Panel5: TPanel
+  object pnlplan: TPanel
     Left = 378
     Top = 214
     Width = 316
@@ -269,12 +269,14 @@
         HeaderFont.Style = []
         TabOrder = 0
         object cpaval: TCategoryPanel
-          Top = 387
+          Top = 553
           Height = 30
           Caption = 'Datos Generales del Aval y Garante Hipotecario'
           Color = clWhite
           Collapsed = True
           TabOrder = 0
+          ExplicitTop = 387
+          ExplicitWidth = 1434
           ExpandedHeight = 516
           object Label105: TLabel
             Left = 864
@@ -2486,13 +2488,14 @@
           object pnllistaavales: TPanel
             Left = 0
             Top = -140
-            Width = 1432
+            Width = 1415
             Height = 140
             Align = alBottom
             Caption = 'pnllistaavales'
             Color = clWhite
             ParentBackground = False
             TabOrder = 18
+            ExplicitWidth = 1432
             object dbgrdaval: TDBGrid
               Left = 14
               Top = 6
@@ -2539,13 +2542,14 @@
           object pnlconyugeaval: TPanel
             Left = 0
             Top = -240
-            Width = 1432
+            Width = 1415
             Height = 100
             Align = alBottom
             Color = clWhite
             ParentBackground = False
             TabOrder = 19
             Visible = False
+            ExplicitWidth = 1432
             object Label92: TLabel
               Left = 16
               Top = 8
@@ -2663,12 +2667,14 @@
           end
         end
         object garantias: TCategoryPanel
-          Top = 357
+          Top = 523
           Height = 30
           Caption = 'Garantias Hpotecarias Ofrecidas'
           Color = clWhite
           Collapsed = True
           TabOrder = 1
+          ExplicitTop = 357
+          ExplicitWidth = 1434
           ExpandedHeight = 395
           object Label90: TLabel
             Left = 16
@@ -4561,12 +4567,14 @@
           end
         end
         object Referencias: TCategoryPanel
-          Top = 327
+          Top = 493
           Height = 30
           Caption = 'Referencias'
           Color = clWhite
           Collapsed = True
           TabOrder = 2
+          ExplicitTop = 327
+          ExplicitWidth = 1434
           ExpandedHeight = 332
           object Label102: TLabel
             Left = 24
@@ -6433,12 +6441,14 @@
           end
         end
         object actividad: TCategoryPanel
-          Top = 297
+          Top = 463
           Height = 30
           Caption = 'Actividad Economica'
           Color = clWhite
           Collapsed = True
           TabOrder = 3
+          ExplicitTop = 297
+          ExplicitWidth = 1434
           ExpandedHeight = 328
           object Button3: TButton
             Left = 1079
@@ -6468,13 +6478,15 @@
           object PageControl4: TPageControl
             Left = 0
             Top = 0
-            Width = 1432
+            Width = 1415
             Height = 0
             ActivePage = TabSheet1
             Align = alClient
             TabOrder = 3
+            ExplicitWidth = 1432
             object TabSheet1: TTabSheet
               Caption = 'Actividad Principal'
+              ExplicitWidth = 1424
               object Label66: TLabel
                 Left = 16
                 Top = 19
@@ -8328,6 +8340,7 @@
             object TabSheet2: TTabSheet
               Caption = 'Fuentes de Ingreso'
               ImageIndex = 1
+              ExplicitWidth = 1424
               object Label84: TLabel
                 Left = 20
                 Top = 19
@@ -10204,12 +10217,14 @@
           end
         end
         object pasivos: TCategoryPanel
-          Top = 267
+          Top = 433
           Height = 30
           Caption = 'PASIVOS(cifras en miles de pesos)'
           Color = clWhite
           Collapsed = True
           TabOrder = 4
+          ExplicitTop = 267
+          ExplicitWidth = 1434
           ExpandedHeight = 433
           object Label59: TLabel
             Left = 16
@@ -10227,13 +10242,15 @@
           object PageControl3: TPageControl
             Left = 0
             Top = 0
-            Width = 1432
+            Width = 1415
             Height = 0
             ActivePage = tabbancarios
             Align = alClient
             TabOrder = 0
+            ExplicitWidth = 1432
             object tabbancarios: TTabSheet
               Caption = '1. Bancarios'
+              ExplicitWidth = 1424
               object Label60: TLabel
                 Left = 16
                 Top = 19
@@ -12197,6 +12214,7 @@
             object tabnobancarios: TTabSheet
               Caption = '2. No Bancarios'
               ImageIndex = 1
+              ExplicitWidth = 1424
               object Label69: TLabel
                 Left = 16
                 Top = 19
@@ -14157,12 +14175,14 @@
           end
         end
         object destinocred: TCategoryPanel
-          Top = 237
+          Top = 403
           Height = 30
           Caption = 'Destino del Cr'#233'dito'
           Color = clWhite
           Collapsed = True
           TabOrder = 5
+          ExplicitTop = 120
+          ExplicitWidth = 1434
           ExpandedHeight = 185
           object Label48: TLabel
             Left = 16
@@ -14241,6 +14261,20 @@
             Height = 13
             Caption = 'Total de Gastos'
           end
+          object Label85: TLabel
+            Left = 504
+            Top = 13
+            Width = 76
+            Height = 13
+            Caption = 'Forma de Pago:'
+          end
+          object Label88: TLabel
+            Left = 754
+            Top = 13
+            Width = 78
+            Height = 13
+            Caption = 'Cuenta Destino:'
+          end
           object eddescripcion: TEdit
             Left = 16
             Top = 32
@@ -14318,14 +14352,34 @@
             Height = 21
             TabOrder = 10
           end
+          object dblckformapago: TDBLookupComboBox
+            Left = 504
+            Top = 32
+            Width = 230
+            Height = 21
+            KeyField = 'FPAG_CLAVE'
+            ListField = 'FPAG_DESCRIPCION'
+            TabOrder = 11
+          end
+          object dblckcuenta: TDBLookupComboBox
+            Left = 752
+            Top = 32
+            Width = 230
+            Height = 21
+            KeyField = 'ctb_id'
+            ListField = 'ctb_cuenta'
+            TabOrder = 12
+          end
         end
         object DomicilioCon: TCategoryPanel
-          Top = 207
+          Top = 373
           Height = 30
           Caption = 'Datos del Representante Legal'
           Color = clWhite
           Collapsed = True
           TabOrder = 6
+          ExplicitTop = 207
+          ExplicitWidth = 1434
           ExpandedHeight = 335
           object Label36: TLabel
             Left = 617
@@ -14591,23 +14645,26 @@
           end
         end
         object Profesión: TCategoryPanel
-          Top = 177
-          Height = 30
+          Top = 60
+          Height = 313
           Caption = 'Datos de la Empresa'
           Color = clWhite
-          Collapsed = True
           TabOrder = 7
-          ExpandedHeight = 313
+          ExplicitWidth = 1434
           object PageControl1: TPageControl
             Left = 0
             Top = 0
-            Width = 1432
-            Height = 0
+            Width = 1415
+            Height = 287
             ActivePage = tabcontactos
             Align = alClient
             TabOrder = 0
+            ExplicitWidth = 1432
+            ExplicitHeight = 0
             object tabdatos: TTabSheet
               Caption = 'Datos'
+              ExplicitWidth = 1424
+              ExplicitHeight = 0
               object Label46: TLabel
                 Left = 380
                 Top = 9
@@ -14704,6 +14761,8 @@
             object tabcontactos: TTabSheet
               Caption = 'Contactos'
               ImageIndex = 1
+              ExplicitWidth = 1424
+              ExplicitHeight = 0
               object Label8: TLabel
                 Left = 16
                 Top = 19
@@ -16575,6 +16634,8 @@
             object tabconsejo: TTabSheet
               Caption = 'Consejo'
               ImageIndex = 2
+              ExplicitWidth = 1424
+              ExplicitHeight = 0
               object Label26: TLabel
                 Left = 693
                 Top = 19
@@ -18408,6 +18469,8 @@
             object tabestructura: TTabSheet
               Caption = 'Estructura'
               ImageIndex = 3
+              ExplicitWidth = 1424
+              ExplicitHeight = 0
               object Label29: TLabel
                 Left = 24
                 Top = 27
@@ -20202,14 +20265,14 @@
                 Stretch = True
                 OnClick = imgestructuraClick
               end
-              object Edit5: TEdit
+              object ednombreestru: TEdit
                 Left = 24
                 Top = 46
                 Width = 311
                 Height = 21
                 TabOrder = 0
               end
-              object Edit8: TEdit
+              object eddomacc: TEdit
                 Left = 24
                 Top = 96
                 Width = 642
@@ -20255,35 +20318,35 @@
                     Visible = True
                   end>
               end
-              object Edit9: TEdit
+              object edrfcestru: TEdit
                 Left = 355
                 Top = 46
                 Width = 311
                 Height = 21
                 TabOrder = 3
               end
-              object Edit10: TEdit
+              object edcurpestru: TEdit
                 Left = 690
                 Top = 46
                 Width = 311
                 Height = 21
                 TabOrder = 4
               end
-              object Edit11: TEdit
+              object edimporteacc: TEdit
                 Left = 690
                 Top = 96
                 Width = 311
                 Height = 21
                 TabOrder = 5
               end
-              object Edit12: TEdit
+              object ednoacc: TEdit
                 Left = 1025
                 Top = 46
                 Width = 73
                 Height = 21
                 TabOrder = 6
               end
-              object Edit14: TEdit
+              object edporacc: TEdit
                 Left = 1025
                 Top = 96
                 Width = 73
@@ -20294,7 +20357,7 @@
           end
         end
         object cpdatosempresa: TCategoryPanel
-          Top = 147
+          Top = 30
           Height = 30
           Caption = 'Domicilio de la Empresa'
           Color = clWhite
@@ -20557,6 +20620,7 @@
             Width = 121
             Height = 21
             TabOrder = 13
+            Visible = False
           end
           object edantiguedad: TEdit
             Left = 18
@@ -20583,10 +20647,13 @@
         end
         object CategoryPanel1: TCategoryPanel
           Top = 0
-          Height = 147
+          Height = 30
           Caption = 'Datos Generales'
           Color = clWhite
+          Collapsed = True
           TabOrder = 9
+          ExplicitWidth = 1434
+          ExpandedHeight = 147
           object Label3: TLabel
             Left = 16
             Top = 16
@@ -21415,6 +21482,54 @@
     object dsavalescp_fk: TIntegerField
       FieldName = 'cp_fk'
       Required = True
+    end
+  end
+  object dtscuenta: TDataSource
+    DataSet = dscuenta
+    Left = 652
+    Top = 247
+  end
+  object dscuenta: TZQuery
+    Connection = dm.ZConnection1
+    SQL.Strings = (
+      'select ctb_id, ctb_cuenta from ctabanco')
+    Params = <>
+    Left = 684
+    Top = 375
+    object dscuentactb_id: TIntegerField
+      FieldName = 'ctb_id'
+      Required = True
+    end
+    object dscuentactb_cuenta: TWideStringField
+      FieldName = 'ctb_cuenta'
+      Required = True
+    end
+  end
+  object dtsformapago: TDataSource
+    DataSet = dsformapago
+    Left = 428
+    Top = 319
+  end
+  object dsformapago: TZQuery
+    Connection = dm.ZConnection1
+    SQL.Strings = (
+      'select * from frmpago')
+    Params = <>
+    Left = 420
+    Top = 239
+    object dsformapagoFPAG_CLAVE: TIntegerField
+      FieldName = 'FPAG_CLAVE'
+      Required = True
+    end
+    object dsformapagoFPAG_CVESAT: TWideStringField
+      FieldName = 'FPAG_CVESAT'
+      Required = True
+      Size = 3
+    end
+    object dsformapagoFPAG_DESCRIPCION: TWideStringField
+      FieldName = 'FPAG_DESCRIPCION'
+      Required = True
+      Size = 40
     end
   end
 end

@@ -75,7 +75,7 @@ TCrackDBGrid = class (TDBGrid);
     dsgarantiasslrg_descripcion: TWideStringField;
     dsgarantiasslrg_valor: TFloatField;
     dsgarantiassol_fk: TIntegerField;
-    Panel5: TPanel;
+    pnlplan: TPanel;
     Label76: TLabel;
     Label78: TLabel;
     dblckppmain: TDBLookupComboBox;
@@ -299,14 +299,14 @@ TCrackDBGrid = class (TDBGrid);
     Label33: TLabel;
     Label34: TLabel;
     Label35: TLabel;
-    Edit5: TEdit;
-    Edit8: TEdit;
+    ednombreestru: TEdit;
+    eddomacc: TEdit;
     DBGrid3: TDBGrid;
-    Edit9: TEdit;
-    Edit10: TEdit;
-    Edit11: TEdit;
-    Edit12: TEdit;
-    Edit14: TEdit;
+    edrfcestru: TEdit;
+    edcurpestru: TEdit;
+    edimporteacc: TEdit;
+    ednoacc: TEdit;
+    edporacc: TEdit;
     imgcontactos: TImage;
     dscontactosempresa: TZQuery;
     dtscontactosempresa: TDataSource;
@@ -409,6 +409,19 @@ TCrackDBGrid = class (TDBGrid);
     Button2: TButton;
     Label83: TLabel;
     edcontacto: TEdit;
+    dblckformapago: TDBLookupComboBox;
+    Label85: TLabel;
+    Label88: TLabel;
+    dblckcuenta: TDBLookupComboBox;
+    dtscuenta: TDataSource;
+    dscuenta: TZQuery;
+    dscuentactb_id: TIntegerField;
+    dscuentactb_cuenta: TWideStringField;
+    dtsformapago: TDataSource;
+    dsformapago: TZQuery;
+    dsformapagoFPAG_CLAVE: TIntegerField;
+    dsformapagoFPAG_CVESAT: TWideStringField;
+    dsformapagoFPAG_DESCRIPCION: TWideStringField;
     procedure Label123Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Image2Click(Sender: TObject);
@@ -577,7 +590,9 @@ while not(dm.ds1.Eof) do
 
 
 //ahora refresco el dataset
+ dm.filtra(dscuenta, 'select ctb_id, ctb_cuenta from ctabanco');
 
+dm.Activa_DS(dsformapago);
 
 dm.filtra(dsexpediente, 'select sld_id, sol_fk, sld_descripcion, sld_documento, sld_estatus, case sld_estatus '+
 'when 0 then '+ quotedstr('POR ENTREGAR') +' else '+ quotedstr('ENTREGADO') + ' end as estatus '+
@@ -1308,6 +1323,10 @@ filtro := filtro  + 'update solicitudes '+
 'sol_cliemail = '+quotedstr(edcorreo.text)+', '+
 'sol_comision = '+edcomision.text+', '+
 'sol_gastos = '+edgastos.text +
+'frmpago_fk = ' + inttostr(dblckformapago.KeyValue) +  ', ' +
+'ctadestino_fk = ' + inttostr(dblckcuenta.KeyValue)  +
+
+
 ' where sol_id = '+ edid.text;
 
 end;
@@ -1691,6 +1710,19 @@ if edext.text = '' then
      rebote := true;
    end;
 
+if dblckcuenta.Text = '' then
+   begin
+   showmessage('Debe seleccionar la cuenta destino...');
+     rebote := true;
+
+   end;
+
+
+if trim(ednombre.text) = '' then
+   begin
+     showmessage('Debe indicar el nombre del solicitante...');
+     rebote := true;
+   end;
 
 
 if edcp.text = '' then
@@ -2269,7 +2301,7 @@ if (ednombreconsejo.text = '') then
      quotedstr(trim(ednombreconsejo.text)) + ', ' +
      quotedstr(trim(edpuestoconsejo.text)) + ', ' +
      quotedstr(formatdatetime('dd-mm-yyyy',dtvigencia.Date)) + ', ' +
-     ' 5,1,1)');
+     ' 9,1,1)');
 
      //ahora en solicitud persona
 
@@ -2280,7 +2312,9 @@ if (ednombreconsejo.text = '') then
      quotedstr(trim(edpuestoconsejo.text)) + ', ' +
      quotedstr(formatdatetime('dd-mm-yyyy',dtvigencia.Date)) + ', 1)');
 
-
+        dm.cambia(dm.ds2, 'insert into fisicas (prs_fk, fsc_nombres) values ('+
+     inttostr(dm.ds1.FieldByName('idper').AsInteger + 1) + ', ' +
+     quotedstr(trim(ednombrecon.text))+ ')');
 
 
 
@@ -2388,7 +2422,7 @@ if (edmailcon.text = '') then
      quotedstr(trim(edtelcon.text)) + ', ' +
      quotedstr(trim(edmailcon.text)) + ', 1)');
 
-       dm.cambia(dm.ds2, 'insert into fisicas (prs_fk, fsc_nombres, profesion ) values ('+
+       dm.cambia(dm.ds2, 'insert into fisicas (prs_fk, fsc_nombres, fsc_profesion ) values ('+
      inttostr(dm.ds1.FieldByName('idper').AsInteger + 1) + ', ' +
      quotedstr(trim(ednombrecon.text)) + ', ' +
      quotedstr(trim(edpuestocon.text)) + ')');
@@ -2441,53 +2475,97 @@ frmcp.show;
 end;
 
 procedure Tfrmsolicitudmoral.imgestructuraClick(Sender: TObject);
+var
+nclave: string;
 begin
 
 rebote := false;
 
-
-if (ednombreconsejo.text = '') then
+if (edrfcestru.text = '') then
    begin
-     showmessage('Debe Indicar un Nombre... ');
+     showmessage('Debe Indicar el RFC... ');
 
      rebote := true;
    end;
 
- if (edpuestoconsejo.text = '') then
+if (edcurpestru.text = '') then
    begin
-     showmessage('Debe indicar un Puesto... ');
+     showmessage('Debe Indicar el curp... ');
 
      rebote := true;
    end;
 
+if (edporacc.text = '') then
+   begin
+     showmessage('Debe Indicar un porcentaje de acción... ');
 
+     rebote := true;
+   end;
+
+ if (edimporteacc.text = '') then
+   begin
+     showmessage('Debe indicar un importe de acción... ');
+
+     rebote := true;
+   end;
+
+if (ednoacc.text = '') then
+   begin
+     showmessage('Debe indicar un número de acciónes... ');
+
+     rebote := true;
+   end;
 
 
    if (rebote = false) then
    begin
+      dm.filtra(dm.ds1, 'select max(prs_clave) as idclave from personas');
+            if (dm.ds1.fieldbyname('idclave').asstring = '') or (dm.ds1.FieldByName('idclave').Value = null) then
+            nclave := '0001'
+            else
+            begin
+               if (dm.ds1.FieldByName('idclave').asinteger <= 9) then
+                  nclave := '000' + inttostr(dm.ds1.FieldByName('idclave').asinteger +1);
+
+
+               if (dm.ds1.FieldByName('idclave').asinteger > 9) and (dm.ds1.FieldByName('idclave').asinteger <= 99)then
+                nclave := '00' + inttostr(dm.ds1.FieldByName('idclave').asinteger + 1);
+
+                if (dm.ds1.FieldByName('idclave').asinteger > 99) and (dm.ds1.FieldByName('idclave').asinteger <= 999)then
+                    nclave := '0' + inttostr(dm.ds1.FieldByName('idclave').AsInteger +1);
+
+                if (dm.ds1.FieldByName('idclave').asinteger > 999)  then
+                   nclave := inttostr(dm.ds1.fieldbyname('idclave').AsInteger + 1);
+            end;
 
 
    dm.filtra(dm.ds1, 'select max(prs_id) as idper from personas');
 
 
-     dm.cambia(dm.ds2, 'insert into personas (prs_id, prs_nombre, prs_clave, prs_tel1,tpr_fk, cp_fk, rgc_fk) values ('+
+     dm.cambia(dm.ds2, 'insert into personas (prs_id, prs_rfc, prs_nombre, prs_clave, prs_calle,tpr_fk, cp_fk, rgc_fk) values ('+
      inttostr(dm.ds1.FieldByName('idper').AsInteger + 1) + ', ' +
-     quotedstr(trim(ednombreconsejo.text)) + ', ' +
-     quotedstr(trim(edpuestoconsejo.text)) + ', ' +
-     quotedstr(formatdatetime('dd-mm-yyyy',dtvigencia.Date)) + ', ' +
-     ' 5,1,1)');
+     quotedstr(trim(edrfcestru.text)) + ', ' +
+     quotedstr(trim(ednombreestru.text)) + ', ' +
+     quotedstr(trim(nclave)) + ', ' +
+     quotedstr(trim(eddomacc.text)) + ', ' +
+     ' 2,1,1)');
 
      //ahora en solicitud persona
 
-     dm.cambia(dm.ds2, 'insert into solicitud_persona (sol_fk, prs_fk, slp_nombre, slp_calle, slp_tel1, cp_fk) values ('+
+     dm.cambia(dm.ds2, 'insert into solicitud_persona (sol_fk, prs_fk, slp_nombre, slp_calle, cp_fk) values ('+
      edid.Text + ', '+
      inttostr(dm.ds1.FieldByName('idper').AsInteger + 1) + ', ' +
-     quotedstr(trim(ednombreconsejo.text)) + ', ' +
-     quotedstr(trim(edpuestoconsejo.text)) + ', ' +
-     quotedstr(formatdatetime('dd-mm-yyyy',dtvigencia.Date)) + ', 1)');
+     quotedstr(trim(ednombreestru.text)) + ', ' +
+     quotedstr(trim(eddomacc.text)) + ', 1)');
 
 
-
+            dm.cambia(dm.ds2, 'insert into fisicas (prs_fk, fsc_nombres, fsc_curp, fsc_numacc, fsc_poraccion, fsc_importeaccion) values ('+
+     inttostr(dm.ds1.FieldByName('idper').AsInteger + 1) + ', ' +
+     quotedstr(trim(ednombreestru.text))+ ', ' +
+     quotedstr(trim(edcurpestru.text))+ ', ' +
+     quotedstr(trim(ednoacc.text))+ ', ' +
+     quotedstr(trim(edporacc.text))+ ', ' +
+     quotedstr(trim(edimporteacc.text))+  ')');
 
 
     ednombreconsejo.text := '';

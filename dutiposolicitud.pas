@@ -156,7 +156,8 @@ frmsolicitudmoral.edcel2.Text := '';
 frmsolicitudmoral.edtelfam.Text := '';
 frmsolicitudmoral.edcorreo.Text := '';
 
-
+ frmsolicitudmoral.pnlplan.visible:= false;
+frmsolicitudmoral.inicial;
 
 frmsolicitudmoral.show;
 close;

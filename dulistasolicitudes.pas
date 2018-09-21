@@ -281,6 +281,7 @@ TCrackDBGrid = class (TDBGrid);
       Y: Integer);
     procedure imgdownClick(Sender: TObject);
     procedure imgupClick(Sender: TObject);
+    procedure DBGrid1KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
     procedure edita_fisica;
@@ -300,7 +301,7 @@ implementation
 {$R *.dfm}
 
 uses dusolicitud, dudm, dutiposolicitud, duprincipal, dusolicitudmoral,
-  timeline;
+  timeline, duanalisis, dumesacontrolcredito;
 procedure Tfrmlistasolicitudes.imgdownClick(Sender: TObject);
 begin
 //abro el panel de busquedas
@@ -848,6 +849,39 @@ btnmodifica.Height := (MRect.Bottom-MRect.Top);
 
 
  frmprincipal.colorgrid(Rect, sender, DBGrid1, DataCol, Column, State);
+
+end;
+
+procedure Tfrmlistasolicitudes.DBGrid1KeyPress(Sender: TObject; var Key: Char);
+begin
+//aqui debo regresar losdatos al form analisis
+
+if (envia= 'A') then //analisis
+begin
+frmanalisis.edfolio.text := dm.dssolicitudessol_folio.AsString;
+frmanalisis.ednombre.Text := dm.dssolicitudessol_clinombre.AsString;
+frmanalisis.edid.Text := dm.dssolicitudessol_id.AsString;
+
+ dm.filtra(frmanalisis.dstipodoc, 'select * from sol_doc where sol_fk = ' + dm.dssolicitudessol_id.AsString);
+  frmanalisis.Show;
+    close;
+
+
+close;
+
+end;
+
+
+
+
+if (envia = 'MC') then
+begin
+  frmmesacontrolcredito.edfolio.text := dm.dssolicitudessol_folio.AsString;
+  frmmesacontrolcredito.ednombre.Text := dm.dssolicitudessol_clinombre.AsString;
+  frmmesacontrolcredito.edid.Text := dm.dssolicitudessol_id.AsString;
+  frmmesacontrolcredito.Show;
+    close;
+end;
 
 end;
 

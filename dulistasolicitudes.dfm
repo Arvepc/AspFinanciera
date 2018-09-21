@@ -672,6 +672,7 @@ object frmlistasolicitudes: Tfrmlistasolicitudes
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = [fsBold]
       OnDrawColumnCell = DBGrid1DrawColumnCell
+      OnKeyPress = DBGrid1KeyPress
       Columns = <
         item
           Expanded = False

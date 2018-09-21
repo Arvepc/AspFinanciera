@@ -259,6 +259,7 @@
     Align = alClient
     TabOrder = 3
     Visible = False
+    ExplicitHeight = 1444
     object TabSheet3: TTabSheet
       Caption = 'Datos'
       object cpg1: TCategoryPanelGroup
@@ -283,6 +284,7 @@
           Collapsed = True
           TabOrder = 0
           OnCollapse = cpavalCollapse
+          ExplicitWidth = 1417
           ExpandedHeight = 516
           object Label105: TLabel
             Left = 864
@@ -2379,6 +2381,7 @@
             Width = 121
             Height = 21
             TabOrder = 8
+            OnKeyPress = edcpavalKeyPress
           end
           object edestadoaval: TEdit
             Left = 864
@@ -2671,7 +2674,7 @@
               Width = 238
               Height = 21
               CharCase = ecUpperCase
-              MaxLength = 12
+              MaxLength = 13
               TabOrder = 6
             end
           end
@@ -2683,6 +2686,7 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 1
+          ExplicitWidth = 1417
           ExpandedHeight = 332
           object Label102: TLabel
             Left = 24
@@ -4553,6 +4557,7 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 2
+          ExplicitWidth = 1417
           ExpandedHeight = 480
           object PageControl2: TPageControl
             Left = 0
@@ -8434,6 +8439,7 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 3
+          ExplicitWidth = 1417
           ExpandedHeight = 431
           object Label90: TLabel
             Left = 16
@@ -10357,6 +10363,7 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 4
+          ExplicitWidth = 1417
           ExpandedHeight = 360
           object Button3: TButton
             Left = 1079
@@ -14322,6 +14329,7 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 6
+          ExplicitWidth = 1417
           ExpandedHeight = 460
           object Label59: TLabel
             Left = 16
@@ -18325,6 +18333,7 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 7
+          ExplicitWidth = 1417
           object Label44: TLabel
             Left = 16
             Top = 74
@@ -18405,6 +18414,7 @@
           Color = clWhite
           Collapsed = True
           TabOrder = 8
+          ExplicitWidth = 1417
           ExpandedHeight = 245
           object Label36: TLabel
             Left = 623
@@ -18653,7 +18663,7 @@
           end
           object Image1: TImage
             Left = 143
-            Top = 76
+            Top = 77
             Width = 30
             Height = 30
             Cursor = crHandPoint
@@ -19040,7 +19050,7 @@
               Width = 238
               Height = 21
               CharCase = ecUpperCase
-              MaxLength = 12
+              MaxLength = 13
               TabOrder = 4
             end
             object edidconyuge: TEdit
@@ -19086,6 +19096,7 @@
           TabOrder = 10
           OnCollapse = cpdatosgeneralesCollapse
           OnClick = cpdatosgeneralesClick
+          ExplicitWidth = 1417
           ExpandedHeight = 205
           object Label3: TLabel
             Left = 16
